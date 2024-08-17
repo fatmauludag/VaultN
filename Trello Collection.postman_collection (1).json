@@ -1,0 +1,2371 @@
+{
+	"info": {
+		"_postman_id": "0a44bbb9-cf52-4b44-a65f-aa0bbf670ff9",
+		"name": "Trello Collection",
+		"description": "Base url seted as varibles other connections comes from environment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37705462"
+	},
+	"item": [
+		{
+			"name": "Create Lists",
+			"item": [
+				{
+					"name": "ToDo",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"SetListId\", function () {\r",
+									"\r",
+									"// Parse the response body as JSON\r",
+									"var responseBody = pm.response.json();\r",
+									"\r",
+									"// Extract the \"id\" from the response body\r",
+									"var listId = responseBody.id;\r",
+									"\r",
+									"// Set the \"listId\" as a variable for later use\r",
+									"pm.environment.set(\"ToDolistId\", listId);});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "*/*"
+							},
+							{
+								"key": "accept-language",
+								"value": "tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7"
+							},
+							{
+								"key": "content-type",
+								"value": "application/json"
+							},
+							{
+								"key": "cookie",
+								"value": "atlCohort={\"bucketAll\":{\"bucketedAtUTC\":\"2024-08-15T14:37:49.392Z\",\"version\":\"2\",\"index\":15,\"bucketId\":0}}; ajs_anonymous_id=%22c51ec516-2968-5d60-f521-a198e66fd18f%22; dsc=cc5a16c8d137a8bacf8f418cb45849f86f5b94b506659bff5de2786a0c0d3e94; atl_xid.ts=1723732672210; atl_xid.current=%5B%7B%22type%22%3A%22xc%22%2C%22value%22%3A%22c19711a7-7d3d-49f9-87e3-4d1d06191efb%22%2C%22createdAt%22%3A%222024-04-29T14%3A07%3A47.071Z%22%7D%5D; _otPreferencesSynced=; OptanonConsent=isGpcEnabled=0&datestamp=Thu+Aug+15+2024+17%3A37%3A55+GMT%2B0300+(GMT%2B03%3A00)&version=202407.1.0&browserGpcFlag=0&isIABGlobal=false&identifierType=Cookie+Unique+Id&hosts=&consentId=56d07b6c-e313-47c8-a23a-bd43b88d11a9&interactionCount=1&isAnonUser=1&landingPath=https%3A%2F%2Ftrello.com%2F&groups=1%3A1%2C2%3A1%2C3%3A1%2C4%3A0; atlassian.account.xsrf.token=500c79c1-5a8b-43e0-afb7-f8b9e0431f40; loggedIn=1; lang=tr-TR; __cid=6--rtg09tlBdrGVgdlcxWw9dUtudg9uuXArvs0sOkMFyX7atDyxjM1sz4KNyE9G3YQGjR19E5s4AwkPkWnl3sVdU6LMgb4v-MHGN3zNqy4ZxO8SbCGKK1zB8l5MRX8SCbyXUiH9cjd1pP9-TJz3Qmn9KlMMzbrPWPUCNx3A-14RxONKTd0Cs5xJHyJMzYo_Wf0yB0DRkzZMcY5bcMm7Lgm09yoNxO8qDf1iF1T55jZxqONOdbD2Iuz5tgIpnMtGGKAjjOF-f7NBtPdDSZ22ALwtKqvQTTsSbFmWQ1jMnxPoxf4Hfd1nNkxdPxPQtapTbNmiXk2k51JN3O5yDbzvUhmY60pp_T43BOmiQgBs61ZMpeLuGADvEwyxU0exvJ8T3bE_Vgnav94NuJdSCcTrdhG8r1IFlO9SJbztLu1--xXbuDC-zjAo5MAns5Fhc_Ll29L5sTF1DLLPBC-Sz5Avks-QL5LNfC-SzXwvks-ZvXdf0oKQGXwvksx9LpPMfS7r3AU-G75W2XB8cSiw_B2bksl8L5LNcCxs; idMember=66be12f0a4ce3e80d1df2d1b; aaId=712020%3Ac7978f6c-4d43-471f-a41d-ee73ad45ac2e; hasAccount=atlassian; atl-bsc-consent-token-fallback=002000001000; atl-bsc-current-locale=TR-16; atl-bsc-consent-token=002000001000; atl-bsc-show-banner=0; cloud.session.token=eyJraWQiOiJzZXNzaW9uLXNlcnZpY2UvcHJvZC0xNTkyODU4Mzk0IiwiYWxnIjoiUlMyNTYifQ.eyJhc3NvY2lhdGlvbnMiOltdLCJzdWIiOiI3MTIwMjA6Yzc5NzhmNmMtNGQ0My00NzFmLWE0MWQtZWU3M2FkNDVhYzJlIiwiZW1haWxEb21haW4iOiJnbWFpbC5jb20iLCJpbXBlcnNvbmF0aW9uIjpbXSwiY3JlYXRlZCI6MTcyMzczMjY5NSwicmVmcmVzaFRpbWVvdXQiOjE3MjM3NDY5MzIsInZlcmlmaWVkIjp0cnVlLCJpc3MiOiJzZXNzaW9uLXNlcnZpY2UiLCJzZXNzaW9uSWQiOiI0ZTk3NDRmZi0zOTc2LTQxMzYtYjk4NS1lNzUzOTExOWNlZTkiLCJzdGVwVXBzIjpbXSwiYXVkIjoiYXRsYXNzaWFuIiwibmJmIjoxNzIzNzQ2MzMyLCJleHAiOjE3MjYzMzgzMzIsImlhdCI6MTcyMzc0NjMzMiwiZW1haWwiOiI5NHNhZGVjZXV5Z3VsYW1hbGFyMTlAZ21haWwuY29tIiwianRpIjoiNGU5NzQ0ZmYtMzk3Ni00MTM2LWI5ODUtZTc1MzkxMTljZWU5In0.bu_LoxBCx51dqkuQwT0IRYQhoFxQv7zdyDbcwDGFN8UUOcvDgjzEv96Oe7AOHok9Sg9vejeLDvgwqCS5iJLX6J0W-pM6A8clj4D2fywBWNKRGaMsqrmc0zpM6WlGFse6xX8eU1mcy879weD4QE76ek3UppCEAN3Bdn2qRoL8bYNIIL_WFVfjmC4uw_l5ftZrsR3W7kAiqlLds7BIxMA3buTGza4Szu3ao1kUQrcUiN6II9vvCO3uRwXRFJcfXzz_PCF7UX_8hDroybO04b2YOf6guZKvVD9znxAY-r-M4Hs3df8comG-De-H-E23Hjuk8PalDfMFjZgp5RFW5cI-ww",
+								"disabled": true
+							},
+							{
+								"key": "origin",
+								"value": "https://trello.com"
+							},
+							{
+								"key": "priority",
+								"value": "u=1, i"
+							},
+							{
+								"key": "referer",
+								"value": "https://trello.com/b/yp0lDCX8/vaultn"
+							},
+							{
+								"key": "sec-ch-ua",
+								"value": "\"Not)A;Brand\";v=\"99\", \"Google Chrome\";v=\"127\", \"Chromium\";v=\"127\""
+							},
+							{
+								"key": "sec-ch-ua-mobile",
+								"value": "?0"
+							},
+							{
+								"key": "sec-ch-ua-platform",
+								"value": "\"Windows\""
+							},
+							{
+								"key": "sec-fetch-dest",
+								"value": "empty"
+							},
+							{
+								"key": "sec-fetch-mode",
+								"value": "cors"
+							},
+							{
+								"key": "sec-fetch-site",
+								"value": "same-origin"
+							},
+							{
+								"key": "user-agent",
+								"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36"
+							},
+							{
+								"key": "x-b3-spanid",
+								"value": "9bc5c4f94e37c234"
+							},
+							{
+								"key": "x-b3-traceid",
+								"value": "66be4997cf184e92ad27417b27e7d175"
+							},
+							{
+								"key": "x-trello-client-version",
+								"value": "build-207303"
+							},
+							{
+								"key": "x-trello-task",
+								"value": "create-list"
+							},
+							{
+								"key": "x-trello-traceid",
+								"value": "66be4997cf184e92ad27417b27e7d175"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "t",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idBoard\": \"{{VaultN-Board}}\",\r\n    \"name\": \"ToDo\",\r\n    \"pos\": 665536,\r\n    \"dsc\": \"cc5a16c8d137a8bacf8f418cb45849f86f5b94b506659bff5de2786a0c0d3e94\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/lists",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"lists"
+							]
+						},
+						"description": "Generated from cURL: curl 'https://trello.com/1/lists' \\\r\n  -H 'accept: */*' \\\r\n  -H 'accept-language: tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7' \\\r\n  -H 'content-type: application/json' \\\r\n  -H 'cookie: atlCohort={\"bucketAll\":{\"bucketedAtUTC\":\"2024-08-15T14:37:49.392Z\",\"version\":\"2\",\"index\":15,\"bucketId\":0}}; ajs_anonymous_id=%22c51ec516-2968-5d60-f521-a198e66fd18f%22; dsc=cc5a16c8d137a8bacf8f418cb45849f86f5b94b506659bff5de2786a0c0d3e94; atl_xid.ts=1723732672210; atl_xid.current=%5B%7B%22type%22%3A%22xc%22%2C%22value%22%3A%22c19711a7-7d3d-49f9-87e3-4d1d06191efb%22%2C%22createdAt%22%3A%222024-04-29T14%3A07%3A47.071Z%22%7D%5D; _otPreferencesSynced=; OptanonConsent=isGpcEnabled=0&datestamp=Thu+Aug+15+2024+17%3A37%3A55+GMT%2B0300+(GMT%2B03%3A00)&version=202407.1.0&browserGpcFlag=0&isIABGlobal=false&identifierType=Cookie+Unique+Id&hosts=&consentId=56d07b6c-e313-47c8-a23a-bd43b88d11a9&interactionCount=1&isAnonUser=1&landingPath=https%3A%2F%2Ftrello.com%2F&groups=1%3A1%2C2%3A1%2C3%3A1%2C4%3A0; atlassian.account.xsrf.token=500c79c1-5a8b-43e0-afb7-f8b9e0431f40; loggedIn=1; lang=tr-TR; __cid=6--rtg09tlBdrGVgdlcxWw9dUtudg9uuXArvs0sOkMFyX7atDyxjM1sz4KNyE9G3YQGjR19E5s4AwkPkWnl3sVdU6LMgb4v-MHGN3zNqy4ZxO8SbCGKK1zB8l5MRX8SCbyXUiH9cjd1pP9-TJz3Qmn9KlMMzbrPWPUCNx3A-14RxONKTd0Cs5xJHyJMzYo_Wf0yB0DRkzZMcY5bcMm7Lgm09yoNxO8qDf1iF1T55jZxqONOdbD2Iuz5tgIpnMtGGKAjjOF-f7NBtPdDSZ22ALwtKqvQTTsSbFmWQ1jMnxPoxf4Hfd1nNkxdPxPQtapTbNmiXk2k51JN3O5yDbzvUhmY60pp_T43BOmiQgBs61ZMpeLuGADvEwyxU0exvJ8T3bE_Vgnav94NuJdSCcTrdhG8r1IFlO9SJbztLu1--xXbuDC-zjAo5MAns5Fhc_Ll29L5sTF1DLLPBC-Sz5Avks-QL5LNfC-SzXwvks-ZvXdf0oKQGXwvksx9LpPMfS7r3AU-G75W2XB8cSiw_B2bksl8L5LNcCxs; idMember=66be12f0a4ce3e80d1df2d1b; aaId=712020%3Ac7978f6c-4d43-471f-a41d-ee73ad45ac2e; hasAccount=atlassian; atl-bsc-consent-token-fallback=002000001000; atl-bsc-current-locale=TR-16; atl-bsc-consent-token=002000001000; atl-bsc-show-banner=0; cloud.session.token=eyJraWQiOiJzZXNzaW9uLXNlcnZpY2UvcHJvZC0xNTkyODU4Mzk0IiwiYWxnIjoiUlMyNTYifQ.eyJhc3NvY2lhdGlvbnMiOltdLCJzdWIiOiI3MTIwMjA6Yzc5NzhmNmMtNGQ0My00NzFmLWE0MWQtZWU3M2FkNDVhYzJlIiwiZW1haWxEb21haW4iOiJnbWFpbC5jb20iLCJpbXBlcnNvbmF0aW9uIjpbXSwiY3JlYXRlZCI6MTcyMzczMjY5NSwicmVmcmVzaFRpbWVvdXQiOjE3MjM3NDY5MzIsInZlcmlmaWVkIjp0cnVlLCJpc3MiOiJzZXNzaW9uLXNlcnZpY2UiLCJzZXNzaW9uSWQiOiI0ZTk3NDRmZi0zOTc2LTQxMzYtYjk4NS1lNzUzOTExOWNlZTkiLCJzdGVwVXBzIjpbXSwiYXVkIjoiYXRsYXNzaWFuIiwibmJmIjoxNzIzNzQ2MzMyLCJleHAiOjE3MjYzMzgzMzIsImlhdCI6MTcyMzc0NjMzMiwiZW1haWwiOiI5NHNhZGVjZXV5Z3VsYW1hbGFyMTlAZ21haWwuY29tIiwianRpIjoiNGU5NzQ0ZmYtMzk3Ni00MTM2LWI5ODUtZTc1MzkxMTljZWU5In0.bu_LoxBCx51dqkuQwT0IRYQhoFxQv7zdyDbcwDGFN8UUOcvDgjzEv96Oe7AOHok9Sg9vejeLDvgwqCS5iJLX6J0W-pM6A8clj4D2fywBWNKRGaMsqrmc0zpM6WlGFse6xX8eU1mcy879weD4QE76ek3UppCEAN3Bdn2qRoL8bYNIIL_WFVfjmC4uw_l5ftZrsR3W7kAiqlLds7BIxMA3buTGza4Szu3ao1kUQrcUiN6II9vvCO3uRwXRFJcfXzz_PCF7UX_8hDroybO04b2YOf6guZKvVD9znxAY-r-M4Hs3df8comG-De-H-E23Hjuk8PalDfMFjZgp5RFW5cI-ww' \\\r\n  -H 'origin: https://trello.com' \\\r\n  -H 'priority: u=1, i' \\\r\n  -H 'referer: https://trello.com/b/yp0lDCX8/vaultn' \\\r\n  -H 'sec-ch-ua: \"Not)A;Brand\";v=\"99\", \"Google Chrome\";v=\"127\", \"Chromium\";v=\"127\"' \\\r\n  -H 'sec-ch-ua-mobile: ?0' \\\r\n  -H 'sec-ch-ua-platform: \"Windows\"' \\\r\n  -H 'sec-fetch-dest: empty' \\\r\n  -H 'sec-fetch-mode: cors' \\\r\n  -H 'sec-fetch-site: same-origin' \\\r\n  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36' \\\r\n  -H 'x-b3-spanid: 9bc5c4f94e37c234' \\\r\n  -H 'x-b3-traceid: 66be4997cf184e92ad27417b27e7d175' \\\r\n  -H 'x-trello-client-version: build-207303' \\\r\n  -H 'x-trello-task: create-list' \\\r\n  -H 'x-trello-traceid: 66be4997cf184e92ad27417b27e7d175' \\\r\n  --data-raw '{\"idBoard\":\"66be140bba366932121a853a\",\"name\":\"To Do\",\"pos\":65539,\"dsc\":\"cc5a16c8d137a8bacf8f418cb45849f86f5b94b506659bff5de2786a0c0d3e94\"}'"
+					},
+					"response": []
+				},
+				{
+					"name": "BackLog",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"SetListId\", function () {\r",
+									"\r",
+									"// Parse the response body as JSON\r",
+									"var responseBody = pm.response.json();\r",
+									"\r",
+									"// Extract the \"id\" from the response body\r",
+									"var listId = responseBody.id;\r",
+									"\r",
+									"// Set the \"listId\" as a variable for later use\r",
+									"pm.environment.set(\"BackloglistId\", listId);});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "*/*"
+							},
+							{
+								"key": "accept-language",
+								"value": "tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7"
+							},
+							{
+								"key": "content-type",
+								"value": "application/json"
+							},
+							{
+								"key": "cookie",
+								"value": "atlCohort={\"bucketAll\":{\"bucketedAtUTC\":\"2024-08-15T14:37:49.392Z\",\"version\":\"2\",\"index\":15,\"bucketId\":0}}; ajs_anonymous_id=%22c51ec516-2968-5d60-f521-a198e66fd18f%22; dsc=cc5a16c8d137a8bacf8f418cb45849f86f5b94b506659bff5de2786a0c0d3e94; atl_xid.ts=1723732672210; atl_xid.current=%5B%7B%22type%22%3A%22xc%22%2C%22value%22%3A%22c19711a7-7d3d-49f9-87e3-4d1d06191efb%22%2C%22createdAt%22%3A%222024-04-29T14%3A07%3A47.071Z%22%7D%5D; _otPreferencesSynced=; OptanonConsent=isGpcEnabled=0&datestamp=Thu+Aug+15+2024+17%3A37%3A55+GMT%2B0300+(GMT%2B03%3A00)&version=202407.1.0&browserGpcFlag=0&isIABGlobal=false&identifierType=Cookie+Unique+Id&hosts=&consentId=56d07b6c-e313-47c8-a23a-bd43b88d11a9&interactionCount=1&isAnonUser=1&landingPath=https%3A%2F%2Ftrello.com%2F&groups=1%3A1%2C2%3A1%2C3%3A1%2C4%3A0; atlassian.account.xsrf.token=500c79c1-5a8b-43e0-afb7-f8b9e0431f40; loggedIn=1; lang=tr-TR; __cid=6--rtg09tlBdrGVgdlcxWw9dUtudg9uuXArvs0sOkMFyX7atDyxjM1sz4KNyE9G3YQGjR19E5s4AwkPkWnl3sVdU6LMgb4v-MHGN3zNqy4ZxO8SbCGKK1zB8l5MRX8SCbyXUiH9cjd1pP9-TJz3Qmn9KlMMzbrPWPUCNx3A-14RxONKTd0Cs5xJHyJMzYo_Wf0yB0DRkzZMcY5bcMm7Lgm09yoNxO8qDf1iF1T55jZxqONOdbD2Iuz5tgIpnMtGGKAjjOF-f7NBtPdDSZ22ALwtKqvQTTsSbFmWQ1jMnxPoxf4Hfd1nNkxdPxPQtapTbNmiXk2k51JN3O5yDbzvUhmY60pp_T43BOmiQgBs61ZMpeLuGADvEwyxU0exvJ8T3bE_Vgnav94NuJdSCcTrdhG8r1IFlO9SJbztLu1--xXbuDC-zjAo5MAns5Fhc_Ll29L5sTF1DLLPBC-Sz5Avks-QL5LNfC-SzXwvks-ZvXdf0oKQGXwvksx9LpPMfS7r3AU-G75W2XB8cSiw_B2bksl8L5LNcCxs; idMember=66be12f0a4ce3e80d1df2d1b; aaId=712020%3Ac7978f6c-4d43-471f-a41d-ee73ad45ac2e; hasAccount=atlassian; atl-bsc-consent-token-fallback=002000001000; atl-bsc-current-locale=TR-16; atl-bsc-consent-token=002000001000; atl-bsc-show-banner=0; cloud.session.token=eyJraWQiOiJzZXNzaW9uLXNlcnZpY2UvcHJvZC0xNTkyODU4Mzk0IiwiYWxnIjoiUlMyNTYifQ.eyJhc3NvY2lhdGlvbnMiOltdLCJzdWIiOiI3MTIwMjA6Yzc5NzhmNmMtNGQ0My00NzFmLWE0MWQtZWU3M2FkNDVhYzJlIiwiZW1haWxEb21haW4iOiJnbWFpbC5jb20iLCJpbXBlcnNvbmF0aW9uIjpbXSwiY3JlYXRlZCI6MTcyMzczMjY5NSwicmVmcmVzaFRpbWVvdXQiOjE3MjM3NDY5MzIsInZlcmlmaWVkIjp0cnVlLCJpc3MiOiJzZXNzaW9uLXNlcnZpY2UiLCJzZXNzaW9uSWQiOiI0ZTk3NDRmZi0zOTc2LTQxMzYtYjk4NS1lNzUzOTExOWNlZTkiLCJzdGVwVXBzIjpbXSwiYXVkIjoiYXRsYXNzaWFuIiwibmJmIjoxNzIzNzQ2MzMyLCJleHAiOjE3MjYzMzgzMzIsImlhdCI6MTcyMzc0NjMzMiwiZW1haWwiOiI5NHNhZGVjZXV5Z3VsYW1hbGFyMTlAZ21haWwuY29tIiwianRpIjoiNGU5NzQ0ZmYtMzk3Ni00MTM2LWI5ODUtZTc1MzkxMTljZWU5In0.bu_LoxBCx51dqkuQwT0IRYQhoFxQv7zdyDbcwDGFN8UUOcvDgjzEv96Oe7AOHok9Sg9vejeLDvgwqCS5iJLX6J0W-pM6A8clj4D2fywBWNKRGaMsqrmc0zpM6WlGFse6xX8eU1mcy879weD4QE76ek3UppCEAN3Bdn2qRoL8bYNIIL_WFVfjmC4uw_l5ftZrsR3W7kAiqlLds7BIxMA3buTGza4Szu3ao1kUQrcUiN6II9vvCO3uRwXRFJcfXzz_PCF7UX_8hDroybO04b2YOf6guZKvVD9znxAY-r-M4Hs3df8comG-De-H-E23Hjuk8PalDfMFjZgp5RFW5cI-ww",
+								"disabled": true
+							},
+							{
+								"key": "origin",
+								"value": "https://trello.com"
+							},
+							{
+								"key": "priority",
+								"value": "u=1, i"
+							},
+							{
+								"key": "referer",
+								"value": "https://trello.com/b/yp0lDCX8/vaultn"
+							},
+							{
+								"key": "sec-ch-ua",
+								"value": "\"Not)A;Brand\";v=\"99\", \"Google Chrome\";v=\"127\", \"Chromium\";v=\"127\""
+							},
+							{
+								"key": "sec-ch-ua-mobile",
+								"value": "?0"
+							},
+							{
+								"key": "sec-ch-ua-platform",
+								"value": "\"Windows\""
+							},
+							{
+								"key": "sec-fetch-dest",
+								"value": "empty"
+							},
+							{
+								"key": "sec-fetch-mode",
+								"value": "cors"
+							},
+							{
+								"key": "sec-fetch-site",
+								"value": "same-origin"
+							},
+							{
+								"key": "user-agent",
+								"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36"
+							},
+							{
+								"key": "x-b3-spanid",
+								"value": "9bc5c4f94e37c234"
+							},
+							{
+								"key": "x-b3-traceid",
+								"value": "66be4997cf184e92ad27417b27e7d175"
+							},
+							{
+								"key": "x-trello-client-version",
+								"value": "build-207303"
+							},
+							{
+								"key": "x-trello-task",
+								"value": "create-list"
+							},
+							{
+								"key": "x-trello-traceid",
+								"value": "66be4997cf184e92ad27417b27e7d175"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "t",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idBoard\": \"{{VaultN-Board}}\",\r\n    \"name\": \"BackLog\",\r\n    \"pos\": 65539,\r\n    \"dsc\": \"cc5a16c8d137a8bacf8f418cb45849f86f5b94b506659bff5de2786a0c0d3e94\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/lists",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"lists"
+							]
+						},
+						"description": "Generated from cURL: curl 'https://trello.com/1/lists' \\\r\n  -H 'accept: */*' \\\r\n  -H 'accept-language: tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7' \\\r\n  -H 'content-type: application/json' \\\r\n  -H 'cookie: atlCohort={\"bucketAll\":{\"bucketedAtUTC\":\"2024-08-15T14:37:49.392Z\",\"version\":\"2\",\"index\":15,\"bucketId\":0}}; ajs_anonymous_id=%22c51ec516-2968-5d60-f521-a198e66fd18f%22; dsc=cc5a16c8d137a8bacf8f418cb45849f86f5b94b506659bff5de2786a0c0d3e94; atl_xid.ts=1723732672210; atl_xid.current=%5B%7B%22type%22%3A%22xc%22%2C%22value%22%3A%22c19711a7-7d3d-49f9-87e3-4d1d06191efb%22%2C%22createdAt%22%3A%222024-04-29T14%3A07%3A47.071Z%22%7D%5D; _otPreferencesSynced=; OptanonConsent=isGpcEnabled=0&datestamp=Thu+Aug+15+2024+17%3A37%3A55+GMT%2B0300+(GMT%2B03%3A00)&version=202407.1.0&browserGpcFlag=0&isIABGlobal=false&identifierType=Cookie+Unique+Id&hosts=&consentId=56d07b6c-e313-47c8-a23a-bd43b88d11a9&interactionCount=1&isAnonUser=1&landingPath=https%3A%2F%2Ftrello.com%2F&groups=1%3A1%2C2%3A1%2C3%3A1%2C4%3A0; atlassian.account.xsrf.token=500c79c1-5a8b-43e0-afb7-f8b9e0431f40; loggedIn=1; lang=tr-TR; __cid=6--rtg09tlBdrGVgdlcxWw9dUtudg9uuXArvs0sOkMFyX7atDyxjM1sz4KNyE9G3YQGjR19E5s4AwkPkWnl3sVdU6LMgb4v-MHGN3zNqy4ZxO8SbCGKK1zB8l5MRX8SCbyXUiH9cjd1pP9-TJz3Qmn9KlMMzbrPWPUCNx3A-14RxONKTd0Cs5xJHyJMzYo_Wf0yB0DRkzZMcY5bcMm7Lgm09yoNxO8qDf1iF1T55jZxqONOdbD2Iuz5tgIpnMtGGKAjjOF-f7NBtPdDSZ22ALwtKqvQTTsSbFmWQ1jMnxPoxf4Hfd1nNkxdPxPQtapTbNmiXk2k51JN3O5yDbzvUhmY60pp_T43BOmiQgBs61ZMpeLuGADvEwyxU0exvJ8T3bE_Vgnav94NuJdSCcTrdhG8r1IFlO9SJbztLu1--xXbuDC-zjAo5MAns5Fhc_Ll29L5sTF1DLLPBC-Sz5Avks-QL5LNfC-SzXwvks-ZvXdf0oKQGXwvksx9LpPMfS7r3AU-G75W2XB8cSiw_B2bksl8L5LNcCxs; idMember=66be12f0a4ce3e80d1df2d1b; aaId=712020%3Ac7978f6c-4d43-471f-a41d-ee73ad45ac2e; hasAccount=atlassian; atl-bsc-consent-token-fallback=002000001000; atl-bsc-current-locale=TR-16; atl-bsc-consent-token=002000001000; atl-bsc-show-banner=0; cloud.session.token=eyJraWQiOiJzZXNzaW9uLXNlcnZpY2UvcHJvZC0xNTkyODU4Mzk0IiwiYWxnIjoiUlMyNTYifQ.eyJhc3NvY2lhdGlvbnMiOltdLCJzdWIiOiI3MTIwMjA6Yzc5NzhmNmMtNGQ0My00NzFmLWE0MWQtZWU3M2FkNDVhYzJlIiwiZW1haWxEb21haW4iOiJnbWFpbC5jb20iLCJpbXBlcnNvbmF0aW9uIjpbXSwiY3JlYXRlZCI6MTcyMzczMjY5NSwicmVmcmVzaFRpbWVvdXQiOjE3MjM3NDY5MzIsInZlcmlmaWVkIjp0cnVlLCJpc3MiOiJzZXNzaW9uLXNlcnZpY2UiLCJzZXNzaW9uSWQiOiI0ZTk3NDRmZi0zOTc2LTQxMzYtYjk4NS1lNzUzOTExOWNlZTkiLCJzdGVwVXBzIjpbXSwiYXVkIjoiYXRsYXNzaWFuIiwibmJmIjoxNzIzNzQ2MzMyLCJleHAiOjE3MjYzMzgzMzIsImlhdCI6MTcyMzc0NjMzMiwiZW1haWwiOiI5NHNhZGVjZXV5Z3VsYW1hbGFyMTlAZ21haWwuY29tIiwianRpIjoiNGU5NzQ0ZmYtMzk3Ni00MTM2LWI5ODUtZTc1MzkxMTljZWU5In0.bu_LoxBCx51dqkuQwT0IRYQhoFxQv7zdyDbcwDGFN8UUOcvDgjzEv96Oe7AOHok9Sg9vejeLDvgwqCS5iJLX6J0W-pM6A8clj4D2fywBWNKRGaMsqrmc0zpM6WlGFse6xX8eU1mcy879weD4QE76ek3UppCEAN3Bdn2qRoL8bYNIIL_WFVfjmC4uw_l5ftZrsR3W7kAiqlLds7BIxMA3buTGza4Szu3ao1kUQrcUiN6II9vvCO3uRwXRFJcfXzz_PCF7UX_8hDroybO04b2YOf6guZKvVD9znxAY-r-M4Hs3df8comG-De-H-E23Hjuk8PalDfMFjZgp5RFW5cI-ww' \\\r\n  -H 'origin: https://trello.com' \\\r\n  -H 'priority: u=1, i' \\\r\n  -H 'referer: https://trello.com/b/yp0lDCX8/vaultn' \\\r\n  -H 'sec-ch-ua: \"Not)A;Brand\";v=\"99\", \"Google Chrome\";v=\"127\", \"Chromium\";v=\"127\"' \\\r\n  -H 'sec-ch-ua-mobile: ?0' \\\r\n  -H 'sec-ch-ua-platform: \"Windows\"' \\\r\n  -H 'sec-fetch-dest: empty' \\\r\n  -H 'sec-fetch-mode: cors' \\\r\n  -H 'sec-fetch-site: same-origin' \\\r\n  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36' \\\r\n  -H 'x-b3-spanid: 9bc5c4f94e37c234' \\\r\n  -H 'x-b3-traceid: 66be4997cf184e92ad27417b27e7d175' \\\r\n  -H 'x-trello-client-version: build-207303' \\\r\n  -H 'x-trello-task: create-list' \\\r\n  -H 'x-trello-traceid: 66be4997cf184e92ad27417b27e7d175' \\\r\n  --data-raw '{\"idBoard\":\"66be140bba366932121a853a\",\"name\":\"To Do\",\"pos\":65539,\"dsc\":\"cc5a16c8d137a8bacf8f418cb45849f86f5b94b506659bff5de2786a0c0d3e94\"}'"
+					},
+					"response": []
+				},
+				{
+					"name": "Doing",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"SetListId\", function () {\r",
+									"\r",
+									"// Parse the response body as JSON\r",
+									"var responseBody = pm.response.json();\r",
+									"\r",
+									"// Extract the \"id\" from the response body\r",
+									"var listId = responseBody.id;\r",
+									"\r",
+									"// Set the \"listId\" as a variable for later use\r",
+									"pm.environment.set(\"DoinglistId\", listId);});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "*/*"
+							},
+							{
+								"key": "accept-language",
+								"value": "tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7"
+							},
+							{
+								"key": "content-type",
+								"value": "application/json"
+							},
+							{
+								"key": "cookie",
+								"value": "atlCohort={\"bucketAll\":{\"bucketedAtUTC\":\"2024-08-15T14:37:49.392Z\",\"version\":\"2\",\"index\":15,\"bucketId\":0}}; ajs_anonymous_id=%22c51ec516-2968-5d60-f521-a198e66fd18f%22; dsc=cc5a16c8d137a8bacf8f418cb45849f86f5b94b506659bff5de2786a0c0d3e94; atl_xid.ts=1723732672210; atl_xid.current=%5B%7B%22type%22%3A%22xc%22%2C%22value%22%3A%22c19711a7-7d3d-49f9-87e3-4d1d06191efb%22%2C%22createdAt%22%3A%222024-04-29T14%3A07%3A47.071Z%22%7D%5D; _otPreferencesSynced=; OptanonConsent=isGpcEnabled=0&datestamp=Thu+Aug+15+2024+17%3A37%3A55+GMT%2B0300+(GMT%2B03%3A00)&version=202407.1.0&browserGpcFlag=0&isIABGlobal=false&identifierType=Cookie+Unique+Id&hosts=&consentId=56d07b6c-e313-47c8-a23a-bd43b88d11a9&interactionCount=1&isAnonUser=1&landingPath=https%3A%2F%2Ftrello.com%2F&groups=1%3A1%2C2%3A1%2C3%3A1%2C4%3A0; atlassian.account.xsrf.token=500c79c1-5a8b-43e0-afb7-f8b9e0431f40; loggedIn=1; lang=tr-TR; __cid=6--rtg09tlBdrGVgdlcxWw9dUtudg9uuXArvs0sOkMFyX7atDyxjM1sz4KNyE9G3YQGjR19E5s4AwkPkWnl3sVdU6LMgb4v-MHGN3zNqy4ZxO8SbCGKK1zB8l5MRX8SCbyXUiH9cjd1pP9-TJz3Qmn9KlMMzbrPWPUCNx3A-14RxONKTd0Cs5xJHyJMzYo_Wf0yB0DRkzZMcY5bcMm7Lgm09yoNxO8qDf1iF1T55jZxqONOdbD2Iuz5tgIpnMtGGKAjjOF-f7NBtPdDSZ22ALwtKqvQTTsSbFmWQ1jMnxPoxf4Hfd1nNkxdPxPQtapTbNmiXk2k51JN3O5yDbzvUhmY60pp_T43BOmiQgBs61ZMpeLuGADvEwyxU0exvJ8T3bE_Vgnav94NuJdSCcTrdhG8r1IFlO9SJbztLu1--xXbuDC-zjAo5MAns5Fhc_Ll29L5sTF1DLLPBC-Sz5Avks-QL5LNfC-SzXwvks-ZvXdf0oKQGXwvksx9LpPMfS7r3AU-G75W2XB8cSiw_B2bksl8L5LNcCxs; idMember=66be12f0a4ce3e80d1df2d1b; aaId=712020%3Ac7978f6c-4d43-471f-a41d-ee73ad45ac2e; hasAccount=atlassian; atl-bsc-consent-token-fallback=002000001000; atl-bsc-current-locale=TR-16; atl-bsc-consent-token=002000001000; atl-bsc-show-banner=0; cloud.session.token=eyJraWQiOiJzZXNzaW9uLXNlcnZpY2UvcHJvZC0xNTkyODU4Mzk0IiwiYWxnIjoiUlMyNTYifQ.eyJhc3NvY2lhdGlvbnMiOltdLCJzdWIiOiI3MTIwMjA6Yzc5NzhmNmMtNGQ0My00NzFmLWE0MWQtZWU3M2FkNDVhYzJlIiwiZW1haWxEb21haW4iOiJnbWFpbC5jb20iLCJpbXBlcnNvbmF0aW9uIjpbXSwiY3JlYXRlZCI6MTcyMzczMjY5NSwicmVmcmVzaFRpbWVvdXQiOjE3MjM3NDY5MzIsInZlcmlmaWVkIjp0cnVlLCJpc3MiOiJzZXNzaW9uLXNlcnZpY2UiLCJzZXNzaW9uSWQiOiI0ZTk3NDRmZi0zOTc2LTQxMzYtYjk4NS1lNzUzOTExOWNlZTkiLCJzdGVwVXBzIjpbXSwiYXVkIjoiYXRsYXNzaWFuIiwibmJmIjoxNzIzNzQ2MzMyLCJleHAiOjE3MjYzMzgzMzIsImlhdCI6MTcyMzc0NjMzMiwiZW1haWwiOiI5NHNhZGVjZXV5Z3VsYW1hbGFyMTlAZ21haWwuY29tIiwianRpIjoiNGU5NzQ0ZmYtMzk3Ni00MTM2LWI5ODUtZTc1MzkxMTljZWU5In0.bu_LoxBCx51dqkuQwT0IRYQhoFxQv7zdyDbcwDGFN8UUOcvDgjzEv96Oe7AOHok9Sg9vejeLDvgwqCS5iJLX6J0W-pM6A8clj4D2fywBWNKRGaMsqrmc0zpM6WlGFse6xX8eU1mcy879weD4QE76ek3UppCEAN3Bdn2qRoL8bYNIIL_WFVfjmC4uw_l5ftZrsR3W7kAiqlLds7BIxMA3buTGza4Szu3ao1kUQrcUiN6II9vvCO3uRwXRFJcfXzz_PCF7UX_8hDroybO04b2YOf6guZKvVD9znxAY-r-M4Hs3df8comG-De-H-E23Hjuk8PalDfMFjZgp5RFW5cI-ww",
+								"disabled": true
+							},
+							{
+								"key": "origin",
+								"value": "https://trello.com"
+							},
+							{
+								"key": "priority",
+								"value": "u=1, i"
+							},
+							{
+								"key": "referer",
+								"value": "https://trello.com/b/yp0lDCX8/vaultn"
+							},
+							{
+								"key": "sec-ch-ua",
+								"value": "\"Not)A;Brand\";v=\"99\", \"Google Chrome\";v=\"127\", \"Chromium\";v=\"127\""
+							},
+							{
+								"key": "sec-ch-ua-mobile",
+								"value": "?0"
+							},
+							{
+								"key": "sec-ch-ua-platform",
+								"value": "\"Windows\""
+							},
+							{
+								"key": "sec-fetch-dest",
+								"value": "empty"
+							},
+							{
+								"key": "sec-fetch-mode",
+								"value": "cors"
+							},
+							{
+								"key": "sec-fetch-site",
+								"value": "same-origin"
+							},
+							{
+								"key": "user-agent",
+								"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36"
+							},
+							{
+								"key": "x-b3-spanid",
+								"value": "9bc5c4f94e37c234"
+							},
+							{
+								"key": "x-b3-traceid",
+								"value": "66be4997cf184e92ad27417b27e7d175"
+							},
+							{
+								"key": "x-trello-client-version",
+								"value": "build-207303"
+							},
+							{
+								"key": "x-trello-task",
+								"value": "create-list"
+							},
+							{
+								"key": "x-trello-traceid",
+								"value": "66be4997cf184e92ad27417b27e7d175"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "t",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idBoard\": \"{{VaultN-Board}}\",\r\n    \"name\": \"Doing\",\r\n    \"pos\": 65539,\r\n    \"dsc\": \"cc5a16c8d137a8bacf8f418cb45849f86f5b94b506659bff5de2786a0c0d3e94\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/lists",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"lists"
+							]
+						},
+						"description": "Generated from cURL: curl 'https://trello.com/1/lists' \\\r\n  -H 'accept: */*' \\\r\n  -H 'accept-language: tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7' \\\r\n  -H 'content-type: application/json' \\\r\n  -H 'cookie: atlCohort={\"bucketAll\":{\"bucketedAtUTC\":\"2024-08-15T14:37:49.392Z\",\"version\":\"2\",\"index\":15,\"bucketId\":0}}; ajs_anonymous_id=%22c51ec516-2968-5d60-f521-a198e66fd18f%22; dsc=cc5a16c8d137a8bacf8f418cb45849f86f5b94b506659bff5de2786a0c0d3e94; atl_xid.ts=1723732672210; atl_xid.current=%5B%7B%22type%22%3A%22xc%22%2C%22value%22%3A%22c19711a7-7d3d-49f9-87e3-4d1d06191efb%22%2C%22createdAt%22%3A%222024-04-29T14%3A07%3A47.071Z%22%7D%5D; _otPreferencesSynced=; OptanonConsent=isGpcEnabled=0&datestamp=Thu+Aug+15+2024+17%3A37%3A55+GMT%2B0300+(GMT%2B03%3A00)&version=202407.1.0&browserGpcFlag=0&isIABGlobal=false&identifierType=Cookie+Unique+Id&hosts=&consentId=56d07b6c-e313-47c8-a23a-bd43b88d11a9&interactionCount=1&isAnonUser=1&landingPath=https%3A%2F%2Ftrello.com%2F&groups=1%3A1%2C2%3A1%2C3%3A1%2C4%3A0; atlassian.account.xsrf.token=500c79c1-5a8b-43e0-afb7-f8b9e0431f40; loggedIn=1; lang=tr-TR; __cid=6--rtg09tlBdrGVgdlcxWw9dUtudg9uuXArvs0sOkMFyX7atDyxjM1sz4KNyE9G3YQGjR19E5s4AwkPkWnl3sVdU6LMgb4v-MHGN3zNqy4ZxO8SbCGKK1zB8l5MRX8SCbyXUiH9cjd1pP9-TJz3Qmn9KlMMzbrPWPUCNx3A-14RxONKTd0Cs5xJHyJMzYo_Wf0yB0DRkzZMcY5bcMm7Lgm09yoNxO8qDf1iF1T55jZxqONOdbD2Iuz5tgIpnMtGGKAjjOF-f7NBtPdDSZ22ALwtKqvQTTsSbFmWQ1jMnxPoxf4Hfd1nNkxdPxPQtapTbNmiXk2k51JN3O5yDbzvUhmY60pp_T43BOmiQgBs61ZMpeLuGADvEwyxU0exvJ8T3bE_Vgnav94NuJdSCcTrdhG8r1IFlO9SJbztLu1--xXbuDC-zjAo5MAns5Fhc_Ll29L5sTF1DLLPBC-Sz5Avks-QL5LNfC-SzXwvks-ZvXdf0oKQGXwvksx9LpPMfS7r3AU-G75W2XB8cSiw_B2bksl8L5LNcCxs; idMember=66be12f0a4ce3e80d1df2d1b; aaId=712020%3Ac7978f6c-4d43-471f-a41d-ee73ad45ac2e; hasAccount=atlassian; atl-bsc-consent-token-fallback=002000001000; atl-bsc-current-locale=TR-16; atl-bsc-consent-token=002000001000; atl-bsc-show-banner=0; cloud.session.token=eyJraWQiOiJzZXNzaW9uLXNlcnZpY2UvcHJvZC0xNTkyODU4Mzk0IiwiYWxnIjoiUlMyNTYifQ.eyJhc3NvY2lhdGlvbnMiOltdLCJzdWIiOiI3MTIwMjA6Yzc5NzhmNmMtNGQ0My00NzFmLWE0MWQtZWU3M2FkNDVhYzJlIiwiZW1haWxEb21haW4iOiJnbWFpbC5jb20iLCJpbXBlcnNvbmF0aW9uIjpbXSwiY3JlYXRlZCI6MTcyMzczMjY5NSwicmVmcmVzaFRpbWVvdXQiOjE3MjM3NDY5MzIsInZlcmlmaWVkIjp0cnVlLCJpc3MiOiJzZXNzaW9uLXNlcnZpY2UiLCJzZXNzaW9uSWQiOiI0ZTk3NDRmZi0zOTc2LTQxMzYtYjk4NS1lNzUzOTExOWNlZTkiLCJzdGVwVXBzIjpbXSwiYXVkIjoiYXRsYXNzaWFuIiwibmJmIjoxNzIzNzQ2MzMyLCJleHAiOjE3MjYzMzgzMzIsImlhdCI6MTcyMzc0NjMzMiwiZW1haWwiOiI5NHNhZGVjZXV5Z3VsYW1hbGFyMTlAZ21haWwuY29tIiwianRpIjoiNGU5NzQ0ZmYtMzk3Ni00MTM2LWI5ODUtZTc1MzkxMTljZWU5In0.bu_LoxBCx51dqkuQwT0IRYQhoFxQv7zdyDbcwDGFN8UUOcvDgjzEv96Oe7AOHok9Sg9vejeLDvgwqCS5iJLX6J0W-pM6A8clj4D2fywBWNKRGaMsqrmc0zpM6WlGFse6xX8eU1mcy879weD4QE76ek3UppCEAN3Bdn2qRoL8bYNIIL_WFVfjmC4uw_l5ftZrsR3W7kAiqlLds7BIxMA3buTGza4Szu3ao1kUQrcUiN6II9vvCO3uRwXRFJcfXzz_PCF7UX_8hDroybO04b2YOf6guZKvVD9znxAY-r-M4Hs3df8comG-De-H-E23Hjuk8PalDfMFjZgp5RFW5cI-ww' \\\r\n  -H 'origin: https://trello.com' \\\r\n  -H 'priority: u=1, i' \\\r\n  -H 'referer: https://trello.com/b/yp0lDCX8/vaultn' \\\r\n  -H 'sec-ch-ua: \"Not)A;Brand\";v=\"99\", \"Google Chrome\";v=\"127\", \"Chromium\";v=\"127\"' \\\r\n  -H 'sec-ch-ua-mobile: ?0' \\\r\n  -H 'sec-ch-ua-platform: \"Windows\"' \\\r\n  -H 'sec-fetch-dest: empty' \\\r\n  -H 'sec-fetch-mode: cors' \\\r\n  -H 'sec-fetch-site: same-origin' \\\r\n  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36' \\\r\n  -H 'x-b3-spanid: 9bc5c4f94e37c234' \\\r\n  -H 'x-b3-traceid: 66be4997cf184e92ad27417b27e7d175' \\\r\n  -H 'x-trello-client-version: build-207303' \\\r\n  -H 'x-trello-task: create-list' \\\r\n  -H 'x-trello-traceid: 66be4997cf184e92ad27417b27e7d175' \\\r\n  --data-raw '{\"idBoard\":\"66be140bba366932121a853a\",\"name\":\"To Do\",\"pos\":65539,\"dsc\":\"cc5a16c8d137a8bacf8f418cb45849f86f5b94b506659bff5de2786a0c0d3e94\"}'"
+					},
+					"response": []
+				},
+				{
+					"name": "Testing",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"SetListId\", function () {\r",
+									"\r",
+									"// Parse the response body as JSON\r",
+									"var responseBody = pm.response.json();\r",
+									"\r",
+									"// Extract the \"id\" from the response body\r",
+									"var listId = responseBody.id;\r",
+									"\r",
+									"// Set the \"listId\" as a variable for later use\r",
+									"pm.environment.set(\"TestinglistId\", listId);});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "*/*"
+							},
+							{
+								"key": "accept-language",
+								"value": "tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7"
+							},
+							{
+								"key": "content-type",
+								"value": "application/json"
+							},
+							{
+								"key": "cookie",
+								"value": "atlCohort={\"bucketAll\":{\"bucketedAtUTC\":\"2024-08-15T14:37:49.392Z\",\"version\":\"2\",\"index\":15,\"bucketId\":0}}; ajs_anonymous_id=%22c51ec516-2968-5d60-f521-a198e66fd18f%22; dsc=cc5a16c8d137a8bacf8f418cb45849f86f5b94b506659bff5de2786a0c0d3e94; atl_xid.ts=1723732672210; atl_xid.current=%5B%7B%22type%22%3A%22xc%22%2C%22value%22%3A%22c19711a7-7d3d-49f9-87e3-4d1d06191efb%22%2C%22createdAt%22%3A%222024-04-29T14%3A07%3A47.071Z%22%7D%5D; _otPreferencesSynced=; OptanonConsent=isGpcEnabled=0&datestamp=Thu+Aug+15+2024+17%3A37%3A55+GMT%2B0300+(GMT%2B03%3A00)&version=202407.1.0&browserGpcFlag=0&isIABGlobal=false&identifierType=Cookie+Unique+Id&hosts=&consentId=56d07b6c-e313-47c8-a23a-bd43b88d11a9&interactionCount=1&isAnonUser=1&landingPath=https%3A%2F%2Ftrello.com%2F&groups=1%3A1%2C2%3A1%2C3%3A1%2C4%3A0; atlassian.account.xsrf.token=500c79c1-5a8b-43e0-afb7-f8b9e0431f40; loggedIn=1; lang=tr-TR; __cid=6--rtg09tlBdrGVgdlcxWw9dUtudg9uuXArvs0sOkMFyX7atDyxjM1sz4KNyE9G3YQGjR19E5s4AwkPkWnl3sVdU6LMgb4v-MHGN3zNqy4ZxO8SbCGKK1zB8l5MRX8SCbyXUiH9cjd1pP9-TJz3Qmn9KlMMzbrPWPUCNx3A-14RxONKTd0Cs5xJHyJMzYo_Wf0yB0DRkzZMcY5bcMm7Lgm09yoNxO8qDf1iF1T55jZxqONOdbD2Iuz5tgIpnMtGGKAjjOF-f7NBtPdDSZ22ALwtKqvQTTsSbFmWQ1jMnxPoxf4Hfd1nNkxdPxPQtapTbNmiXk2k51JN3O5yDbzvUhmY60pp_T43BOmiQgBs61ZMpeLuGADvEwyxU0exvJ8T3bE_Vgnav94NuJdSCcTrdhG8r1IFlO9SJbztLu1--xXbuDC-zjAo5MAns5Fhc_Ll29L5sTF1DLLPBC-Sz5Avks-QL5LNfC-SzXwvks-ZvXdf0oKQGXwvksx9LpPMfS7r3AU-G75W2XB8cSiw_B2bksl8L5LNcCxs; idMember=66be12f0a4ce3e80d1df2d1b; aaId=712020%3Ac7978f6c-4d43-471f-a41d-ee73ad45ac2e; hasAccount=atlassian; atl-bsc-consent-token-fallback=002000001000; atl-bsc-current-locale=TR-16; atl-bsc-consent-token=002000001000; atl-bsc-show-banner=0; cloud.session.token=eyJraWQiOiJzZXNzaW9uLXNlcnZpY2UvcHJvZC0xNTkyODU4Mzk0IiwiYWxnIjoiUlMyNTYifQ.eyJhc3NvY2lhdGlvbnMiOltdLCJzdWIiOiI3MTIwMjA6Yzc5NzhmNmMtNGQ0My00NzFmLWE0MWQtZWU3M2FkNDVhYzJlIiwiZW1haWxEb21haW4iOiJnbWFpbC5jb20iLCJpbXBlcnNvbmF0aW9uIjpbXSwiY3JlYXRlZCI6MTcyMzczMjY5NSwicmVmcmVzaFRpbWVvdXQiOjE3MjM3NDY5MzIsInZlcmlmaWVkIjp0cnVlLCJpc3MiOiJzZXNzaW9uLXNlcnZpY2UiLCJzZXNzaW9uSWQiOiI0ZTk3NDRmZi0zOTc2LTQxMzYtYjk4NS1lNzUzOTExOWNlZTkiLCJzdGVwVXBzIjpbXSwiYXVkIjoiYXRsYXNzaWFuIiwibmJmIjoxNzIzNzQ2MzMyLCJleHAiOjE3MjYzMzgzMzIsImlhdCI6MTcyMzc0NjMzMiwiZW1haWwiOiI5NHNhZGVjZXV5Z3VsYW1hbGFyMTlAZ21haWwuY29tIiwianRpIjoiNGU5NzQ0ZmYtMzk3Ni00MTM2LWI5ODUtZTc1MzkxMTljZWU5In0.bu_LoxBCx51dqkuQwT0IRYQhoFxQv7zdyDbcwDGFN8UUOcvDgjzEv96Oe7AOHok9Sg9vejeLDvgwqCS5iJLX6J0W-pM6A8clj4D2fywBWNKRGaMsqrmc0zpM6WlGFse6xX8eU1mcy879weD4QE76ek3UppCEAN3Bdn2qRoL8bYNIIL_WFVfjmC4uw_l5ftZrsR3W7kAiqlLds7BIxMA3buTGza4Szu3ao1kUQrcUiN6II9vvCO3uRwXRFJcfXzz_PCF7UX_8hDroybO04b2YOf6guZKvVD9znxAY-r-M4Hs3df8comG-De-H-E23Hjuk8PalDfMFjZgp5RFW5cI-ww",
+								"disabled": true
+							},
+							{
+								"key": "origin",
+								"value": "https://trello.com"
+							},
+							{
+								"key": "priority",
+								"value": "u=1, i"
+							},
+							{
+								"key": "referer",
+								"value": "https://trello.com/b/yp0lDCX8/vaultn"
+							},
+							{
+								"key": "sec-ch-ua",
+								"value": "\"Not)A;Brand\";v=\"99\", \"Google Chrome\";v=\"127\", \"Chromium\";v=\"127\""
+							},
+							{
+								"key": "sec-ch-ua-mobile",
+								"value": "?0"
+							},
+							{
+								"key": "sec-ch-ua-platform",
+								"value": "\"Windows\""
+							},
+							{
+								"key": "sec-fetch-dest",
+								"value": "empty"
+							},
+							{
+								"key": "sec-fetch-mode",
+								"value": "cors"
+							},
+							{
+								"key": "sec-fetch-site",
+								"value": "same-origin"
+							},
+							{
+								"key": "user-agent",
+								"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36"
+							},
+							{
+								"key": "x-b3-spanid",
+								"value": "9bc5c4f94e37c234"
+							},
+							{
+								"key": "x-b3-traceid",
+								"value": "66be4997cf184e92ad27417b27e7d175"
+							},
+							{
+								"key": "x-trello-client-version",
+								"value": "build-207303"
+							},
+							{
+								"key": "x-trello-task",
+								"value": "create-list"
+							},
+							{
+								"key": "x-trello-traceid",
+								"value": "66be4997cf184e92ad27417b27e7d175"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "t",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idBoard\": \"{{VaultN-Board}}\",\r\n    \"name\": \"Testing\",\r\n    \"pos\": 65539,\r\n    \"dsc\": \"cc5a16c8d137a8bacf8f418cb45849f86f5b94b506659bff5de2786a0c0d3e94\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/lists",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"lists"
+							]
+						},
+						"description": "Generated from cURL: curl 'https://trello.com/1/lists' \\\r\n  -H 'accept: */*' \\\r\n  -H 'accept-language: tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7' \\\r\n  -H 'content-type: application/json' \\\r\n  -H 'cookie: atlCohort={\"bucketAll\":{\"bucketedAtUTC\":\"2024-08-15T14:37:49.392Z\",\"version\":\"2\",\"index\":15,\"bucketId\":0}}; ajs_anonymous_id=%22c51ec516-2968-5d60-f521-a198e66fd18f%22; dsc=cc5a16c8d137a8bacf8f418cb45849f86f5b94b506659bff5de2786a0c0d3e94; atl_xid.ts=1723732672210; atl_xid.current=%5B%7B%22type%22%3A%22xc%22%2C%22value%22%3A%22c19711a7-7d3d-49f9-87e3-4d1d06191efb%22%2C%22createdAt%22%3A%222024-04-29T14%3A07%3A47.071Z%22%7D%5D; _otPreferencesSynced=; OptanonConsent=isGpcEnabled=0&datestamp=Thu+Aug+15+2024+17%3A37%3A55+GMT%2B0300+(GMT%2B03%3A00)&version=202407.1.0&browserGpcFlag=0&isIABGlobal=false&identifierType=Cookie+Unique+Id&hosts=&consentId=56d07b6c-e313-47c8-a23a-bd43b88d11a9&interactionCount=1&isAnonUser=1&landingPath=https%3A%2F%2Ftrello.com%2F&groups=1%3A1%2C2%3A1%2C3%3A1%2C4%3A0; atlassian.account.xsrf.token=500c79c1-5a8b-43e0-afb7-f8b9e0431f40; loggedIn=1; lang=tr-TR; __cid=6--rtg09tlBdrGVgdlcxWw9dUtudg9uuXArvs0sOkMFyX7atDyxjM1sz4KNyE9G3YQGjR19E5s4AwkPkWnl3sVdU6LMgb4v-MHGN3zNqy4ZxO8SbCGKK1zB8l5MRX8SCbyXUiH9cjd1pP9-TJz3Qmn9KlMMzbrPWPUCNx3A-14RxONKTd0Cs5xJHyJMzYo_Wf0yB0DRkzZMcY5bcMm7Lgm09yoNxO8qDf1iF1T55jZxqONOdbD2Iuz5tgIpnMtGGKAjjOF-f7NBtPdDSZ22ALwtKqvQTTsSbFmWQ1jMnxPoxf4Hfd1nNkxdPxPQtapTbNmiXk2k51JN3O5yDbzvUhmY60pp_T43BOmiQgBs61ZMpeLuGADvEwyxU0exvJ8T3bE_Vgnav94NuJdSCcTrdhG8r1IFlO9SJbztLu1--xXbuDC-zjAo5MAns5Fhc_Ll29L5sTF1DLLPBC-Sz5Avks-QL5LNfC-SzXwvks-ZvXdf0oKQGXwvksx9LpPMfS7r3AU-G75W2XB8cSiw_B2bksl8L5LNcCxs; idMember=66be12f0a4ce3e80d1df2d1b; aaId=712020%3Ac7978f6c-4d43-471f-a41d-ee73ad45ac2e; hasAccount=atlassian; atl-bsc-consent-token-fallback=002000001000; atl-bsc-current-locale=TR-16; atl-bsc-consent-token=002000001000; atl-bsc-show-banner=0; cloud.session.token=eyJraWQiOiJzZXNzaW9uLXNlcnZpY2UvcHJvZC0xNTkyODU4Mzk0IiwiYWxnIjoiUlMyNTYifQ.eyJhc3NvY2lhdGlvbnMiOltdLCJzdWIiOiI3MTIwMjA6Yzc5NzhmNmMtNGQ0My00NzFmLWE0MWQtZWU3M2FkNDVhYzJlIiwiZW1haWxEb21haW4iOiJnbWFpbC5jb20iLCJpbXBlcnNvbmF0aW9uIjpbXSwiY3JlYXRlZCI6MTcyMzczMjY5NSwicmVmcmVzaFRpbWVvdXQiOjE3MjM3NDY5MzIsInZlcmlmaWVkIjp0cnVlLCJpc3MiOiJzZXNzaW9uLXNlcnZpY2UiLCJzZXNzaW9uSWQiOiI0ZTk3NDRmZi0zOTc2LTQxMzYtYjk4NS1lNzUzOTExOWNlZTkiLCJzdGVwVXBzIjpbXSwiYXVkIjoiYXRsYXNzaWFuIiwibmJmIjoxNzIzNzQ2MzMyLCJleHAiOjE3MjYzMzgzMzIsImlhdCI6MTcyMzc0NjMzMiwiZW1haWwiOiI5NHNhZGVjZXV5Z3VsYW1hbGFyMTlAZ21haWwuY29tIiwianRpIjoiNGU5NzQ0ZmYtMzk3Ni00MTM2LWI5ODUtZTc1MzkxMTljZWU5In0.bu_LoxBCx51dqkuQwT0IRYQhoFxQv7zdyDbcwDGFN8UUOcvDgjzEv96Oe7AOHok9Sg9vejeLDvgwqCS5iJLX6J0W-pM6A8clj4D2fywBWNKRGaMsqrmc0zpM6WlGFse6xX8eU1mcy879weD4QE76ek3UppCEAN3Bdn2qRoL8bYNIIL_WFVfjmC4uw_l5ftZrsR3W7kAiqlLds7BIxMA3buTGza4Szu3ao1kUQrcUiN6II9vvCO3uRwXRFJcfXzz_PCF7UX_8hDroybO04b2YOf6guZKvVD9znxAY-r-M4Hs3df8comG-De-H-E23Hjuk8PalDfMFjZgp5RFW5cI-ww' \\\r\n  -H 'origin: https://trello.com' \\\r\n  -H 'priority: u=1, i' \\\r\n  -H 'referer: https://trello.com/b/yp0lDCX8/vaultn' \\\r\n  -H 'sec-ch-ua: \"Not)A;Brand\";v=\"99\", \"Google Chrome\";v=\"127\", \"Chromium\";v=\"127\"' \\\r\n  -H 'sec-ch-ua-mobile: ?0' \\\r\n  -H 'sec-ch-ua-platform: \"Windows\"' \\\r\n  -H 'sec-fetch-dest: empty' \\\r\n  -H 'sec-fetch-mode: cors' \\\r\n  -H 'sec-fetch-site: same-origin' \\\r\n  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36' \\\r\n  -H 'x-b3-spanid: 9bc5c4f94e37c234' \\\r\n  -H 'x-b3-traceid: 66be4997cf184e92ad27417b27e7d175' \\\r\n  -H 'x-trello-client-version: build-207303' \\\r\n  -H 'x-trello-task: create-list' \\\r\n  -H 'x-trello-traceid: 66be4997cf184e92ad27417b27e7d175' \\\r\n  --data-raw '{\"idBoard\":\"66be140bba366932121a853a\",\"name\":\"To Do\",\"pos\":65539,\"dsc\":\"cc5a16c8d137a8bacf8f418cb45849f86f5b94b506659bff5de2786a0c0d3e94\"}'"
+					},
+					"response": []
+				},
+				{
+					"name": "Done",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Response has the required fields - id, name, closed, datasource, and limits\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(responseData).to.be.an('object');\r",
+									"    pm.expect(responseData.id).to.exist;\r",
+									"    pm.expect(responseData.name).to.exist;\r",
+									"    pm.expect(responseData.closed).to.exist;\r",
+									"    pm.expect(responseData.datasource).to.exist;\r",
+									"    pm.expect(responseData.limits).to.exist;\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Id is a non-empty string, closed is a boolean, and pos is a non-negative integer\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(responseData).to.be.an('object');\r",
+									"    pm.expect(responseData.id).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Id should be a non-empty string\");\r",
+									"    pm.expect(responseData.closed).to.be.a('boolean', \"Closed should be a boolean\");\r",
+									"    pm.expect(responseData.pos).to.be.a('number').and.to.be.at.least(0, \"Pos should be a non-negative integer\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Datasource and limits object should have the correct format\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(responseData.datasource).to.be.an('object');\r",
+									"    pm.expect(responseData.datasource.filter).to.be.a('boolean');\r",
+									"    \r",
+									"    pm.expect(responseData.limits).to.be.an('object');\r",
+									"});\r",
+									"\r",
+									"// Parse the response body as JSON\r",
+									"var responseBody = pm.response.json();\r",
+									"\r",
+									"// Extract the \"id\" from the response body\r",
+									"var listId = responseBody.id;\r",
+									"\r",
+									"// Set the \"listId\" as a variable for later use\r",
+									"pm.environment.set(\"DonelistId\", listId);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "*/*"
+							},
+							{
+								"key": "accept-language",
+								"value": "tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7"
+							},
+							{
+								"key": "content-type",
+								"value": "application/json"
+							},
+							{
+								"key": "cookie",
+								"value": "atlCohort={\"bucketAll\":{\"bucketedAtUTC\":\"2024-08-15T14:37:49.392Z\",\"version\":\"2\",\"index\":15,\"bucketId\":0}}; ajs_anonymous_id=%22c51ec516-2968-5d60-f521-a198e66fd18f%22; dsc=cc5a16c8d137a8bacf8f418cb45849f86f5b94b506659bff5de2786a0c0d3e94; atl_xid.ts=1723732672210; atl_xid.current=%5B%7B%22type%22%3A%22xc%22%2C%22value%22%3A%22c19711a7-7d3d-49f9-87e3-4d1d06191efb%22%2C%22createdAt%22%3A%222024-04-29T14%3A07%3A47.071Z%22%7D%5D; _otPreferencesSynced=; OptanonConsent=isGpcEnabled=0&datestamp=Thu+Aug+15+2024+17%3A37%3A55+GMT%2B0300+(GMT%2B03%3A00)&version=202407.1.0&browserGpcFlag=0&isIABGlobal=false&identifierType=Cookie+Unique+Id&hosts=&consentId=56d07b6c-e313-47c8-a23a-bd43b88d11a9&interactionCount=1&isAnonUser=1&landingPath=https%3A%2F%2Ftrello.com%2F&groups=1%3A1%2C2%3A1%2C3%3A1%2C4%3A0; atlassian.account.xsrf.token=500c79c1-5a8b-43e0-afb7-f8b9e0431f40; loggedIn=1; lang=tr-TR; __cid=6--rtg09tlBdrGVgdlcxWw9dUtudg9uuXArvs0sOkMFyX7atDyxjM1sz4KNyE9G3YQGjR19E5s4AwkPkWnl3sVdU6LMgb4v-MHGN3zNqy4ZxO8SbCGKK1zB8l5MRX8SCbyXUiH9cjd1pP9-TJz3Qmn9KlMMzbrPWPUCNx3A-14RxONKTd0Cs5xJHyJMzYo_Wf0yB0DRkzZMcY5bcMm7Lgm09yoNxO8qDf1iF1T55jZxqONOdbD2Iuz5tgIpnMtGGKAjjOF-f7NBtPdDSZ22ALwtKqvQTTsSbFmWQ1jMnxPoxf4Hfd1nNkxdPxPQtapTbNmiXk2k51JN3O5yDbzvUhmY60pp_T43BOmiQgBs61ZMpeLuGADvEwyxU0exvJ8T3bE_Vgnav94NuJdSCcTrdhG8r1IFlO9SJbztLu1--xXbuDC-zjAo5MAns5Fhc_Ll29L5sTF1DLLPBC-Sz5Avks-QL5LNfC-SzXwvks-ZvXdf0oKQGXwvksx9LpPMfS7r3AU-G75W2XB8cSiw_B2bksl8L5LNcCxs; idMember=66be12f0a4ce3e80d1df2d1b; aaId=712020%3Ac7978f6c-4d43-471f-a41d-ee73ad45ac2e; hasAccount=atlassian; atl-bsc-consent-token-fallback=002000001000; atl-bsc-current-locale=TR-16; atl-bsc-consent-token=002000001000; atl-bsc-show-banner=0; cloud.session.token=eyJraWQiOiJzZXNzaW9uLXNlcnZpY2UvcHJvZC0xNTkyODU4Mzk0IiwiYWxnIjoiUlMyNTYifQ.eyJhc3NvY2lhdGlvbnMiOltdLCJzdWIiOiI3MTIwMjA6Yzc5NzhmNmMtNGQ0My00NzFmLWE0MWQtZWU3M2FkNDVhYzJlIiwiZW1haWxEb21haW4iOiJnbWFpbC5jb20iLCJpbXBlcnNvbmF0aW9uIjpbXSwiY3JlYXRlZCI6MTcyMzczMjY5NSwicmVmcmVzaFRpbWVvdXQiOjE3MjM3NDY5MzIsInZlcmlmaWVkIjp0cnVlLCJpc3MiOiJzZXNzaW9uLXNlcnZpY2UiLCJzZXNzaW9uSWQiOiI0ZTk3NDRmZi0zOTc2LTQxMzYtYjk4NS1lNzUzOTExOWNlZTkiLCJzdGVwVXBzIjpbXSwiYXVkIjoiYXRsYXNzaWFuIiwibmJmIjoxNzIzNzQ2MzMyLCJleHAiOjE3MjYzMzgzMzIsImlhdCI6MTcyMzc0NjMzMiwiZW1haWwiOiI5NHNhZGVjZXV5Z3VsYW1hbGFyMTlAZ21haWwuY29tIiwianRpIjoiNGU5NzQ0ZmYtMzk3Ni00MTM2LWI5ODUtZTc1MzkxMTljZWU5In0.bu_LoxBCx51dqkuQwT0IRYQhoFxQv7zdyDbcwDGFN8UUOcvDgjzEv96Oe7AOHok9Sg9vejeLDvgwqCS5iJLX6J0W-pM6A8clj4D2fywBWNKRGaMsqrmc0zpM6WlGFse6xX8eU1mcy879weD4QE76ek3UppCEAN3Bdn2qRoL8bYNIIL_WFVfjmC4uw_l5ftZrsR3W7kAiqlLds7BIxMA3buTGza4Szu3ao1kUQrcUiN6II9vvCO3uRwXRFJcfXzz_PCF7UX_8hDroybO04b2YOf6guZKvVD9znxAY-r-M4Hs3df8comG-De-H-E23Hjuk8PalDfMFjZgp5RFW5cI-ww",
+								"disabled": true
+							},
+							{
+								"key": "origin",
+								"value": "https://trello.com"
+							},
+							{
+								"key": "priority",
+								"value": "u=1, i"
+							},
+							{
+								"key": "referer",
+								"value": "https://trello.com/b/yp0lDCX8/vaultn"
+							},
+							{
+								"key": "sec-ch-ua",
+								"value": "\"Not)A;Brand\";v=\"99\", \"Google Chrome\";v=\"127\", \"Chromium\";v=\"127\""
+							},
+							{
+								"key": "sec-ch-ua-mobile",
+								"value": "?0"
+							},
+							{
+								"key": "sec-ch-ua-platform",
+								"value": "\"Windows\""
+							},
+							{
+								"key": "sec-fetch-dest",
+								"value": "empty"
+							},
+							{
+								"key": "sec-fetch-mode",
+								"value": "cors"
+							},
+							{
+								"key": "sec-fetch-site",
+								"value": "same-origin"
+							},
+							{
+								"key": "user-agent",
+								"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36"
+							},
+							{
+								"key": "x-b3-spanid",
+								"value": "9bc5c4f94e37c234"
+							},
+							{
+								"key": "x-b3-traceid",
+								"value": "66be4997cf184e92ad27417b27e7d175"
+							},
+							{
+								"key": "x-trello-client-version",
+								"value": "build-207303"
+							},
+							{
+								"key": "x-trello-task",
+								"value": "create-list"
+							},
+							{
+								"key": "x-trello-traceid",
+								"value": "66be4997cf184e92ad27417b27e7d175"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "t",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idBoard\": \"{{VaultN-Board}}\",\r\n    \"name\": \"Done\",\r\n    \"pos\": 65539,\r\n    \"dsc\": \"cc5a16c8d137a8bacf8f418cb45849f86f5b94b506659bff5de2786a0c0d3e94\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/lists",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"lists"
+							]
+						},
+						"description": "Generated from cURL: curl 'https://trello.com/1/lists' \\\r\n  -H 'accept: */*' \\\r\n  -H 'accept-language: tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7' \\\r\n  -H 'content-type: application/json' \\\r\n  -H 'cookie: atlCohort={\"bucketAll\":{\"bucketedAtUTC\":\"2024-08-15T14:37:49.392Z\",\"version\":\"2\",\"index\":15,\"bucketId\":0}}; ajs_anonymous_id=%22c51ec516-2968-5d60-f521-a198e66fd18f%22; dsc=cc5a16c8d137a8bacf8f418cb45849f86f5b94b506659bff5de2786a0c0d3e94; atl_xid.ts=1723732672210; atl_xid.current=%5B%7B%22type%22%3A%22xc%22%2C%22value%22%3A%22c19711a7-7d3d-49f9-87e3-4d1d06191efb%22%2C%22createdAt%22%3A%222024-04-29T14%3A07%3A47.071Z%22%7D%5D; _otPreferencesSynced=; OptanonConsent=isGpcEnabled=0&datestamp=Thu+Aug+15+2024+17%3A37%3A55+GMT%2B0300+(GMT%2B03%3A00)&version=202407.1.0&browserGpcFlag=0&isIABGlobal=false&identifierType=Cookie+Unique+Id&hosts=&consentId=56d07b6c-e313-47c8-a23a-bd43b88d11a9&interactionCount=1&isAnonUser=1&landingPath=https%3A%2F%2Ftrello.com%2F&groups=1%3A1%2C2%3A1%2C3%3A1%2C4%3A0; atlassian.account.xsrf.token=500c79c1-5a8b-43e0-afb7-f8b9e0431f40; loggedIn=1; lang=tr-TR; __cid=6--rtg09tlBdrGVgdlcxWw9dUtudg9uuXArvs0sOkMFyX7atDyxjM1sz4KNyE9G3YQGjR19E5s4AwkPkWnl3sVdU6LMgb4v-MHGN3zNqy4ZxO8SbCGKK1zB8l5MRX8SCbyXUiH9cjd1pP9-TJz3Qmn9KlMMzbrPWPUCNx3A-14RxONKTd0Cs5xJHyJMzYo_Wf0yB0DRkzZMcY5bcMm7Lgm09yoNxO8qDf1iF1T55jZxqONOdbD2Iuz5tgIpnMtGGKAjjOF-f7NBtPdDSZ22ALwtKqvQTTsSbFmWQ1jMnxPoxf4Hfd1nNkxdPxPQtapTbNmiXk2k51JN3O5yDbzvUhmY60pp_T43BOmiQgBs61ZMpeLuGADvEwyxU0exvJ8T3bE_Vgnav94NuJdSCcTrdhG8r1IFlO9SJbztLu1--xXbuDC-zjAo5MAns5Fhc_Ll29L5sTF1DLLPBC-Sz5Avks-QL5LNfC-SzXwvks-ZvXdf0oKQGXwvksx9LpPMfS7r3AU-G75W2XB8cSiw_B2bksl8L5LNcCxs; idMember=66be12f0a4ce3e80d1df2d1b; aaId=712020%3Ac7978f6c-4d43-471f-a41d-ee73ad45ac2e; hasAccount=atlassian; atl-bsc-consent-token-fallback=002000001000; atl-bsc-current-locale=TR-16; atl-bsc-consent-token=002000001000; atl-bsc-show-banner=0; cloud.session.token=eyJraWQiOiJzZXNzaW9uLXNlcnZpY2UvcHJvZC0xNTkyODU4Mzk0IiwiYWxnIjoiUlMyNTYifQ.eyJhc3NvY2lhdGlvbnMiOltdLCJzdWIiOiI3MTIwMjA6Yzc5NzhmNmMtNGQ0My00NzFmLWE0MWQtZWU3M2FkNDVhYzJlIiwiZW1haWxEb21haW4iOiJnbWFpbC5jb20iLCJpbXBlcnNvbmF0aW9uIjpbXSwiY3JlYXRlZCI6MTcyMzczMjY5NSwicmVmcmVzaFRpbWVvdXQiOjE3MjM3NDY5MzIsInZlcmlmaWVkIjp0cnVlLCJpc3MiOiJzZXNzaW9uLXNlcnZpY2UiLCJzZXNzaW9uSWQiOiI0ZTk3NDRmZi0zOTc2LTQxMzYtYjk4NS1lNzUzOTExOWNlZTkiLCJzdGVwVXBzIjpbXSwiYXVkIjoiYXRsYXNzaWFuIiwibmJmIjoxNzIzNzQ2MzMyLCJleHAiOjE3MjYzMzgzMzIsImlhdCI6MTcyMzc0NjMzMiwiZW1haWwiOiI5NHNhZGVjZXV5Z3VsYW1hbGFyMTlAZ21haWwuY29tIiwianRpIjoiNGU5NzQ0ZmYtMzk3Ni00MTM2LWI5ODUtZTc1MzkxMTljZWU5In0.bu_LoxBCx51dqkuQwT0IRYQhoFxQv7zdyDbcwDGFN8UUOcvDgjzEv96Oe7AOHok9Sg9vejeLDvgwqCS5iJLX6J0W-pM6A8clj4D2fywBWNKRGaMsqrmc0zpM6WlGFse6xX8eU1mcy879weD4QE76ek3UppCEAN3Bdn2qRoL8bYNIIL_WFVfjmC4uw_l5ftZrsR3W7kAiqlLds7BIxMA3buTGza4Szu3ao1kUQrcUiN6II9vvCO3uRwXRFJcfXzz_PCF7UX_8hDroybO04b2YOf6guZKvVD9znxAY-r-M4Hs3df8comG-De-H-E23Hjuk8PalDfMFjZgp5RFW5cI-ww' \\\r\n  -H 'origin: https://trello.com' \\\r\n  -H 'priority: u=1, i' \\\r\n  -H 'referer: https://trello.com/b/yp0lDCX8/vaultn' \\\r\n  -H 'sec-ch-ua: \"Not)A;Brand\";v=\"99\", \"Google Chrome\";v=\"127\", \"Chromium\";v=\"127\"' \\\r\n  -H 'sec-ch-ua-mobile: ?0' \\\r\n  -H 'sec-ch-ua-platform: \"Windows\"' \\\r\n  -H 'sec-fetch-dest: empty' \\\r\n  -H 'sec-fetch-mode: cors' \\\r\n  -H 'sec-fetch-site: same-origin' \\\r\n  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36' \\\r\n  -H 'x-b3-spanid: 9bc5c4f94e37c234' \\\r\n  -H 'x-b3-traceid: 66be4997cf184e92ad27417b27e7d175' \\\r\n  -H 'x-trello-client-version: build-207303' \\\r\n  -H 'x-trello-task: create-list' \\\r\n  -H 'x-trello-traceid: 66be4997cf184e92ad27417b27e7d175' \\\r\n  --data-raw '{\"idBoard\":\"66be140bba366932121a853a\",\"name\":\"To Do\",\"pos\":65539,\"dsc\":\"cc5a16c8d137a8bacf8f418cb45849f86f5b94b506659bff5de2786a0c0d3e94\"}'"
+					},
+					"response": []
+				}
+			],
+			"description": "- Backlog\n    \n- Todo\n    \n- Doing\n    \n- Testing\n    \n- Done"
+		},
+		{
+			"name": "Create Cards",
+			"item": [
+				{
+					"name": "Sing Up",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"SetCardId\", function () {\r",
+									"\r",
+									"// Parse the response body as JSON\r",
+									"var responseBody = pm.response.json();\r",
+									"\r",
+									"// Extract the \"id\" from the response body\r",
+									"var cardId = responseBody.id; // Changed variable name from listId to cardId\r",
+									"\r",
+									"// Set the \"cardId\" as a variable for later use\r",
+									"pm.environment.set(\"SingCardId\", cardId); // Changed variable name from id to cardId\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "*/*"
+							},
+							{
+								"key": "accept-language",
+								"value": "tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7"
+							},
+							{
+								"key": "cache-control",
+								"value": "no-cache"
+							},
+							{
+								"key": "content-type",
+								"value": "application/json"
+							},
+							{
+								"key": "cookie",
+								"value": "atlCohort={\"bucketAll\":{\"bucketedAtUTC\":\"2024-08-15T14:37:49.392Z\",\"version\":\"2\",\"index\":15,\"bucketId\":0}}; ajs_anonymous_id=%22c51ec516-2968-5d60-f521-a198e66fd18f%22; dsc=cc5a16c8d137a8bacf8f418cb45849f86f5b94b506659bff5de2786a0c0d3e94; atl_xid.ts=1723732672210; atl_xid.current=%5B%7B%22type%22%3A%22xc%22%2C%22value%22%3A%22c19711a7-7d3d-49f9-87e3-4d1d06191efb%22%2C%22createdAt%22%3A%222024-04-29T14%3A07%3A47.071Z%22%7D%5D; _otPreferencesSynced=; OptanonConsent=isGpcEnabled=0&datestamp=Thu+Aug+15+2024+17%3A37%3A55+GMT%2B0300+(GMT%2B03%3A00)&version=202407.1.0&browserGpcFlag=0&isIABGlobal=false&identifierType=Cookie+Unique+Id&hosts=&consentId=56d07b6c-e313-47c8-a23a-bd43b88d11a9&interactionCount=1&isAnonUser=1&landingPath=https%3A%2F%2Ftrello.com%2F&groups=1%3A1%2C2%3A1%2C3%3A1%2C4%3A0; atlassian.account.xsrf.token=500c79c1-5a8b-43e0-afb7-f8b9e0431f40; loggedIn=1; lang=tr-TR; idMember=66be12f0a4ce3e80d1df2d1b; aaId=712020%3Ac7978f6c-4d43-471f-a41d-ee73ad45ac2e; hasAccount=atlassian; atl-bsc-consent-token-fallback=002000001000; __cid=DQlNUOvbULa7SoOGkLHXvem7tCuWjdyDICeTnjcj7OwOcsqAcwEfHicenI4OPq2aHSzfaiNpmuN87z_JJlQLnCt5lJ5cQvfTTFzx8k9Ht6sNFri2dE_2-kxR675tcrivEwiopQNx8fAVEqO-WxCstwNn6O5PQ8_7QW3x6gwTq6kNFa6-C23Qym5qtL5PT_P7A2H9_UhJsb5gTurxTkO3rxERtq4NFrauA3X5-EJU8bEWFa-wEBD0lkJA_KcbH62rVCWfFSOykP0REKz_G0D8Andn1tlvY7i2akjs-08KuNdNUv3yC3SxvmtiuNlRR-j2SkXrvhUUqL4LFuCuExaoqxoXrrcDYvHsRkXsrWcXqb5VVcerfBa47lB5rcETCrjaEGKprwqCi64SCKivDRehqRMGqKwZFqikExY3liOTuVuSLlOe8CdFHXXBmHUg0cVbiJMQYSFuWJ5LJpieIyaYniMmmJ4jJpieIyaYnplwIshjJtjeIyaYnmNm2N5jZiuekCYuOI-KXFpNJlQSay-YniMmmJ4iJmc; atl-bsc-current-locale=TR-16; atl-bsc-consent-token=002111001000; atl-bsc-show-banner=0; cloud.session.token=eyJraWQiOiJzZXNzaW9uLXNlcnZpY2UvcHJvZC0xNTkyODU4Mzk0IiwiYWxnIjoiUlMyNTYifQ.eyJhc3NvY2lhdGlvbnMiOltdLCJzdWIiOiI3MTIwMjA6Yzc5NzhmNmMtNGQ0My00NzFmLWE0MWQtZWU3M2FkNDVhYzJlIiwiZW1haWxEb21haW4iOiJnbWFpbC5jb20iLCJpbXBlcnNvbmF0aW9uIjpbXSwiY3JlYXRlZCI6MTcyMzczMjY5NSwicmVmcmVzaFRpbWVvdXQiOjE3MjM3NTU5NDMsInZlcmlmaWVkIjp0cnVlLCJpc3MiOiJzZXNzaW9uLXNlcnZpY2UiLCJzZXNzaW9uSWQiOiI0ZTk3NDRmZi0zOTc2LTQxMzYtYjk4NS1lNzUzOTExOWNlZTkiLCJzdGVwVXBzIjpbXSwiYXVkIjoiYXRsYXNzaWFuIiwibmJmIjoxNzIzNzU1MzQzLCJleHAiOjE3MjYzNDczNDMsImlhdCI6MTcyMzc1NTM0MywiZW1haWwiOiI5NHNhZGVjZXV5Z3VsYW1hbGFyMTlAZ21haWwuY29tIiwianRpIjoiNGU5NzQ0ZmYtMzk3Ni00MTM2LWI5ODUtZTc1MzkxMTljZWU5In0.b2hugF7plXTmaPSEA_j_9Pa6OA8lORQkQcfaMXMsg5sbZvfNJHnMenz5vaBuBsqJcsClrh0GmXGRpfp8rHmE5THFmeNvuC2SCU0cQiVZffhr_jq56p7C6VcfeN-IMiG8PEJK11aeM0uspZl54zTl6Aid1FR7OTu_deXR-2myBq5Q4zIIMRn23sFO1TTr9wd1vfyg2E9hfVHM0PB_DCsQAWQlyWSa0dyuwxlWlXgitnZHGgUOQyw7FPY-qvhtxdne4jFI5Dz3T2EwBW9-1WL2i3naXBozexK7IOqjIFV4W3Ri9OHpI3zwlhje2hxgPj1VtOF13nL1pwRBzj4dcvs9-w"
+							},
+							{
+								"key": "origin",
+								"value": "https://trello.com"
+							},
+							{
+								"key": "pragma",
+								"value": "no-cache"
+							},
+							{
+								"key": "priority",
+								"value": "u=1, i"
+							},
+							{
+								"key": "referer",
+								"value": "https://trello.com/b/yp0lDCX8/vaultn"
+							},
+							{
+								"key": "sec-ch-ua",
+								"value": "\"Not)A;Brand\";v=\"99\", \"Google Chrome\";v=\"127\", \"Chromium\";v=\"127\""
+							},
+							{
+								"key": "sec-ch-ua-mobile",
+								"value": "?0"
+							},
+							{
+								"key": "sec-ch-ua-platform",
+								"value": "\"Windows\""
+							},
+							{
+								"key": "sec-fetch-dest",
+								"value": "empty"
+							},
+							{
+								"key": "sec-fetch-mode",
+								"value": "cors"
+							},
+							{
+								"key": "sec-fetch-site",
+								"value": "same-origin"
+							},
+							{
+								"key": "user-agent",
+								"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36"
+							},
+							{
+								"key": "x-b3-spanid",
+								"value": "0862be4ad4536181"
+							},
+							{
+								"key": "x-b3-traceid",
+								"value": "66be6b66cf4957f43f87466d621e2661"
+							},
+							{
+								"key": "x-trello-client-version",
+								"value": "build-207310"
+							},
+							{
+								"key": "x-trello-task",
+								"value": "create-card/list"
+							},
+							{
+								"key": "x-trello-traceid",
+								"value": "66be6b66cf4957f43f87466d621e2661"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "t",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idList\": \"{{ToDolistId}}\",\r\n    \"name\": \"Sign up for Trello\",\r\n    \"closed\": false,\r\n    \"isTemplate\": false,\r\n    \"pos\": 65536,\r\n    \"cardRole\": null,\r\n    \"dsc\": \"cc5a16c8d137a8bacf8f418cb45849f86f5b94b506659bff5de2786a0c0d3e94\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/cards",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"cards"
+							]
+						},
+						"description": "Generated from cURL: curl 'https://trello.com/1/cards' \\\r\n  -H 'accept: */*' \\\r\n  -H 'accept-language: tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7' \\\r\n  -H 'cache-control: no-cache' \\\r\n  -H 'content-type: application/json' \\\r\n  -H 'cookie: atlCohort={\"bucketAll\":{\"bucketedAtUTC\":\"2024-08-15T14:37:49.392Z\",\"version\":\"2\",\"index\":15,\"bucketId\":0}}; ajs_anonymous_id=%22c51ec516-2968-5d60-f521-a198e66fd18f%22; dsc=cc5a16c8d137a8bacf8f418cb45849f86f5b94b506659bff5de2786a0c0d3e94; atl_xid.ts=1723732672210; atl_xid.current=%5B%7B%22type%22%3A%22xc%22%2C%22value%22%3A%22c19711a7-7d3d-49f9-87e3-4d1d06191efb%22%2C%22createdAt%22%3A%222024-04-29T14%3A07%3A47.071Z%22%7D%5D; _otPreferencesSynced=; OptanonConsent=isGpcEnabled=0&datestamp=Thu+Aug+15+2024+17%3A37%3A55+GMT%2B0300+(GMT%2B03%3A00)&version=202407.1.0&browserGpcFlag=0&isIABGlobal=false&identifierType=Cookie+Unique+Id&hosts=&consentId=56d07b6c-e313-47c8-a23a-bd43b88d11a9&interactionCount=1&isAnonUser=1&landingPath=https%3A%2F%2Ftrello.com%2F&groups=1%3A1%2C2%3A1%2C3%3A1%2C4%3A0; atlassian.account.xsrf.token=500c79c1-5a8b-43e0-afb7-f8b9e0431f40; loggedIn=1; lang=tr-TR; idMember=66be12f0a4ce3e80d1df2d1b; aaId=712020%3Ac7978f6c-4d43-471f-a41d-ee73ad45ac2e; hasAccount=atlassian; atl-bsc-consent-token-fallback=002000001000; __cid=DQlNUOvbULa7SoOGkLHXvem7tCuWjdyDICeTnjcj7OwOcsqAcwEfHicenI4OPq2aHSzfaiNpmuN87z_JJlQLnCt5lJ5cQvfTTFzx8k9Ht6sNFri2dE_2-kxR675tcrivEwiopQNx8fAVEqO-WxCstwNn6O5PQ8_7QW3x6gwTq6kNFa6-C23Qym5qtL5PT_P7A2H9_UhJsb5gTurxTkO3rxERtq4NFrauA3X5-EJU8bEWFa-wEBD0lkJA_KcbH62rVCWfFSOykP0REKz_G0D8Andn1tlvY7i2akjs-08KuNdNUv3yC3SxvmtiuNlRR-j2SkXrvhUUqL4LFuCuExaoqxoXrrcDYvHsRkXsrWcXqb5VVcerfBa47lB5rcETCrjaEGKprwqCi64SCKivDRehqRMGqKwZFqikExY3liOTuVuSLlOe8CdFHXXBmHUg0cVbiJMQYSFuWJ5LJpieIyaYniMmmJ4jJpieIyaYnplwIshjJtjeIyaYnmNm2N5jZiuekCYuOI-KXFpNJlQSay-YniMmmJ4iJmc; atl-bsc-current-locale=TR-16; atl-bsc-consent-token=002111001000; atl-bsc-show-banner=0; cloud.session.token=eyJraWQiOiJzZXNzaW9uLXNlcnZpY2UvcHJvZC0xNTkyODU4Mzk0IiwiYWxnIjoiUlMyNTYifQ.eyJhc3NvY2lhdGlvbnMiOltdLCJzdWIiOiI3MTIwMjA6Yzc5NzhmNmMtNGQ0My00NzFmLWE0MWQtZWU3M2FkNDVhYzJlIiwiZW1haWxEb21haW4iOiJnbWFpbC5jb20iLCJpbXBlcnNvbmF0aW9uIjpbXSwiY3JlYXRlZCI6MTcyMzczMjY5NSwicmVmcmVzaFRpbWVvdXQiOjE3MjM3NTU5NDMsInZlcmlmaWVkIjp0cnVlLCJpc3MiOiJzZXNzaW9uLXNlcnZpY2UiLCJzZXNzaW9uSWQiOiI0ZTk3NDRmZi0zOTc2LTQxMzYtYjk4NS1lNzUzOTExOWNlZTkiLCJzdGVwVXBzIjpbXSwiYXVkIjoiYXRsYXNzaWFuIiwibmJmIjoxNzIzNzU1MzQzLCJleHAiOjE3MjYzNDczNDMsImlhdCI6MTcyMzc1NTM0MywiZW1haWwiOiI5NHNhZGVjZXV5Z3VsYW1hbGFyMTlAZ21haWwuY29tIiwianRpIjoiNGU5NzQ0ZmYtMzk3Ni00MTM2LWI5ODUtZTc1MzkxMTljZWU5In0.b2hugF7plXTmaPSEA_j_9Pa6OA8lORQkQcfaMXMsg5sbZvfNJHnMenz5vaBuBsqJcsClrh0GmXGRpfp8rHmE5THFmeNvuC2SCU0cQiVZffhr_jq56p7C6VcfeN-IMiG8PEJK11aeM0uspZl54zTl6Aid1FR7OTu_deXR-2myBq5Q4zIIMRn23sFO1TTr9wd1vfyg2E9hfVHM0PB_DCsQAWQlyWSa0dyuwxlWlXgitnZHGgUOQyw7FPY-qvhtxdne4jFI5Dz3T2EwBW9-1WL2i3naXBozexK7IOqjIFV4W3Ri9OHpI3zwlhje2hxgPj1VtOF13nL1pwRBzj4dcvs9-w' \\\r\n  -H 'origin: https://trello.com' \\\r\n  -H 'pragma: no-cache' \\\r\n  -H 'priority: u=1, i' \\\r\n  -H 'referer: https://trello.com/b/yp0lDCX8/vaultn' \\\r\n  -H 'sec-ch-ua: \"Not)A;Brand\";v=\"99\", \"Google Chrome\";v=\"127\", \"Chromium\";v=\"127\"' \\\r\n  -H 'sec-ch-ua-mobile: ?0' \\\r\n  -H 'sec-ch-ua-platform: \"Windows\"' \\\r\n  -H 'sec-fetch-dest: empty' \\\r\n  -H 'sec-fetch-mode: cors' \\\r\n  -H 'sec-fetch-site: same-origin' \\\r\n  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36' \\\r\n  -H 'x-b3-spanid: 0862be4ad4536181' \\\r\n  -H 'x-b3-traceid: 66be6b66cf4957f43f87466d621e2661' \\\r\n  -H 'x-trello-client-version: build-207310' \\\r\n  -H 'x-trello-task: create-card/list' \\\r\n  -H 'x-trello-traceid: 66be6b66cf4957f43f87466d621e2661' \\\r\n  --data-raw '{\"idList\":\"66be6356222ecaed2669511a\",\"name\":\"x\",\"closed\":false,\"isTemplate\":false,\"pos\":65536,\"cardRole\":null,\"dsc\":\"cc5a16c8d137a8bacf8f418cb45849f86f5b94b506659bff5de2786a0c0d3e94\"}'"
+					},
+					"response": []
+				},
+				{
+					"name": "Get key and token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"SetCardId\", function () {\r",
+									"\r",
+									"// Parse the response body as JSON\r",
+									"var responseBody = pm.response.json();\r",
+									"\r",
+									"// Extract the \"id\" from the response body\r",
+									"var cardId = responseBody.id; // Changed variable name from listId to cardId\r",
+									"\r",
+									"// Set the \"cardId\" as a variable for later use\r",
+									"pm.environment.set(\"KeyTokenCardId\", cardId); // Changed variable name from id to cardId\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "*/*"
+							},
+							{
+								"key": "accept-language",
+								"value": "tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7"
+							},
+							{
+								"key": "cache-control",
+								"value": "no-cache"
+							},
+							{
+								"key": "content-type",
+								"value": "application/json"
+							},
+							{
+								"key": "cookie",
+								"value": "atlCohort={\"bucketAll\":{\"bucketedAtUTC\":\"2024-08-15T14:37:49.392Z\",\"version\":\"2\",\"index\":15,\"bucketId\":0}}; ajs_anonymous_id=%22c51ec516-2968-5d60-f521-a198e66fd18f%22; dsc=cc5a16c8d137a8bacf8f418cb45849f86f5b94b506659bff5de2786a0c0d3e94; atl_xid.ts=1723732672210; atl_xid.current=%5B%7B%22type%22%3A%22xc%22%2C%22value%22%3A%22c19711a7-7d3d-49f9-87e3-4d1d06191efb%22%2C%22createdAt%22%3A%222024-04-29T14%3A07%3A47.071Z%22%7D%5D; _otPreferencesSynced=; OptanonConsent=isGpcEnabled=0&datestamp=Thu+Aug+15+2024+17%3A37%3A55+GMT%2B0300+(GMT%2B03%3A00)&version=202407.1.0&browserGpcFlag=0&isIABGlobal=false&identifierType=Cookie+Unique+Id&hosts=&consentId=56d07b6c-e313-47c8-a23a-bd43b88d11a9&interactionCount=1&isAnonUser=1&landingPath=https%3A%2F%2Ftrello.com%2F&groups=1%3A1%2C2%3A1%2C3%3A1%2C4%3A0; atlassian.account.xsrf.token=500c79c1-5a8b-43e0-afb7-f8b9e0431f40; loggedIn=1; lang=tr-TR; idMember=66be12f0a4ce3e80d1df2d1b; aaId=712020%3Ac7978f6c-4d43-471f-a41d-ee73ad45ac2e; hasAccount=atlassian; atl-bsc-consent-token-fallback=002000001000; __cid=DQlNUOvbULa7SoOGkLHXvem7tCuWjdyDICeTnjcj7OwOcsqAcwEfHicenI4OPq2aHSzfaiNpmuN87z_JJlQLnCt5lJ5cQvfTTFzx8k9Ht6sNFri2dE_2-kxR675tcrivEwiopQNx8fAVEqO-WxCstwNn6O5PQ8_7QW3x6gwTq6kNFa6-C23Qym5qtL5PT_P7A2H9_UhJsb5gTurxTkO3rxERtq4NFrauA3X5-EJU8bEWFa-wEBD0lkJA_KcbH62rVCWfFSOykP0REKz_G0D8Andn1tlvY7i2akjs-08KuNdNUv3yC3SxvmtiuNlRR-j2SkXrvhUUqL4LFuCuExaoqxoXrrcDYvHsRkXsrWcXqb5VVcerfBa47lB5rcETCrjaEGKprwqCi64SCKivDRehqRMGqKwZFqikExY3liOTuVuSLlOe8CdFHXXBmHUg0cVbiJMQYSFuWJ5LJpieIyaYniMmmJ4jJpieIyaYnplwIshjJtjeIyaYnmNm2N5jZiuekCYuOI-KXFpNJlQSay-YniMmmJ4iJmc; atl-bsc-current-locale=TR-16; atl-bsc-consent-token=002111001000; atl-bsc-show-banner=0; cloud.session.token=eyJraWQiOiJzZXNzaW9uLXNlcnZpY2UvcHJvZC0xNTkyODU4Mzk0IiwiYWxnIjoiUlMyNTYifQ.eyJhc3NvY2lhdGlvbnMiOltdLCJzdWIiOiI3MTIwMjA6Yzc5NzhmNmMtNGQ0My00NzFmLWE0MWQtZWU3M2FkNDVhYzJlIiwiZW1haWxEb21haW4iOiJnbWFpbC5jb20iLCJpbXBlcnNvbmF0aW9uIjpbXSwiY3JlYXRlZCI6MTcyMzczMjY5NSwicmVmcmVzaFRpbWVvdXQiOjE3MjM3NTU5NDMsInZlcmlmaWVkIjp0cnVlLCJpc3MiOiJzZXNzaW9uLXNlcnZpY2UiLCJzZXNzaW9uSWQiOiI0ZTk3NDRmZi0zOTc2LTQxMzYtYjk4NS1lNzUzOTExOWNlZTkiLCJzdGVwVXBzIjpbXSwiYXVkIjoiYXRsYXNzaWFuIiwibmJmIjoxNzIzNzU1MzQzLCJleHAiOjE3MjYzNDczNDMsImlhdCI6MTcyMzc1NTM0MywiZW1haWwiOiI5NHNhZGVjZXV5Z3VsYW1hbGFyMTlAZ21haWwuY29tIiwianRpIjoiNGU5NzQ0ZmYtMzk3Ni00MTM2LWI5ODUtZTc1MzkxMTljZWU5In0.b2hugF7plXTmaPSEA_j_9Pa6OA8lORQkQcfaMXMsg5sbZvfNJHnMenz5vaBuBsqJcsClrh0GmXGRpfp8rHmE5THFmeNvuC2SCU0cQiVZffhr_jq56p7C6VcfeN-IMiG8PEJK11aeM0uspZl54zTl6Aid1FR7OTu_deXR-2myBq5Q4zIIMRn23sFO1TTr9wd1vfyg2E9hfVHM0PB_DCsQAWQlyWSa0dyuwxlWlXgitnZHGgUOQyw7FPY-qvhtxdne4jFI5Dz3T2EwBW9-1WL2i3naXBozexK7IOqjIFV4W3Ri9OHpI3zwlhje2hxgPj1VtOF13nL1pwRBzj4dcvs9-w"
+							},
+							{
+								"key": "origin",
+								"value": "https://trello.com"
+							},
+							{
+								"key": "pragma",
+								"value": "no-cache"
+							},
+							{
+								"key": "priority",
+								"value": "u=1, i"
+							},
+							{
+								"key": "referer",
+								"value": "https://trello.com/b/yp0lDCX8/vaultn"
+							},
+							{
+								"key": "sec-ch-ua",
+								"value": "\"Not)A;Brand\";v=\"99\", \"Google Chrome\";v=\"127\", \"Chromium\";v=\"127\""
+							},
+							{
+								"key": "sec-ch-ua-mobile",
+								"value": "?0"
+							},
+							{
+								"key": "sec-ch-ua-platform",
+								"value": "\"Windows\""
+							},
+							{
+								"key": "sec-fetch-dest",
+								"value": "empty"
+							},
+							{
+								"key": "sec-fetch-mode",
+								"value": "cors"
+							},
+							{
+								"key": "sec-fetch-site",
+								"value": "same-origin"
+							},
+							{
+								"key": "user-agent",
+								"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36"
+							},
+							{
+								"key": "x-b3-spanid",
+								"value": "0862be4ad4536181"
+							},
+							{
+								"key": "x-b3-traceid",
+								"value": "66be6b66cf4957f43f87466d621e2661"
+							},
+							{
+								"key": "x-trello-client-version",
+								"value": "build-207310"
+							},
+							{
+								"key": "x-trello-task",
+								"value": "create-card/list"
+							},
+							{
+								"key": "x-trello-traceid",
+								"value": "66be6b66cf4957f43f87466d621e2661"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "t",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idList\": \"{{ToDolistId}}\",\r\n    \"name\": \"Get key and token\",\r\n    \"closed\": false,\r\n    \"isTemplate\": false,\r\n    \"pos\": 65536,\r\n    \"cardRole\": null,\r\n    \"dsc\": \"cc5a16c8d137a8bacf8f418cb45849f86f5b94b506659bff5de2786a0c0d3e94\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/cards",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"cards"
+							]
+						},
+						"description": "Generated from cURL: curl 'https://trello.com/1/cards' \\\r\n  -H 'accept: */*' \\\r\n  -H 'accept-language: tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7' \\\r\n  -H 'cache-control: no-cache' \\\r\n  -H 'content-type: application/json' \\\r\n  -H 'cookie: atlCohort={\"bucketAll\":{\"bucketedAtUTC\":\"2024-08-15T14:37:49.392Z\",\"version\":\"2\",\"index\":15,\"bucketId\":0}}; ajs_anonymous_id=%22c51ec516-2968-5d60-f521-a198e66fd18f%22; dsc=cc5a16c8d137a8bacf8f418cb45849f86f5b94b506659bff5de2786a0c0d3e94; atl_xid.ts=1723732672210; atl_xid.current=%5B%7B%22type%22%3A%22xc%22%2C%22value%22%3A%22c19711a7-7d3d-49f9-87e3-4d1d06191efb%22%2C%22createdAt%22%3A%222024-04-29T14%3A07%3A47.071Z%22%7D%5D; _otPreferencesSynced=; OptanonConsent=isGpcEnabled=0&datestamp=Thu+Aug+15+2024+17%3A37%3A55+GMT%2B0300+(GMT%2B03%3A00)&version=202407.1.0&browserGpcFlag=0&isIABGlobal=false&identifierType=Cookie+Unique+Id&hosts=&consentId=56d07b6c-e313-47c8-a23a-bd43b88d11a9&interactionCount=1&isAnonUser=1&landingPath=https%3A%2F%2Ftrello.com%2F&groups=1%3A1%2C2%3A1%2C3%3A1%2C4%3A0; atlassian.account.xsrf.token=500c79c1-5a8b-43e0-afb7-f8b9e0431f40; loggedIn=1; lang=tr-TR; idMember=66be12f0a4ce3e80d1df2d1b; aaId=712020%3Ac7978f6c-4d43-471f-a41d-ee73ad45ac2e; hasAccount=atlassian; atl-bsc-consent-token-fallback=002000001000; __cid=DQlNUOvbULa7SoOGkLHXvem7tCuWjdyDICeTnjcj7OwOcsqAcwEfHicenI4OPq2aHSzfaiNpmuN87z_JJlQLnCt5lJ5cQvfTTFzx8k9Ht6sNFri2dE_2-kxR675tcrivEwiopQNx8fAVEqO-WxCstwNn6O5PQ8_7QW3x6gwTq6kNFa6-C23Qym5qtL5PT_P7A2H9_UhJsb5gTurxTkO3rxERtq4NFrauA3X5-EJU8bEWFa-wEBD0lkJA_KcbH62rVCWfFSOykP0REKz_G0D8Andn1tlvY7i2akjs-08KuNdNUv3yC3SxvmtiuNlRR-j2SkXrvhUUqL4LFuCuExaoqxoXrrcDYvHsRkXsrWcXqb5VVcerfBa47lB5rcETCrjaEGKprwqCi64SCKivDRehqRMGqKwZFqikExY3liOTuVuSLlOe8CdFHXXBmHUg0cVbiJMQYSFuWJ5LJpieIyaYniMmmJ4jJpieIyaYnplwIshjJtjeIyaYnmNm2N5jZiuekCYuOI-KXFpNJlQSay-YniMmmJ4iJmc; atl-bsc-current-locale=TR-16; atl-bsc-consent-token=002111001000; atl-bsc-show-banner=0; cloud.session.token=eyJraWQiOiJzZXNzaW9uLXNlcnZpY2UvcHJvZC0xNTkyODU4Mzk0IiwiYWxnIjoiUlMyNTYifQ.eyJhc3NvY2lhdGlvbnMiOltdLCJzdWIiOiI3MTIwMjA6Yzc5NzhmNmMtNGQ0My00NzFmLWE0MWQtZWU3M2FkNDVhYzJlIiwiZW1haWxEb21haW4iOiJnbWFpbC5jb20iLCJpbXBlcnNvbmF0aW9uIjpbXSwiY3JlYXRlZCI6MTcyMzczMjY5NSwicmVmcmVzaFRpbWVvdXQiOjE3MjM3NTU5NDMsInZlcmlmaWVkIjp0cnVlLCJpc3MiOiJzZXNzaW9uLXNlcnZpY2UiLCJzZXNzaW9uSWQiOiI0ZTk3NDRmZi0zOTc2LTQxMzYtYjk4NS1lNzUzOTExOWNlZTkiLCJzdGVwVXBzIjpbXSwiYXVkIjoiYXRsYXNzaWFuIiwibmJmIjoxNzIzNzU1MzQzLCJleHAiOjE3MjYzNDczNDMsImlhdCI6MTcyMzc1NTM0MywiZW1haWwiOiI5NHNhZGVjZXV5Z3VsYW1hbGFyMTlAZ21haWwuY29tIiwianRpIjoiNGU5NzQ0ZmYtMzk3Ni00MTM2LWI5ODUtZTc1MzkxMTljZWU5In0.b2hugF7plXTmaPSEA_j_9Pa6OA8lORQkQcfaMXMsg5sbZvfNJHnMenz5vaBuBsqJcsClrh0GmXGRpfp8rHmE5THFmeNvuC2SCU0cQiVZffhr_jq56p7C6VcfeN-IMiG8PEJK11aeM0uspZl54zTl6Aid1FR7OTu_deXR-2myBq5Q4zIIMRn23sFO1TTr9wd1vfyg2E9hfVHM0PB_DCsQAWQlyWSa0dyuwxlWlXgitnZHGgUOQyw7FPY-qvhtxdne4jFI5Dz3T2EwBW9-1WL2i3naXBozexK7IOqjIFV4W3Ri9OHpI3zwlhje2hxgPj1VtOF13nL1pwRBzj4dcvs9-w' \\\r\n  -H 'origin: https://trello.com' \\\r\n  -H 'pragma: no-cache' \\\r\n  -H 'priority: u=1, i' \\\r\n  -H 'referer: https://trello.com/b/yp0lDCX8/vaultn' \\\r\n  -H 'sec-ch-ua: \"Not)A;Brand\";v=\"99\", \"Google Chrome\";v=\"127\", \"Chromium\";v=\"127\"' \\\r\n  -H 'sec-ch-ua-mobile: ?0' \\\r\n  -H 'sec-ch-ua-platform: \"Windows\"' \\\r\n  -H 'sec-fetch-dest: empty' \\\r\n  -H 'sec-fetch-mode: cors' \\\r\n  -H 'sec-fetch-site: same-origin' \\\r\n  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36' \\\r\n  -H 'x-b3-spanid: 0862be4ad4536181' \\\r\n  -H 'x-b3-traceid: 66be6b66cf4957f43f87466d621e2661' \\\r\n  -H 'x-trello-client-version: build-207310' \\\r\n  -H 'x-trello-task: create-card/list' \\\r\n  -H 'x-trello-traceid: 66be6b66cf4957f43f87466d621e2661' \\\r\n  --data-raw '{\"idList\":\"66be6356222ecaed2669511a\",\"name\":\"x\",\"closed\":false,\"isTemplate\":false,\"pos\":65536,\"cardRole\":null,\"dsc\":\"cc5a16c8d137a8bacf8f418cb45849f86f5b94b506659bff5de2786a0c0d3e94\"}'"
+					},
+					"response": []
+				},
+				{
+					"name": "Build a collection",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"SetCardId\", function () {\r",
+									"\r",
+									"// Parse the response body as JSON\r",
+									"var responseBody = pm.response.json();\r",
+									"\r",
+									"// Extract the \"id\" from the response body\r",
+									"var cardId = responseBody.id; // Changed variable name from listId to cardId\r",
+									"\r",
+									"// Set the \"cardId\" as a variable for later use\r",
+									"pm.environment.set(\"BuildCollectionCardId\", cardId); // Changed variable name from id to cardId\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "*/*"
+							},
+							{
+								"key": "accept-language",
+								"value": "tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7"
+							},
+							{
+								"key": "cache-control",
+								"value": "no-cache"
+							},
+							{
+								"key": "content-type",
+								"value": "application/json"
+							},
+							{
+								"key": "cookie",
+								"value": "atlCohort={\"bucketAll\":{\"bucketedAtUTC\":\"2024-08-15T14:37:49.392Z\",\"version\":\"2\",\"index\":15,\"bucketId\":0}}; ajs_anonymous_id=%22c51ec516-2968-5d60-f521-a198e66fd18f%22; dsc=cc5a16c8d137a8bacf8f418cb45849f86f5b94b506659bff5de2786a0c0d3e94; atl_xid.ts=1723732672210; atl_xid.current=%5B%7B%22type%22%3A%22xc%22%2C%22value%22%3A%22c19711a7-7d3d-49f9-87e3-4d1d06191efb%22%2C%22createdAt%22%3A%222024-04-29T14%3A07%3A47.071Z%22%7D%5D; _otPreferencesSynced=; OptanonConsent=isGpcEnabled=0&datestamp=Thu+Aug+15+2024+17%3A37%3A55+GMT%2B0300+(GMT%2B03%3A00)&version=202407.1.0&browserGpcFlag=0&isIABGlobal=false&identifierType=Cookie+Unique+Id&hosts=&consentId=56d07b6c-e313-47c8-a23a-bd43b88d11a9&interactionCount=1&isAnonUser=1&landingPath=https%3A%2F%2Ftrello.com%2F&groups=1%3A1%2C2%3A1%2C3%3A1%2C4%3A0; atlassian.account.xsrf.token=500c79c1-5a8b-43e0-afb7-f8b9e0431f40; loggedIn=1; lang=tr-TR; idMember=66be12f0a4ce3e80d1df2d1b; aaId=712020%3Ac7978f6c-4d43-471f-a41d-ee73ad45ac2e; hasAccount=atlassian; atl-bsc-consent-token-fallback=002000001000; __cid=DQlNUOvbULa7SoOGkLHXvem7tCuWjdyDICeTnjcj7OwOcsqAcwEfHicenI4OPq2aHSzfaiNpmuN87z_JJlQLnCt5lJ5cQvfTTFzx8k9Ht6sNFri2dE_2-kxR675tcrivEwiopQNx8fAVEqO-WxCstwNn6O5PQ8_7QW3x6gwTq6kNFa6-C23Qym5qtL5PT_P7A2H9_UhJsb5gTurxTkO3rxERtq4NFrauA3X5-EJU8bEWFa-wEBD0lkJA_KcbH62rVCWfFSOykP0REKz_G0D8Andn1tlvY7i2akjs-08KuNdNUv3yC3SxvmtiuNlRR-j2SkXrvhUUqL4LFuCuExaoqxoXrrcDYvHsRkXsrWcXqb5VVcerfBa47lB5rcETCrjaEGKprwqCi64SCKivDRehqRMGqKwZFqikExY3liOTuVuSLlOe8CdFHXXBmHUg0cVbiJMQYSFuWJ5LJpieIyaYniMmmJ4jJpieIyaYnplwIshjJtjeIyaYnmNm2N5jZiuekCYuOI-KXFpNJlQSay-YniMmmJ4iJmc; atl-bsc-current-locale=TR-16; atl-bsc-consent-token=002111001000; atl-bsc-show-banner=0; cloud.session.token=eyJraWQiOiJzZXNzaW9uLXNlcnZpY2UvcHJvZC0xNTkyODU4Mzk0IiwiYWxnIjoiUlMyNTYifQ.eyJhc3NvY2lhdGlvbnMiOltdLCJzdWIiOiI3MTIwMjA6Yzc5NzhmNmMtNGQ0My00NzFmLWE0MWQtZWU3M2FkNDVhYzJlIiwiZW1haWxEb21haW4iOiJnbWFpbC5jb20iLCJpbXBlcnNvbmF0aW9uIjpbXSwiY3JlYXRlZCI6MTcyMzczMjY5NSwicmVmcmVzaFRpbWVvdXQiOjE3MjM3NTU5NDMsInZlcmlmaWVkIjp0cnVlLCJpc3MiOiJzZXNzaW9uLXNlcnZpY2UiLCJzZXNzaW9uSWQiOiI0ZTk3NDRmZi0zOTc2LTQxMzYtYjk4NS1lNzUzOTExOWNlZTkiLCJzdGVwVXBzIjpbXSwiYXVkIjoiYXRsYXNzaWFuIiwibmJmIjoxNzIzNzU1MzQzLCJleHAiOjE3MjYzNDczNDMsImlhdCI6MTcyMzc1NTM0MywiZW1haWwiOiI5NHNhZGVjZXV5Z3VsYW1hbGFyMTlAZ21haWwuY29tIiwianRpIjoiNGU5NzQ0ZmYtMzk3Ni00MTM2LWI5ODUtZTc1MzkxMTljZWU5In0.b2hugF7plXTmaPSEA_j_9Pa6OA8lORQkQcfaMXMsg5sbZvfNJHnMenz5vaBuBsqJcsClrh0GmXGRpfp8rHmE5THFmeNvuC2SCU0cQiVZffhr_jq56p7C6VcfeN-IMiG8PEJK11aeM0uspZl54zTl6Aid1FR7OTu_deXR-2myBq5Q4zIIMRn23sFO1TTr9wd1vfyg2E9hfVHM0PB_DCsQAWQlyWSa0dyuwxlWlXgitnZHGgUOQyw7FPY-qvhtxdne4jFI5Dz3T2EwBW9-1WL2i3naXBozexK7IOqjIFV4W3Ri9OHpI3zwlhje2hxgPj1VtOF13nL1pwRBzj4dcvs9-w"
+							},
+							{
+								"key": "origin",
+								"value": "https://trello.com"
+							},
+							{
+								"key": "pragma",
+								"value": "no-cache"
+							},
+							{
+								"key": "priority",
+								"value": "u=1, i"
+							},
+							{
+								"key": "referer",
+								"value": "https://trello.com/b/yp0lDCX8/vaultn"
+							},
+							{
+								"key": "sec-ch-ua",
+								"value": "\"Not)A;Brand\";v=\"99\", \"Google Chrome\";v=\"127\", \"Chromium\";v=\"127\""
+							},
+							{
+								"key": "sec-ch-ua-mobile",
+								"value": "?0"
+							},
+							{
+								"key": "sec-ch-ua-platform",
+								"value": "\"Windows\""
+							},
+							{
+								"key": "sec-fetch-dest",
+								"value": "empty"
+							},
+							{
+								"key": "sec-fetch-mode",
+								"value": "cors"
+							},
+							{
+								"key": "sec-fetch-site",
+								"value": "same-origin"
+							},
+							{
+								"key": "user-agent",
+								"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36"
+							},
+							{
+								"key": "x-b3-spanid",
+								"value": "0862be4ad4536181"
+							},
+							{
+								"key": "x-b3-traceid",
+								"value": "66be6b66cf4957f43f87466d621e2661"
+							},
+							{
+								"key": "x-trello-client-version",
+								"value": "build-207310"
+							},
+							{
+								"key": "x-trello-task",
+								"value": "create-card/list"
+							},
+							{
+								"key": "x-trello-traceid",
+								"value": "66be6b66cf4957f43f87466d621e2661"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "t",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idList\": \"{{ToDolistId}}\",\r\n    \"name\": \"Build a collection\",\r\n    \"closed\": false,\r\n    \"isTemplate\": false,\r\n    \"pos\": 65536,\r\n    \"cardRole\": null,\r\n    \"dsc\": \"cc5a16c8d137a8bacf8f418cb45849f86f5b94b506659bff5de2786a0c0d3e94\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/cards",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"cards"
+							]
+						},
+						"description": "Generated from cURL: curl 'https://trello.com/1/cards' \\\r\n  -H 'accept: */*' \\\r\n  -H 'accept-language: tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7' \\\r\n  -H 'cache-control: no-cache' \\\r\n  -H 'content-type: application/json' \\\r\n  -H 'cookie: atlCohort={\"bucketAll\":{\"bucketedAtUTC\":\"2024-08-15T14:37:49.392Z\",\"version\":\"2\",\"index\":15,\"bucketId\":0}}; ajs_anonymous_id=%22c51ec516-2968-5d60-f521-a198e66fd18f%22; dsc=cc5a16c8d137a8bacf8f418cb45849f86f5b94b506659bff5de2786a0c0d3e94; atl_xid.ts=1723732672210; atl_xid.current=%5B%7B%22type%22%3A%22xc%22%2C%22value%22%3A%22c19711a7-7d3d-49f9-87e3-4d1d06191efb%22%2C%22createdAt%22%3A%222024-04-29T14%3A07%3A47.071Z%22%7D%5D; _otPreferencesSynced=; OptanonConsent=isGpcEnabled=0&datestamp=Thu+Aug+15+2024+17%3A37%3A55+GMT%2B0300+(GMT%2B03%3A00)&version=202407.1.0&browserGpcFlag=0&isIABGlobal=false&identifierType=Cookie+Unique+Id&hosts=&consentId=56d07b6c-e313-47c8-a23a-bd43b88d11a9&interactionCount=1&isAnonUser=1&landingPath=https%3A%2F%2Ftrello.com%2F&groups=1%3A1%2C2%3A1%2C3%3A1%2C4%3A0; atlassian.account.xsrf.token=500c79c1-5a8b-43e0-afb7-f8b9e0431f40; loggedIn=1; lang=tr-TR; idMember=66be12f0a4ce3e80d1df2d1b; aaId=712020%3Ac7978f6c-4d43-471f-a41d-ee73ad45ac2e; hasAccount=atlassian; atl-bsc-consent-token-fallback=002000001000; __cid=DQlNUOvbULa7SoOGkLHXvem7tCuWjdyDICeTnjcj7OwOcsqAcwEfHicenI4OPq2aHSzfaiNpmuN87z_JJlQLnCt5lJ5cQvfTTFzx8k9Ht6sNFri2dE_2-kxR675tcrivEwiopQNx8fAVEqO-WxCstwNn6O5PQ8_7QW3x6gwTq6kNFa6-C23Qym5qtL5PT_P7A2H9_UhJsb5gTurxTkO3rxERtq4NFrauA3X5-EJU8bEWFa-wEBD0lkJA_KcbH62rVCWfFSOykP0REKz_G0D8Andn1tlvY7i2akjs-08KuNdNUv3yC3SxvmtiuNlRR-j2SkXrvhUUqL4LFuCuExaoqxoXrrcDYvHsRkXsrWcXqb5VVcerfBa47lB5rcETCrjaEGKprwqCi64SCKivDRehqRMGqKwZFqikExY3liOTuVuSLlOe8CdFHXXBmHUg0cVbiJMQYSFuWJ5LJpieIyaYniMmmJ4jJpieIyaYnplwIshjJtjeIyaYnmNm2N5jZiuekCYuOI-KXFpNJlQSay-YniMmmJ4iJmc; atl-bsc-current-locale=TR-16; atl-bsc-consent-token=002111001000; atl-bsc-show-banner=0; cloud.session.token=eyJraWQiOiJzZXNzaW9uLXNlcnZpY2UvcHJvZC0xNTkyODU4Mzk0IiwiYWxnIjoiUlMyNTYifQ.eyJhc3NvY2lhdGlvbnMiOltdLCJzdWIiOiI3MTIwMjA6Yzc5NzhmNmMtNGQ0My00NzFmLWE0MWQtZWU3M2FkNDVhYzJlIiwiZW1haWxEb21haW4iOiJnbWFpbC5jb20iLCJpbXBlcnNvbmF0aW9uIjpbXSwiY3JlYXRlZCI6MTcyMzczMjY5NSwicmVmcmVzaFRpbWVvdXQiOjE3MjM3NTU5NDMsInZlcmlmaWVkIjp0cnVlLCJpc3MiOiJzZXNzaW9uLXNlcnZpY2UiLCJzZXNzaW9uSWQiOiI0ZTk3NDRmZi0zOTc2LTQxMzYtYjk4NS1lNzUzOTExOWNlZTkiLCJzdGVwVXBzIjpbXSwiYXVkIjoiYXRsYXNzaWFuIiwibmJmIjoxNzIzNzU1MzQzLCJleHAiOjE3MjYzNDczNDMsImlhdCI6MTcyMzc1NTM0MywiZW1haWwiOiI5NHNhZGVjZXV5Z3VsYW1hbGFyMTlAZ21haWwuY29tIiwianRpIjoiNGU5NzQ0ZmYtMzk3Ni00MTM2LWI5ODUtZTc1MzkxMTljZWU5In0.b2hugF7plXTmaPSEA_j_9Pa6OA8lORQkQcfaMXMsg5sbZvfNJHnMenz5vaBuBsqJcsClrh0GmXGRpfp8rHmE5THFmeNvuC2SCU0cQiVZffhr_jq56p7C6VcfeN-IMiG8PEJK11aeM0uspZl54zTl6Aid1FR7OTu_deXR-2myBq5Q4zIIMRn23sFO1TTr9wd1vfyg2E9hfVHM0PB_DCsQAWQlyWSa0dyuwxlWlXgitnZHGgUOQyw7FPY-qvhtxdne4jFI5Dz3T2EwBW9-1WL2i3naXBozexK7IOqjIFV4W3Ri9OHpI3zwlhje2hxgPj1VtOF13nL1pwRBzj4dcvs9-w' \\\r\n  -H 'origin: https://trello.com' \\\r\n  -H 'pragma: no-cache' \\\r\n  -H 'priority: u=1, i' \\\r\n  -H 'referer: https://trello.com/b/yp0lDCX8/vaultn' \\\r\n  -H 'sec-ch-ua: \"Not)A;Brand\";v=\"99\", \"Google Chrome\";v=\"127\", \"Chromium\";v=\"127\"' \\\r\n  -H 'sec-ch-ua-mobile: ?0' \\\r\n  -H 'sec-ch-ua-platform: \"Windows\"' \\\r\n  -H 'sec-fetch-dest: empty' \\\r\n  -H 'sec-fetch-mode: cors' \\\r\n  -H 'sec-fetch-site: same-origin' \\\r\n  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36' \\\r\n  -H 'x-b3-spanid: 0862be4ad4536181' \\\r\n  -H 'x-b3-traceid: 66be6b66cf4957f43f87466d621e2661' \\\r\n  -H 'x-trello-client-version: build-207310' \\\r\n  -H 'x-trello-task: create-card/list' \\\r\n  -H 'x-trello-traceid: 66be6b66cf4957f43f87466d621e2661' \\\r\n  --data-raw '{\"idList\":\"66be6356222ecaed2669511a\",\"name\":\"x\",\"closed\":false,\"isTemplate\":false,\"pos\":65536,\"cardRole\":null,\"dsc\":\"cc5a16c8d137a8bacf8f418cb45849f86f5b94b506659bff5de2786a0c0d3e94\"}'"
+					},
+					"response": []
+				},
+				{
+					"name": "Working on Task",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"SetCardId\", function () {\r",
+									"\r",
+									"// Parse the response body as JSON\r",
+									"var responseBody = pm.response.json();\r",
+									"\r",
+									"// Extract the \"id\" from the response body\r",
+									"var cardId = responseBody.id; // Changed variable name from listId to cardId\r",
+									"\r",
+									"// Set the \"cardId\" as a variable for later use\r",
+									"pm.environment.set(\"WorkingOnTaskCardId\", cardId); // Changed variable name from id to cardId\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "*/*"
+							},
+							{
+								"key": "accept-language",
+								"value": "tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7"
+							},
+							{
+								"key": "cache-control",
+								"value": "no-cache"
+							},
+							{
+								"key": "content-type",
+								"value": "application/json"
+							},
+							{
+								"key": "cookie",
+								"value": "atlCohort={\"bucketAll\":{\"bucketedAtUTC\":\"2024-08-15T14:37:49.392Z\",\"version\":\"2\",\"index\":15,\"bucketId\":0}}; ajs_anonymous_id=%22c51ec516-2968-5d60-f521-a198e66fd18f%22; dsc=cc5a16c8d137a8bacf8f418cb45849f86f5b94b506659bff5de2786a0c0d3e94; atl_xid.ts=1723732672210; atl_xid.current=%5B%7B%22type%22%3A%22xc%22%2C%22value%22%3A%22c19711a7-7d3d-49f9-87e3-4d1d06191efb%22%2C%22createdAt%22%3A%222024-04-29T14%3A07%3A47.071Z%22%7D%5D; _otPreferencesSynced=; OptanonConsent=isGpcEnabled=0&datestamp=Thu+Aug+15+2024+17%3A37%3A55+GMT%2B0300+(GMT%2B03%3A00)&version=202407.1.0&browserGpcFlag=0&isIABGlobal=false&identifierType=Cookie+Unique+Id&hosts=&consentId=56d07b6c-e313-47c8-a23a-bd43b88d11a9&interactionCount=1&isAnonUser=1&landingPath=https%3A%2F%2Ftrello.com%2F&groups=1%3A1%2C2%3A1%2C3%3A1%2C4%3A0; atlassian.account.xsrf.token=500c79c1-5a8b-43e0-afb7-f8b9e0431f40; loggedIn=1; lang=tr-TR; idMember=66be12f0a4ce3e80d1df2d1b; aaId=712020%3Ac7978f6c-4d43-471f-a41d-ee73ad45ac2e; hasAccount=atlassian; atl-bsc-consent-token-fallback=002000001000; __cid=DQlNUOvbULa7SoOGkLHXvem7tCuWjdyDICeTnjcj7OwOcsqAcwEfHicenI4OPq2aHSzfaiNpmuN87z_JJlQLnCt5lJ5cQvfTTFzx8k9Ht6sNFri2dE_2-kxR675tcrivEwiopQNx8fAVEqO-WxCstwNn6O5PQ8_7QW3x6gwTq6kNFa6-C23Qym5qtL5PT_P7A2H9_UhJsb5gTurxTkO3rxERtq4NFrauA3X5-EJU8bEWFa-wEBD0lkJA_KcbH62rVCWfFSOykP0REKz_G0D8Andn1tlvY7i2akjs-08KuNdNUv3yC3SxvmtiuNlRR-j2SkXrvhUUqL4LFuCuExaoqxoXrrcDYvHsRkXsrWcXqb5VVcerfBa47lB5rcETCrjaEGKprwqCi64SCKivDRehqRMGqKwZFqikExY3liOTuVuSLlOe8CdFHXXBmHUg0cVbiJMQYSFuWJ5LJpieIyaYniMmmJ4jJpieIyaYnplwIshjJtjeIyaYnmNm2N5jZiuekCYuOI-KXFpNJlQSay-YniMmmJ4iJmc; atl-bsc-current-locale=TR-16; atl-bsc-consent-token=002111001000; atl-bsc-show-banner=0; cloud.session.token=eyJraWQiOiJzZXNzaW9uLXNlcnZpY2UvcHJvZC0xNTkyODU4Mzk0IiwiYWxnIjoiUlMyNTYifQ.eyJhc3NvY2lhdGlvbnMiOltdLCJzdWIiOiI3MTIwMjA6Yzc5NzhmNmMtNGQ0My00NzFmLWE0MWQtZWU3M2FkNDVhYzJlIiwiZW1haWxEb21haW4iOiJnbWFpbC5jb20iLCJpbXBlcnNvbmF0aW9uIjpbXSwiY3JlYXRlZCI6MTcyMzczMjY5NSwicmVmcmVzaFRpbWVvdXQiOjE3MjM3NTU5NDMsInZlcmlmaWVkIjp0cnVlLCJpc3MiOiJzZXNzaW9uLXNlcnZpY2UiLCJzZXNzaW9uSWQiOiI0ZTk3NDRmZi0zOTc2LTQxMzYtYjk4NS1lNzUzOTExOWNlZTkiLCJzdGVwVXBzIjpbXSwiYXVkIjoiYXRsYXNzaWFuIiwibmJmIjoxNzIzNzU1MzQzLCJleHAiOjE3MjYzNDczNDMsImlhdCI6MTcyMzc1NTM0MywiZW1haWwiOiI5NHNhZGVjZXV5Z3VsYW1hbGFyMTlAZ21haWwuY29tIiwianRpIjoiNGU5NzQ0ZmYtMzk3Ni00MTM2LWI5ODUtZTc1MzkxMTljZWU5In0.b2hugF7plXTmaPSEA_j_9Pa6OA8lORQkQcfaMXMsg5sbZvfNJHnMenz5vaBuBsqJcsClrh0GmXGRpfp8rHmE5THFmeNvuC2SCU0cQiVZffhr_jq56p7C6VcfeN-IMiG8PEJK11aeM0uspZl54zTl6Aid1FR7OTu_deXR-2myBq5Q4zIIMRn23sFO1TTr9wd1vfyg2E9hfVHM0PB_DCsQAWQlyWSa0dyuwxlWlXgitnZHGgUOQyw7FPY-qvhtxdne4jFI5Dz3T2EwBW9-1WL2i3naXBozexK7IOqjIFV4W3Ri9OHpI3zwlhje2hxgPj1VtOF13nL1pwRBzj4dcvs9-w"
+							},
+							{
+								"key": "origin",
+								"value": "https://trello.com"
+							},
+							{
+								"key": "pragma",
+								"value": "no-cache"
+							},
+							{
+								"key": "priority",
+								"value": "u=1, i"
+							},
+							{
+								"key": "referer",
+								"value": "https://trello.com/b/yp0lDCX8/vaultn"
+							},
+							{
+								"key": "sec-ch-ua",
+								"value": "\"Not)A;Brand\";v=\"99\", \"Google Chrome\";v=\"127\", \"Chromium\";v=\"127\""
+							},
+							{
+								"key": "sec-ch-ua-mobile",
+								"value": "?0"
+							},
+							{
+								"key": "sec-ch-ua-platform",
+								"value": "\"Windows\""
+							},
+							{
+								"key": "sec-fetch-dest",
+								"value": "empty"
+							},
+							{
+								"key": "sec-fetch-mode",
+								"value": "cors"
+							},
+							{
+								"key": "sec-fetch-site",
+								"value": "same-origin"
+							},
+							{
+								"key": "user-agent",
+								"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36"
+							},
+							{
+								"key": "x-b3-spanid",
+								"value": "0862be4ad4536181"
+							},
+							{
+								"key": "x-b3-traceid",
+								"value": "66be6b66cf4957f43f87466d621e2661"
+							},
+							{
+								"key": "x-trello-client-version",
+								"value": "build-207310"
+							},
+							{
+								"key": "x-trello-task",
+								"value": "create-card/list"
+							},
+							{
+								"key": "x-trello-traceid",
+								"value": "66be6b66cf4957f43f87466d621e2661"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idList\": \"{{ToDolistId}}\",\r\n    \"name\": \"Working on Task\",\r\n    \"closed\": false,\r\n    \"isTemplate\": false,\r\n    \"pos\": 65536,\r\n    \"cardRole\": null,\r\n    \"dsc\": \"cc5a16c8d137a8bacf8f418cb45849f86f5b94b506659bff5de2786a0c0d3e94\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/cards",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"cards"
+							]
+						},
+						"description": "Generated from cURL: curl 'https://trello.com/1/cards' \\\r\n  -H 'accept: */*' \\\r\n  -H 'accept-language: tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7' \\\r\n  -H 'cache-control: no-cache' \\\r\n  -H 'content-type: application/json' \\\r\n  -H 'cookie: atlCohort={\"bucketAll\":{\"bucketedAtUTC\":\"2024-08-15T14:37:49.392Z\",\"version\":\"2\",\"index\":15,\"bucketId\":0}}; ajs_anonymous_id=%22c51ec516-2968-5d60-f521-a198e66fd18f%22; dsc=cc5a16c8d137a8bacf8f418cb45849f86f5b94b506659bff5de2786a0c0d3e94; atl_xid.ts=1723732672210; atl_xid.current=%5B%7B%22type%22%3A%22xc%22%2C%22value%22%3A%22c19711a7-7d3d-49f9-87e3-4d1d06191efb%22%2C%22createdAt%22%3A%222024-04-29T14%3A07%3A47.071Z%22%7D%5D; _otPreferencesSynced=; OptanonConsent=isGpcEnabled=0&datestamp=Thu+Aug+15+2024+17%3A37%3A55+GMT%2B0300+(GMT%2B03%3A00)&version=202407.1.0&browserGpcFlag=0&isIABGlobal=false&identifierType=Cookie+Unique+Id&hosts=&consentId=56d07b6c-e313-47c8-a23a-bd43b88d11a9&interactionCount=1&isAnonUser=1&landingPath=https%3A%2F%2Ftrello.com%2F&groups=1%3A1%2C2%3A1%2C3%3A1%2C4%3A0; atlassian.account.xsrf.token=500c79c1-5a8b-43e0-afb7-f8b9e0431f40; loggedIn=1; lang=tr-TR; idMember=66be12f0a4ce3e80d1df2d1b; aaId=712020%3Ac7978f6c-4d43-471f-a41d-ee73ad45ac2e; hasAccount=atlassian; atl-bsc-consent-token-fallback=002000001000; __cid=DQlNUOvbULa7SoOGkLHXvem7tCuWjdyDICeTnjcj7OwOcsqAcwEfHicenI4OPq2aHSzfaiNpmuN87z_JJlQLnCt5lJ5cQvfTTFzx8k9Ht6sNFri2dE_2-kxR675tcrivEwiopQNx8fAVEqO-WxCstwNn6O5PQ8_7QW3x6gwTq6kNFa6-C23Qym5qtL5PT_P7A2H9_UhJsb5gTurxTkO3rxERtq4NFrauA3X5-EJU8bEWFa-wEBD0lkJA_KcbH62rVCWfFSOykP0REKz_G0D8Andn1tlvY7i2akjs-08KuNdNUv3yC3SxvmtiuNlRR-j2SkXrvhUUqL4LFuCuExaoqxoXrrcDYvHsRkXsrWcXqb5VVcerfBa47lB5rcETCrjaEGKprwqCi64SCKivDRehqRMGqKwZFqikExY3liOTuVuSLlOe8CdFHXXBmHUg0cVbiJMQYSFuWJ5LJpieIyaYniMmmJ4jJpieIyaYnplwIshjJtjeIyaYnmNm2N5jZiuekCYuOI-KXFpNJlQSay-YniMmmJ4iJmc; atl-bsc-current-locale=TR-16; atl-bsc-consent-token=002111001000; atl-bsc-show-banner=0; cloud.session.token=eyJraWQiOiJzZXNzaW9uLXNlcnZpY2UvcHJvZC0xNTkyODU4Mzk0IiwiYWxnIjoiUlMyNTYifQ.eyJhc3NvY2lhdGlvbnMiOltdLCJzdWIiOiI3MTIwMjA6Yzc5NzhmNmMtNGQ0My00NzFmLWE0MWQtZWU3M2FkNDVhYzJlIiwiZW1haWxEb21haW4iOiJnbWFpbC5jb20iLCJpbXBlcnNvbmF0aW9uIjpbXSwiY3JlYXRlZCI6MTcyMzczMjY5NSwicmVmcmVzaFRpbWVvdXQiOjE3MjM3NTU5NDMsInZlcmlmaWVkIjp0cnVlLCJpc3MiOiJzZXNzaW9uLXNlcnZpY2UiLCJzZXNzaW9uSWQiOiI0ZTk3NDRmZi0zOTc2LTQxMzYtYjk4NS1lNzUzOTExOWNlZTkiLCJzdGVwVXBzIjpbXSwiYXVkIjoiYXRsYXNzaWFuIiwibmJmIjoxNzIzNzU1MzQzLCJleHAiOjE3MjYzNDczNDMsImlhdCI6MTcyMzc1NTM0MywiZW1haWwiOiI5NHNhZGVjZXV5Z3VsYW1hbGFyMTlAZ21haWwuY29tIiwianRpIjoiNGU5NzQ0ZmYtMzk3Ni00MTM2LWI5ODUtZTc1MzkxMTljZWU5In0.b2hugF7plXTmaPSEA_j_9Pa6OA8lORQkQcfaMXMsg5sbZvfNJHnMenz5vaBuBsqJcsClrh0GmXGRpfp8rHmE5THFmeNvuC2SCU0cQiVZffhr_jq56p7C6VcfeN-IMiG8PEJK11aeM0uspZl54zTl6Aid1FR7OTu_deXR-2myBq5Q4zIIMRn23sFO1TTr9wd1vfyg2E9hfVHM0PB_DCsQAWQlyWSa0dyuwxlWlXgitnZHGgUOQyw7FPY-qvhtxdne4jFI5Dz3T2EwBW9-1WL2i3naXBozexK7IOqjIFV4W3Ri9OHpI3zwlhje2hxgPj1VtOF13nL1pwRBzj4dcvs9-w' \\\r\n  -H 'origin: https://trello.com' \\\r\n  -H 'pragma: no-cache' \\\r\n  -H 'priority: u=1, i' \\\r\n  -H 'referer: https://trello.com/b/yp0lDCX8/vaultn' \\\r\n  -H 'sec-ch-ua: \"Not)A;Brand\";v=\"99\", \"Google Chrome\";v=\"127\", \"Chromium\";v=\"127\"' \\\r\n  -H 'sec-ch-ua-mobile: ?0' \\\r\n  -H 'sec-ch-ua-platform: \"Windows\"' \\\r\n  -H 'sec-fetch-dest: empty' \\\r\n  -H 'sec-fetch-mode: cors' \\\r\n  -H 'sec-fetch-site: same-origin' \\\r\n  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36' \\\r\n  -H 'x-b3-spanid: 0862be4ad4536181' \\\r\n  -H 'x-b3-traceid: 66be6b66cf4957f43f87466d621e2661' \\\r\n  -H 'x-trello-client-version: build-207310' \\\r\n  -H 'x-trello-task: create-card/list' \\\r\n  -H 'x-trello-traceid: 66be6b66cf4957f43f87466d621e2661' \\\r\n  --data-raw '{\"idList\":\"66be6356222ecaed2669511a\",\"name\":\"x\",\"closed\":false,\"isTemplate\":false,\"pos\":65536,\"cardRole\":null,\"dsc\":\"cc5a16c8d137a8bacf8f418cb45849f86f5b94b506659bff5de2786a0c0d3e94\"}'"
+					},
+					"response": []
+				},
+				{
+					"name": "UI Automation",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "*/*"
+							},
+							{
+								"key": "accept-language",
+								"value": "tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7"
+							},
+							{
+								"key": "cache-control",
+								"value": "no-cache"
+							},
+							{
+								"key": "content-type",
+								"value": "application/json"
+							},
+							{
+								"key": "cookie",
+								"value": "atlCohort={\"bucketAll\":{\"bucketedAtUTC\":\"2024-08-15T14:37:49.392Z\",\"version\":\"2\",\"index\":15,\"bucketId\":0}}; ajs_anonymous_id=%22c51ec516-2968-5d60-f521-a198e66fd18f%22; dsc=cc5a16c8d137a8bacf8f418cb45849f86f5b94b506659bff5de2786a0c0d3e94; atl_xid.ts=1723732672210; atl_xid.current=%5B%7B%22type%22%3A%22xc%22%2C%22value%22%3A%22c19711a7-7d3d-49f9-87e3-4d1d06191efb%22%2C%22createdAt%22%3A%222024-04-29T14%3A07%3A47.071Z%22%7D%5D; _otPreferencesSynced=; OptanonConsent=isGpcEnabled=0&datestamp=Thu+Aug+15+2024+17%3A37%3A55+GMT%2B0300+(GMT%2B03%3A00)&version=202407.1.0&browserGpcFlag=0&isIABGlobal=false&identifierType=Cookie+Unique+Id&hosts=&consentId=56d07b6c-e313-47c8-a23a-bd43b88d11a9&interactionCount=1&isAnonUser=1&landingPath=https%3A%2F%2Ftrello.com%2F&groups=1%3A1%2C2%3A1%2C3%3A1%2C4%3A0; atlassian.account.xsrf.token=500c79c1-5a8b-43e0-afb7-f8b9e0431f40; loggedIn=1; lang=tr-TR; idMember=66be12f0a4ce3e80d1df2d1b; aaId=712020%3Ac7978f6c-4d43-471f-a41d-ee73ad45ac2e; hasAccount=atlassian; atl-bsc-consent-token-fallback=002000001000; __cid=DQlNUOvbULa7SoOGkLHXvem7tCuWjdyDICeTnjcj7OwOcsqAcwEfHicenI4OPq2aHSzfaiNpmuN87z_JJlQLnCt5lJ5cQvfTTFzx8k9Ht6sNFri2dE_2-kxR675tcrivEwiopQNx8fAVEqO-WxCstwNn6O5PQ8_7QW3x6gwTq6kNFa6-C23Qym5qtL5PT_P7A2H9_UhJsb5gTurxTkO3rxERtq4NFrauA3X5-EJU8bEWFa-wEBD0lkJA_KcbH62rVCWfFSOykP0REKz_G0D8Andn1tlvY7i2akjs-08KuNdNUv3yC3SxvmtiuNlRR-j2SkXrvhUUqL4LFuCuExaoqxoXrrcDYvHsRkXsrWcXqb5VVcerfBa47lB5rcETCrjaEGKprwqCi64SCKivDRehqRMGqKwZFqikExY3liOTuVuSLlOe8CdFHXXBmHUg0cVbiJMQYSFuWJ5LJpieIyaYniMmmJ4jJpieIyaYnplwIshjJtjeIyaYnmNm2N5jZiuekCYuOI-KXFpNJlQSay-YniMmmJ4iJmc; atl-bsc-current-locale=TR-16; atl-bsc-consent-token=002111001000; atl-bsc-show-banner=0; cloud.session.token=eyJraWQiOiJzZXNzaW9uLXNlcnZpY2UvcHJvZC0xNTkyODU4Mzk0IiwiYWxnIjoiUlMyNTYifQ.eyJhc3NvY2lhdGlvbnMiOltdLCJzdWIiOiI3MTIwMjA6Yzc5NzhmNmMtNGQ0My00NzFmLWE0MWQtZWU3M2FkNDVhYzJlIiwiZW1haWxEb21haW4iOiJnbWFpbC5jb20iLCJpbXBlcnNvbmF0aW9uIjpbXSwiY3JlYXRlZCI6MTcyMzczMjY5NSwicmVmcmVzaFRpbWVvdXQiOjE3MjM3NTU5NDMsInZlcmlmaWVkIjp0cnVlLCJpc3MiOiJzZXNzaW9uLXNlcnZpY2UiLCJzZXNzaW9uSWQiOiI0ZTk3NDRmZi0zOTc2LTQxMzYtYjk4NS1lNzUzOTExOWNlZTkiLCJzdGVwVXBzIjpbXSwiYXVkIjoiYXRsYXNzaWFuIiwibmJmIjoxNzIzNzU1MzQzLCJleHAiOjE3MjYzNDczNDMsImlhdCI6MTcyMzc1NTM0MywiZW1haWwiOiI5NHNhZGVjZXV5Z3VsYW1hbGFyMTlAZ21haWwuY29tIiwianRpIjoiNGU5NzQ0ZmYtMzk3Ni00MTM2LWI5ODUtZTc1MzkxMTljZWU5In0.b2hugF7plXTmaPSEA_j_9Pa6OA8lORQkQcfaMXMsg5sbZvfNJHnMenz5vaBuBsqJcsClrh0GmXGRpfp8rHmE5THFmeNvuC2SCU0cQiVZffhr_jq56p7C6VcfeN-IMiG8PEJK11aeM0uspZl54zTl6Aid1FR7OTu_deXR-2myBq5Q4zIIMRn23sFO1TTr9wd1vfyg2E9hfVHM0PB_DCsQAWQlyWSa0dyuwxlWlXgitnZHGgUOQyw7FPY-qvhtxdne4jFI5Dz3T2EwBW9-1WL2i3naXBozexK7IOqjIFV4W3Ri9OHpI3zwlhje2hxgPj1VtOF13nL1pwRBzj4dcvs9-w"
+							},
+							{
+								"key": "origin",
+								"value": "https://trello.com"
+							},
+							{
+								"key": "pragma",
+								"value": "no-cache"
+							},
+							{
+								"key": "priority",
+								"value": "u=1, i"
+							},
+							{
+								"key": "referer",
+								"value": "https://trello.com/b/yp0lDCX8/vaultn"
+							},
+							{
+								"key": "sec-ch-ua",
+								"value": "\"Not)A;Brand\";v=\"99\", \"Google Chrome\";v=\"127\", \"Chromium\";v=\"127\""
+							},
+							{
+								"key": "sec-ch-ua-mobile",
+								"value": "?0"
+							},
+							{
+								"key": "sec-ch-ua-platform",
+								"value": "\"Windows\""
+							},
+							{
+								"key": "sec-fetch-dest",
+								"value": "empty"
+							},
+							{
+								"key": "sec-fetch-mode",
+								"value": "cors"
+							},
+							{
+								"key": "sec-fetch-site",
+								"value": "same-origin"
+							},
+							{
+								"key": "user-agent",
+								"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36"
+							},
+							{
+								"key": "x-b3-spanid",
+								"value": "0862be4ad4536181"
+							},
+							{
+								"key": "x-b3-traceid",
+								"value": "66be6b66cf4957f43f87466d621e2661"
+							},
+							{
+								"key": "x-trello-client-version",
+								"value": "build-207310"
+							},
+							{
+								"key": "x-trello-task",
+								"value": "create-card/list"
+							},
+							{
+								"key": "x-trello-traceid",
+								"value": "66be6b66cf4957f43f87466d621e2661"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "t",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idList\": \"{{BackloglistId}}\",\r\n    \"name\": \"UI Automation\",\r\n    \"closed\": false,\r\n    \"isTemplate\": false,\r\n    \"pos\": 65536,\r\n    \"cardRole\": null,\r\n    \"dsc\": \"cc5a16c8d137a8bacf8f418cb45849f86f5b94b506659bff5de2786a0c0d3e94\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/cards",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"cards"
+							]
+						},
+						"description": "Generated from cURL: curl 'https://trello.com/1/cards' \\\r\n  -H 'accept: */*' \\\r\n  -H 'accept-language: tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7' \\\r\n  -H 'cache-control: no-cache' \\\r\n  -H 'content-type: application/json' \\\r\n  -H 'cookie: atlCohort={\"bucketAll\":{\"bucketedAtUTC\":\"2024-08-15T14:37:49.392Z\",\"version\":\"2\",\"index\":15,\"bucketId\":0}}; ajs_anonymous_id=%22c51ec516-2968-5d60-f521-a198e66fd18f%22; dsc=cc5a16c8d137a8bacf8f418cb45849f86f5b94b506659bff5de2786a0c0d3e94; atl_xid.ts=1723732672210; atl_xid.current=%5B%7B%22type%22%3A%22xc%22%2C%22value%22%3A%22c19711a7-7d3d-49f9-87e3-4d1d06191efb%22%2C%22createdAt%22%3A%222024-04-29T14%3A07%3A47.071Z%22%7D%5D; _otPreferencesSynced=; OptanonConsent=isGpcEnabled=0&datestamp=Thu+Aug+15+2024+17%3A37%3A55+GMT%2B0300+(GMT%2B03%3A00)&version=202407.1.0&browserGpcFlag=0&isIABGlobal=false&identifierType=Cookie+Unique+Id&hosts=&consentId=56d07b6c-e313-47c8-a23a-bd43b88d11a9&interactionCount=1&isAnonUser=1&landingPath=https%3A%2F%2Ftrello.com%2F&groups=1%3A1%2C2%3A1%2C3%3A1%2C4%3A0; atlassian.account.xsrf.token=500c79c1-5a8b-43e0-afb7-f8b9e0431f40; loggedIn=1; lang=tr-TR; idMember=66be12f0a4ce3e80d1df2d1b; aaId=712020%3Ac7978f6c-4d43-471f-a41d-ee73ad45ac2e; hasAccount=atlassian; atl-bsc-consent-token-fallback=002000001000; __cid=DQlNUOvbULa7SoOGkLHXvem7tCuWjdyDICeTnjcj7OwOcsqAcwEfHicenI4OPq2aHSzfaiNpmuN87z_JJlQLnCt5lJ5cQvfTTFzx8k9Ht6sNFri2dE_2-kxR675tcrivEwiopQNx8fAVEqO-WxCstwNn6O5PQ8_7QW3x6gwTq6kNFa6-C23Qym5qtL5PT_P7A2H9_UhJsb5gTurxTkO3rxERtq4NFrauA3X5-EJU8bEWFa-wEBD0lkJA_KcbH62rVCWfFSOykP0REKz_G0D8Andn1tlvY7i2akjs-08KuNdNUv3yC3SxvmtiuNlRR-j2SkXrvhUUqL4LFuCuExaoqxoXrrcDYvHsRkXsrWcXqb5VVcerfBa47lB5rcETCrjaEGKprwqCi64SCKivDRehqRMGqKwZFqikExY3liOTuVuSLlOe8CdFHXXBmHUg0cVbiJMQYSFuWJ5LJpieIyaYniMmmJ4jJpieIyaYnplwIshjJtjeIyaYnmNm2N5jZiuekCYuOI-KXFpNJlQSay-YniMmmJ4iJmc; atl-bsc-current-locale=TR-16; atl-bsc-consent-token=002111001000; atl-bsc-show-banner=0; cloud.session.token=eyJraWQiOiJzZXNzaW9uLXNlcnZpY2UvcHJvZC0xNTkyODU4Mzk0IiwiYWxnIjoiUlMyNTYifQ.eyJhc3NvY2lhdGlvbnMiOltdLCJzdWIiOiI3MTIwMjA6Yzc5NzhmNmMtNGQ0My00NzFmLWE0MWQtZWU3M2FkNDVhYzJlIiwiZW1haWxEb21haW4iOiJnbWFpbC5jb20iLCJpbXBlcnNvbmF0aW9uIjpbXSwiY3JlYXRlZCI6MTcyMzczMjY5NSwicmVmcmVzaFRpbWVvdXQiOjE3MjM3NTU5NDMsInZlcmlmaWVkIjp0cnVlLCJpc3MiOiJzZXNzaW9uLXNlcnZpY2UiLCJzZXNzaW9uSWQiOiI0ZTk3NDRmZi0zOTc2LTQxMzYtYjk4NS1lNzUzOTExOWNlZTkiLCJzdGVwVXBzIjpbXSwiYXVkIjoiYXRsYXNzaWFuIiwibmJmIjoxNzIzNzU1MzQzLCJleHAiOjE3MjYzNDczNDMsImlhdCI6MTcyMzc1NTM0MywiZW1haWwiOiI5NHNhZGVjZXV5Z3VsYW1hbGFyMTlAZ21haWwuY29tIiwianRpIjoiNGU5NzQ0ZmYtMzk3Ni00MTM2LWI5ODUtZTc1MzkxMTljZWU5In0.b2hugF7plXTmaPSEA_j_9Pa6OA8lORQkQcfaMXMsg5sbZvfNJHnMenz5vaBuBsqJcsClrh0GmXGRpfp8rHmE5THFmeNvuC2SCU0cQiVZffhr_jq56p7C6VcfeN-IMiG8PEJK11aeM0uspZl54zTl6Aid1FR7OTu_deXR-2myBq5Q4zIIMRn23sFO1TTr9wd1vfyg2E9hfVHM0PB_DCsQAWQlyWSa0dyuwxlWlXgitnZHGgUOQyw7FPY-qvhtxdne4jFI5Dz3T2EwBW9-1WL2i3naXBozexK7IOqjIFV4W3Ri9OHpI3zwlhje2hxgPj1VtOF13nL1pwRBzj4dcvs9-w' \\\r\n  -H 'origin: https://trello.com' \\\r\n  -H 'pragma: no-cache' \\\r\n  -H 'priority: u=1, i' \\\r\n  -H 'referer: https://trello.com/b/yp0lDCX8/vaultn' \\\r\n  -H 'sec-ch-ua: \"Not)A;Brand\";v=\"99\", \"Google Chrome\";v=\"127\", \"Chromium\";v=\"127\"' \\\r\n  -H 'sec-ch-ua-mobile: ?0' \\\r\n  -H 'sec-ch-ua-platform: \"Windows\"' \\\r\n  -H 'sec-fetch-dest: empty' \\\r\n  -H 'sec-fetch-mode: cors' \\\r\n  -H 'sec-fetch-site: same-origin' \\\r\n  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36' \\\r\n  -H 'x-b3-spanid: 0862be4ad4536181' \\\r\n  -H 'x-b3-traceid: 66be6b66cf4957f43f87466d621e2661' \\\r\n  -H 'x-trello-client-version: build-207310' \\\r\n  -H 'x-trello-task: create-card/list' \\\r\n  -H 'x-trello-traceid: 66be6b66cf4957f43f87466d621e2661' \\\r\n  --data-raw '{\"idList\":\"66be6356222ecaed2669511a\",\"name\":\"x\",\"closed\":false,\"isTemplate\":false,\"pos\":65536,\"cardRole\":null,\"dsc\":\"cc5a16c8d137a8bacf8f418cb45849f86f5b94b506659bff5de2786a0c0d3e94\"}'"
+					},
+					"response": []
+				},
+				{
+					"name": "Writing Test Scenarios",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "*/*"
+							},
+							{
+								"key": "accept-language",
+								"value": "tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7"
+							},
+							{
+								"key": "cache-control",
+								"value": "no-cache"
+							},
+							{
+								"key": "content-type",
+								"value": "application/json"
+							},
+							{
+								"key": "cookie",
+								"value": "atlCohort={\"bucketAll\":{\"bucketedAtUTC\":\"2024-08-15T14:37:49.392Z\",\"version\":\"2\",\"index\":15,\"bucketId\":0}}; ajs_anonymous_id=%22c51ec516-2968-5d60-f521-a198e66fd18f%22; dsc=cc5a16c8d137a8bacf8f418cb45849f86f5b94b506659bff5de2786a0c0d3e94; atl_xid.ts=1723732672210; atl_xid.current=%5B%7B%22type%22%3A%22xc%22%2C%22value%22%3A%22c19711a7-7d3d-49f9-87e3-4d1d06191efb%22%2C%22createdAt%22%3A%222024-04-29T14%3A07%3A47.071Z%22%7D%5D; _otPreferencesSynced=; OptanonConsent=isGpcEnabled=0&datestamp=Thu+Aug+15+2024+17%3A37%3A55+GMT%2B0300+(GMT%2B03%3A00)&version=202407.1.0&browserGpcFlag=0&isIABGlobal=false&identifierType=Cookie+Unique+Id&hosts=&consentId=56d07b6c-e313-47c8-a23a-bd43b88d11a9&interactionCount=1&isAnonUser=1&landingPath=https%3A%2F%2Ftrello.com%2F&groups=1%3A1%2C2%3A1%2C3%3A1%2C4%3A0; atlassian.account.xsrf.token=500c79c1-5a8b-43e0-afb7-f8b9e0431f40; loggedIn=1; lang=tr-TR; idMember=66be12f0a4ce3e80d1df2d1b; aaId=712020%3Ac7978f6c-4d43-471f-a41d-ee73ad45ac2e; hasAccount=atlassian; atl-bsc-consent-token-fallback=002000001000; __cid=DQlNUOvbULa7SoOGkLHXvem7tCuWjdyDICeTnjcj7OwOcsqAcwEfHicenI4OPq2aHSzfaiNpmuN87z_JJlQLnCt5lJ5cQvfTTFzx8k9Ht6sNFri2dE_2-kxR675tcrivEwiopQNx8fAVEqO-WxCstwNn6O5PQ8_7QW3x6gwTq6kNFa6-C23Qym5qtL5PT_P7A2H9_UhJsb5gTurxTkO3rxERtq4NFrauA3X5-EJU8bEWFa-wEBD0lkJA_KcbH62rVCWfFSOykP0REKz_G0D8Andn1tlvY7i2akjs-08KuNdNUv3yC3SxvmtiuNlRR-j2SkXrvhUUqL4LFuCuExaoqxoXrrcDYvHsRkXsrWcXqb5VVcerfBa47lB5rcETCrjaEGKprwqCi64SCKivDRehqRMGqKwZFqikExY3liOTuVuSLlOe8CdFHXXBmHUg0cVbiJMQYSFuWJ5LJpieIyaYniMmmJ4jJpieIyaYnplwIshjJtjeIyaYnmNm2N5jZiuekCYuOI-KXFpNJlQSay-YniMmmJ4iJmc; atl-bsc-current-locale=TR-16; atl-bsc-consent-token=002111001000; atl-bsc-show-banner=0; cloud.session.token=eyJraWQiOiJzZXNzaW9uLXNlcnZpY2UvcHJvZC0xNTkyODU4Mzk0IiwiYWxnIjoiUlMyNTYifQ.eyJhc3NvY2lhdGlvbnMiOltdLCJzdWIiOiI3MTIwMjA6Yzc5NzhmNmMtNGQ0My00NzFmLWE0MWQtZWU3M2FkNDVhYzJlIiwiZW1haWxEb21haW4iOiJnbWFpbC5jb20iLCJpbXBlcnNvbmF0aW9uIjpbXSwiY3JlYXRlZCI6MTcyMzczMjY5NSwicmVmcmVzaFRpbWVvdXQiOjE3MjM3NTU5NDMsInZlcmlmaWVkIjp0cnVlLCJpc3MiOiJzZXNzaW9uLXNlcnZpY2UiLCJzZXNzaW9uSWQiOiI0ZTk3NDRmZi0zOTc2LTQxMzYtYjk4NS1lNzUzOTExOWNlZTkiLCJzdGVwVXBzIjpbXSwiYXVkIjoiYXRsYXNzaWFuIiwibmJmIjoxNzIzNzU1MzQzLCJleHAiOjE3MjYzNDczNDMsImlhdCI6MTcyMzc1NTM0MywiZW1haWwiOiI5NHNhZGVjZXV5Z3VsYW1hbGFyMTlAZ21haWwuY29tIiwianRpIjoiNGU5NzQ0ZmYtMzk3Ni00MTM2LWI5ODUtZTc1MzkxMTljZWU5In0.b2hugF7plXTmaPSEA_j_9Pa6OA8lORQkQcfaMXMsg5sbZvfNJHnMenz5vaBuBsqJcsClrh0GmXGRpfp8rHmE5THFmeNvuC2SCU0cQiVZffhr_jq56p7C6VcfeN-IMiG8PEJK11aeM0uspZl54zTl6Aid1FR7OTu_deXR-2myBq5Q4zIIMRn23sFO1TTr9wd1vfyg2E9hfVHM0PB_DCsQAWQlyWSa0dyuwxlWlXgitnZHGgUOQyw7FPY-qvhtxdne4jFI5Dz3T2EwBW9-1WL2i3naXBozexK7IOqjIFV4W3Ri9OHpI3zwlhje2hxgPj1VtOF13nL1pwRBzj4dcvs9-w"
+							},
+							{
+								"key": "origin",
+								"value": "https://trello.com"
+							},
+							{
+								"key": "pragma",
+								"value": "no-cache"
+							},
+							{
+								"key": "priority",
+								"value": "u=1, i"
+							},
+							{
+								"key": "referer",
+								"value": "https://trello.com/b/yp0lDCX8/vaultn"
+							},
+							{
+								"key": "sec-ch-ua",
+								"value": "\"Not)A;Brand\";v=\"99\", \"Google Chrome\";v=\"127\", \"Chromium\";v=\"127\""
+							},
+							{
+								"key": "sec-ch-ua-mobile",
+								"value": "?0"
+							},
+							{
+								"key": "sec-ch-ua-platform",
+								"value": "\"Windows\""
+							},
+							{
+								"key": "sec-fetch-dest",
+								"value": "empty"
+							},
+							{
+								"key": "sec-fetch-mode",
+								"value": "cors"
+							},
+							{
+								"key": "sec-fetch-site",
+								"value": "same-origin"
+							},
+							{
+								"key": "user-agent",
+								"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36"
+							},
+							{
+								"key": "x-b3-spanid",
+								"value": "0862be4ad4536181"
+							},
+							{
+								"key": "x-b3-traceid",
+								"value": "66be6b66cf4957f43f87466d621e2661"
+							},
+							{
+								"key": "x-trello-client-version",
+								"value": "build-207310"
+							},
+							{
+								"key": "x-trello-task",
+								"value": "create-card/list"
+							},
+							{
+								"key": "x-trello-traceid",
+								"value": "66be6b66cf4957f43f87466d621e2661"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "t",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idList\": \"{{BackloglistId}}\",\r\n    \"name\": \"Writing Test Scenarios\",\r\n    \"closed\": false,\r\n    \"isTemplate\": false,\r\n    \"pos\": 65536,\r\n    \"cardRole\": null,\r\n    \"dsc\": \"cc5a16c8d137a8bacf8f418cb45849f86f5b94b506659bff5de2786a0c0d3e94\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/cards",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"cards"
+							]
+						},
+						"description": "Generated from cURL: curl 'https://trello.com/1/cards' \\\r\n  -H 'accept: */*' \\\r\n  -H 'accept-language: tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7' \\\r\n  -H 'cache-control: no-cache' \\\r\n  -H 'content-type: application/json' \\\r\n  -H 'cookie: atlCohort={\"bucketAll\":{\"bucketedAtUTC\":\"2024-08-15T14:37:49.392Z\",\"version\":\"2\",\"index\":15,\"bucketId\":0}}; ajs_anonymous_id=%22c51ec516-2968-5d60-f521-a198e66fd18f%22; dsc=cc5a16c8d137a8bacf8f418cb45849f86f5b94b506659bff5de2786a0c0d3e94; atl_xid.ts=1723732672210; atl_xid.current=%5B%7B%22type%22%3A%22xc%22%2C%22value%22%3A%22c19711a7-7d3d-49f9-87e3-4d1d06191efb%22%2C%22createdAt%22%3A%222024-04-29T14%3A07%3A47.071Z%22%7D%5D; _otPreferencesSynced=; OptanonConsent=isGpcEnabled=0&datestamp=Thu+Aug+15+2024+17%3A37%3A55+GMT%2B0300+(GMT%2B03%3A00)&version=202407.1.0&browserGpcFlag=0&isIABGlobal=false&identifierType=Cookie+Unique+Id&hosts=&consentId=56d07b6c-e313-47c8-a23a-bd43b88d11a9&interactionCount=1&isAnonUser=1&landingPath=https%3A%2F%2Ftrello.com%2F&groups=1%3A1%2C2%3A1%2C3%3A1%2C4%3A0; atlassian.account.xsrf.token=500c79c1-5a8b-43e0-afb7-f8b9e0431f40; loggedIn=1; lang=tr-TR; idMember=66be12f0a4ce3e80d1df2d1b; aaId=712020%3Ac7978f6c-4d43-471f-a41d-ee73ad45ac2e; hasAccount=atlassian; atl-bsc-consent-token-fallback=002000001000; __cid=DQlNUOvbULa7SoOGkLHXvem7tCuWjdyDICeTnjcj7OwOcsqAcwEfHicenI4OPq2aHSzfaiNpmuN87z_JJlQLnCt5lJ5cQvfTTFzx8k9Ht6sNFri2dE_2-kxR675tcrivEwiopQNx8fAVEqO-WxCstwNn6O5PQ8_7QW3x6gwTq6kNFa6-C23Qym5qtL5PT_P7A2H9_UhJsb5gTurxTkO3rxERtq4NFrauA3X5-EJU8bEWFa-wEBD0lkJA_KcbH62rVCWfFSOykP0REKz_G0D8Andn1tlvY7i2akjs-08KuNdNUv3yC3SxvmtiuNlRR-j2SkXrvhUUqL4LFuCuExaoqxoXrrcDYvHsRkXsrWcXqb5VVcerfBa47lB5rcETCrjaEGKprwqCi64SCKivDRehqRMGqKwZFqikExY3liOTuVuSLlOe8CdFHXXBmHUg0cVbiJMQYSFuWJ5LJpieIyaYniMmmJ4jJpieIyaYnplwIshjJtjeIyaYnmNm2N5jZiuekCYuOI-KXFpNJlQSay-YniMmmJ4iJmc; atl-bsc-current-locale=TR-16; atl-bsc-consent-token=002111001000; atl-bsc-show-banner=0; cloud.session.token=eyJraWQiOiJzZXNzaW9uLXNlcnZpY2UvcHJvZC0xNTkyODU4Mzk0IiwiYWxnIjoiUlMyNTYifQ.eyJhc3NvY2lhdGlvbnMiOltdLCJzdWIiOiI3MTIwMjA6Yzc5NzhmNmMtNGQ0My00NzFmLWE0MWQtZWU3M2FkNDVhYzJlIiwiZW1haWxEb21haW4iOiJnbWFpbC5jb20iLCJpbXBlcnNvbmF0aW9uIjpbXSwiY3JlYXRlZCI6MTcyMzczMjY5NSwicmVmcmVzaFRpbWVvdXQiOjE3MjM3NTU5NDMsInZlcmlmaWVkIjp0cnVlLCJpc3MiOiJzZXNzaW9uLXNlcnZpY2UiLCJzZXNzaW9uSWQiOiI0ZTk3NDRmZi0zOTc2LTQxMzYtYjk4NS1lNzUzOTExOWNlZTkiLCJzdGVwVXBzIjpbXSwiYXVkIjoiYXRsYXNzaWFuIiwibmJmIjoxNzIzNzU1MzQzLCJleHAiOjE3MjYzNDczNDMsImlhdCI6MTcyMzc1NTM0MywiZW1haWwiOiI5NHNhZGVjZXV5Z3VsYW1hbGFyMTlAZ21haWwuY29tIiwianRpIjoiNGU5NzQ0ZmYtMzk3Ni00MTM2LWI5ODUtZTc1MzkxMTljZWU5In0.b2hugF7plXTmaPSEA_j_9Pa6OA8lORQkQcfaMXMsg5sbZvfNJHnMenz5vaBuBsqJcsClrh0GmXGRpfp8rHmE5THFmeNvuC2SCU0cQiVZffhr_jq56p7C6VcfeN-IMiG8PEJK11aeM0uspZl54zTl6Aid1FR7OTu_deXR-2myBq5Q4zIIMRn23sFO1TTr9wd1vfyg2E9hfVHM0PB_DCsQAWQlyWSa0dyuwxlWlXgitnZHGgUOQyw7FPY-qvhtxdne4jFI5Dz3T2EwBW9-1WL2i3naXBozexK7IOqjIFV4W3Ri9OHpI3zwlhje2hxgPj1VtOF13nL1pwRBzj4dcvs9-w' \\\r\n  -H 'origin: https://trello.com' \\\r\n  -H 'pragma: no-cache' \\\r\n  -H 'priority: u=1, i' \\\r\n  -H 'referer: https://trello.com/b/yp0lDCX8/vaultn' \\\r\n  -H 'sec-ch-ua: \"Not)A;Brand\";v=\"99\", \"Google Chrome\";v=\"127\", \"Chromium\";v=\"127\"' \\\r\n  -H 'sec-ch-ua-mobile: ?0' \\\r\n  -H 'sec-ch-ua-platform: \"Windows\"' \\\r\n  -H 'sec-fetch-dest: empty' \\\r\n  -H 'sec-fetch-mode: cors' \\\r\n  -H 'sec-fetch-site: same-origin' \\\r\n  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36' \\\r\n  -H 'x-b3-spanid: 0862be4ad4536181' \\\r\n  -H 'x-b3-traceid: 66be6b66cf4957f43f87466d621e2661' \\\r\n  -H 'x-trello-client-version: build-207310' \\\r\n  -H 'x-trello-task: create-card/list' \\\r\n  -H 'x-trello-traceid: 66be6b66cf4957f43f87466d621e2661' \\\r\n  --data-raw '{\"idList\":\"66be6356222ecaed2669511a\",\"name\":\"x\",\"closed\":false,\"isTemplate\":false,\"pos\":65536,\"cardRole\":null,\"dsc\":\"cc5a16c8d137a8bacf8f418cb45849f86f5b94b506659bff5de2786a0c0d3e94\"}'"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Move Cards",
+			"item": [
+				{
+					"name": "To Do to Done",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "accept",
+								"value": "*/*"
+							},
+							{
+								"key": "accept-language",
+								"value": "tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7"
+							},
+							{
+								"key": "cache-control",
+								"value": "no-cache"
+							},
+							{
+								"key": "content-type",
+								"value": "application/json"
+							},
+							{
+								"key": "cookie",
+								"value": "atlCohort={\"bucketAll\":{\"bucketedAtUTC\":\"2024-08-15T14:37:49.392Z\",\"version\":\"2\",\"index\":15,\"bucketId\":0}}; ajs_anonymous_id=%22c51ec516-2968-5d60-f521-a198e66fd18f%22; dsc=cc5a16c8d137a8bacf8f418cb45849f86f5b94b506659bff5de2786a0c0d3e94; atl_xid.ts=1723732672210; atl_xid.current=%5B%7B%22type%22%3A%22xc%22%2C%22value%22%3A%22c19711a7-7d3d-49f9-87e3-4d1d06191efb%22%2C%22createdAt%22%3A%222024-04-29T14%3A07%3A47.071Z%22%7D%5D; _otPreferencesSynced=; OptanonConsent=isGpcEnabled=0&datestamp=Thu+Aug+15+2024+17%3A37%3A55+GMT%2B0300+(GMT%2B03%3A00)&version=202407.1.0&browserGpcFlag=0&isIABGlobal=false&identifierType=Cookie+Unique+Id&hosts=&consentId=56d07b6c-e313-47c8-a23a-bd43b88d11a9&interactionCount=1&isAnonUser=1&landingPath=https%3A%2F%2Ftrello.com%2F&groups=1%3A1%2C2%3A1%2C3%3A1%2C4%3A0; atlassian.account.xsrf.token=500c79c1-5a8b-43e0-afb7-f8b9e0431f40; loggedIn=1; lang=tr-TR; idMember=66be12f0a4ce3e80d1df2d1b; aaId=712020%3Ac7978f6c-4d43-471f-a41d-ee73ad45ac2e; hasAccount=atlassian; atl-bsc-consent-token-fallback=002000001000; __cid=DQlNUOvbULa7SoOGkLHXvem7tCuWjdyDICeTnjcj7OwOcsqAcwEfHicenI4OPq2aHSzfaiNpmuN87z_JJlQLnCt5lJ5cQvfTTFzx8k9Ht6sNFri2dE_2-kxR675tcrivEwiopQNx8fAVEqO-WxCstwNn6O5PQ8_7QW3x6gwTq6kNFa6-C23Qym5qtL5PT_P7A2H9_UhJsb5gTurxTkO3rxERtq4NFrauA3X5-EJU8bEWFa-wEBD0lkJA_KcbH62rVCWfFSOykP0REKz_G0D8Andn1tlvY7i2akjs-08KuNdNUv3yC3SxvmtiuNlRR-j2SkXrvhUUqL4LFuCuExaoqxoXrrcDYvHsRkXsrWcXqb5VVcerfBa47lB5rcETCrjaEGKprwqCi64SCKivDRehqRMGqKwZFqikExY3liOTuVuSLlOe8CdFHXXBmHUg0cVbiJMQYSFuWJ5LJpieIyaYniMmmJ4jJpieIyaYnplwIshjJtjeIyaYnmNm2N5jZiuekCYuOI-KXFpNJlQSay-YniMmmJ4iJmc; cloud.session.token=eyJraWQiOiJzZXNzaW9uLXNlcnZpY2UvcHJvZC0xNTkyODU4Mzk0IiwiYWxnIjoiUlMyNTYifQ.eyJhc3NvY2lhdGlvbnMiOltdLCJzdWIiOiI3MTIwMjA6Yzc5NzhmNmMtNGQ0My00NzFmLWE0MWQtZWU3M2FkNDVhYzJlIiwiZW1haWxEb21haW4iOiJnbWFpbC5jb20iLCJpbXBlcnNvbmF0aW9uIjpbXSwiY3JlYXRlZCI6MTcyMzczMjY5NSwicmVmcmVzaFRpbWVvdXQiOjE3MjM3NTcwOTcsInZlcmlmaWVkIjp0cnVlLCJpc3MiOiJzZXNzaW9uLXNlcnZpY2UiLCJzZXNzaW9uSWQiOiI0ZTk3NDRmZi0zOTc2LTQxMzYtYjk4NS1lNzUzOTExOWNlZTkiLCJzdGVwVXBzIjpbXSwiYXVkIjoiYXRsYXNzaWFuIiwibmJmIjoxNzIzNzU2NDk3LCJleHAiOjE3MjYzNDg0OTcsImlhdCI6MTcyMzc1NjQ5NywiZW1haWwiOiI5NHNhZGVjZXV5Z3VsYW1hbGFyMTlAZ21haWwuY29tIiwianRpIjoiNGU5NzQ0ZmYtMzk3Ni00MTM2LWI5ODUtZTc1MzkxMTljZWU5In0.qwSWWMiYB6c8g8gHR42cCIzc-I_QZEx3NF-YdVDYzEQX0_bbapbp4zcpJiBxarK2klo1wwrjvCSk448TiVFY2FGBhAMpO6BUt3976SsF7oABiRV2nz9jnIiv2iUpKhCO4uAzWdR9KrP80qScOdpEvD5FuMMfTh3kdZZrUmzj7Q5X8CNlxKdFnL1Yqo8u2NBwug2yYl5jpdXoBP1uBPAqZHWrM5DBvNrPw9YTGGDl5K_HZDeim51euHbo2p33hpZMQPopEqG4wiKyosIbWGwL23XiAVhN5hTvVB7lZfSyA6_kUkb4T85F85nXMF8fMfudUNwDQ0Hw4onpkYXupn72cQ"
+							},
+							{
+								"key": "origin",
+								"value": "https://trello.com"
+							},
+							{
+								"key": "pragma",
+								"value": "no-cache"
+							},
+							{
+								"key": "priority",
+								"value": "u=1, i"
+							},
+							{
+								"key": "referer",
+								"value": "https://trello.com/b/yp0lDCX8/vaultn"
+							},
+							{
+								"key": "sec-ch-ua",
+								"value": "\"Not)A;Brand\";v=\"99\", \"Google Chrome\";v=\"127\", \"Chromium\";v=\"127\""
+							},
+							{
+								"key": "sec-ch-ua-mobile",
+								"value": "?0"
+							},
+							{
+								"key": "sec-ch-ua-platform",
+								"value": "\"Windows\""
+							},
+							{
+								"key": "sec-fetch-dest",
+								"value": "empty"
+							},
+							{
+								"key": "sec-fetch-mode",
+								"value": "cors"
+							},
+							{
+								"key": "sec-fetch-site",
+								"value": "same-origin"
+							},
+							{
+								"key": "user-agent",
+								"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36"
+							},
+							{
+								"key": "x-b3-spanid",
+								"value": "62d513e7687e1d86"
+							},
+							{
+								"key": "x-b3-traceid",
+								"value": "66be715482ce0aefbcf5c28ffcc6c5ae"
+							},
+							{
+								"key": "x-trello-client-version",
+								"value": "build-207310"
+							},
+							{
+								"key": "x-trello-task",
+								"value": "edit-card/idList"
+							},
+							{
+								"key": "x-trello-traceid",
+								"value": "66be715482ce0aefbcf5c28ffcc6c5ae"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idList\": \"{{DonelistId}}\",\r\n    \"idBoard\": \"{{VaultN-Board}}\",\r\n    \"pos\": 65536,\r\n    \"closed\": false,\r\n    \"dsc\": \"cc5a16c8d137a8bacf8f418cb45849f86f5b94b506659bff5de2786a0c0d3e94\"\r\n}\r\n// Todo to done card movement",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/cards/{{SingCardId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"cards",
+								"{{SingCardId}}"
+							]
+						},
+						"description": "Generated from cURL: curl 'https://trello.com/1/cards/66be6f1456c8b3107f5a829b' \\\r\n  -X 'PUT' \\\r\n  -H 'accept: */*' \\\r\n  -H 'accept-language: tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7' \\\r\n  -H 'cache-control: no-cache' \\\r\n  -H 'content-type: application/json' \\\r\n  -H 'cookie: atlCohort={\"bucketAll\":{\"bucketedAtUTC\":\"2024-08-15T14:37:49.392Z\",\"version\":\"2\",\"index\":15,\"bucketId\":0}}; ajs_anonymous_id=%22c51ec516-2968-5d60-f521-a198e66fd18f%22; dsc=cc5a16c8d137a8bacf8f418cb45849f86f5b94b506659bff5de2786a0c0d3e94; atl_xid.ts=1723732672210; atl_xid.current=%5B%7B%22type%22%3A%22xc%22%2C%22value%22%3A%22c19711a7-7d3d-49f9-87e3-4d1d06191efb%22%2C%22createdAt%22%3A%222024-04-29T14%3A07%3A47.071Z%22%7D%5D; _otPreferencesSynced=; OptanonConsent=isGpcEnabled=0&datestamp=Thu+Aug+15+2024+17%3A37%3A55+GMT%2B0300+(GMT%2B03%3A00)&version=202407.1.0&browserGpcFlag=0&isIABGlobal=false&identifierType=Cookie+Unique+Id&hosts=&consentId=56d07b6c-e313-47c8-a23a-bd43b88d11a9&interactionCount=1&isAnonUser=1&landingPath=https%3A%2F%2Ftrello.com%2F&groups=1%3A1%2C2%3A1%2C3%3A1%2C4%3A0; atlassian.account.xsrf.token=500c79c1-5a8b-43e0-afb7-f8b9e0431f40; loggedIn=1; lang=tr-TR; idMember=66be12f0a4ce3e80d1df2d1b; aaId=712020%3Ac7978f6c-4d43-471f-a41d-ee73ad45ac2e; hasAccount=atlassian; atl-bsc-consent-token-fallback=002000001000; __cid=DQlNUOvbULa7SoOGkLHXvem7tCuWjdyDICeTnjcj7OwOcsqAcwEfHicenI4OPq2aHSzfaiNpmuN87z_JJlQLnCt5lJ5cQvfTTFzx8k9Ht6sNFri2dE_2-kxR675tcrivEwiopQNx8fAVEqO-WxCstwNn6O5PQ8_7QW3x6gwTq6kNFa6-C23Qym5qtL5PT_P7A2H9_UhJsb5gTurxTkO3rxERtq4NFrauA3X5-EJU8bEWFa-wEBD0lkJA_KcbH62rVCWfFSOykP0REKz_G0D8Andn1tlvY7i2akjs-08KuNdNUv3yC3SxvmtiuNlRR-j2SkXrvhUUqL4LFuCuExaoqxoXrrcDYvHsRkXsrWcXqb5VVcerfBa47lB5rcETCrjaEGKprwqCi64SCKivDRehqRMGqKwZFqikExY3liOTuVuSLlOe8CdFHXXBmHUg0cVbiJMQYSFuWJ5LJpieIyaYniMmmJ4jJpieIyaYnplwIshjJtjeIyaYnmNm2N5jZiuekCYuOI-KXFpNJlQSay-YniMmmJ4iJmc; cloud.session.token=eyJraWQiOiJzZXNzaW9uLXNlcnZpY2UvcHJvZC0xNTkyODU4Mzk0IiwiYWxnIjoiUlMyNTYifQ.eyJhc3NvY2lhdGlvbnMiOltdLCJzdWIiOiI3MTIwMjA6Yzc5NzhmNmMtNGQ0My00NzFmLWE0MWQtZWU3M2FkNDVhYzJlIiwiZW1haWxEb21haW4iOiJnbWFpbC5jb20iLCJpbXBlcnNvbmF0aW9uIjpbXSwiY3JlYXRlZCI6MTcyMzczMjY5NSwicmVmcmVzaFRpbWVvdXQiOjE3MjM3NTcwOTcsInZlcmlmaWVkIjp0cnVlLCJpc3MiOiJzZXNzaW9uLXNlcnZpY2UiLCJzZXNzaW9uSWQiOiI0ZTk3NDRmZi0zOTc2LTQxMzYtYjk4NS1lNzUzOTExOWNlZTkiLCJzdGVwVXBzIjpbXSwiYXVkIjoiYXRsYXNzaWFuIiwibmJmIjoxNzIzNzU2NDk3LCJleHAiOjE3MjYzNDg0OTcsImlhdCI6MTcyMzc1NjQ5NywiZW1haWwiOiI5NHNhZGVjZXV5Z3VsYW1hbGFyMTlAZ21haWwuY29tIiwianRpIjoiNGU5NzQ0ZmYtMzk3Ni00MTM2LWI5ODUtZTc1MzkxMTljZWU5In0.qwSWWMiYB6c8g8gHR42cCIzc-I_QZEx3NF-YdVDYzEQX0_bbapbp4zcpJiBxarK2klo1wwrjvCSk448TiVFY2FGBhAMpO6BUt3976SsF7oABiRV2nz9jnIiv2iUpKhCO4uAzWdR9KrP80qScOdpEvD5FuMMfTh3kdZZrUmzj7Q5X8CNlxKdFnL1Yqo8u2NBwug2yYl5jpdXoBP1uBPAqZHWrM5DBvNrPw9YTGGDl5K_HZDeim51euHbo2p33hpZMQPopEqG4wiKyosIbWGwL23XiAVhN5hTvVB7lZfSyA6_kUkb4T85F85nXMF8fMfudUNwDQ0Hw4onpkYXupn72cQ' \\\r\n  -H 'origin: https://trello.com' \\\r\n  -H 'pragma: no-cache' \\\r\n  -H 'priority: u=1, i' \\\r\n  -H 'referer: https://trello.com/b/yp0lDCX8/vaultn' \\\r\n  -H 'sec-ch-ua: \"Not)A;Brand\";v=\"99\", \"Google Chrome\";v=\"127\", \"Chromium\";v=\"127\"' \\\r\n  -H 'sec-ch-ua-mobile: ?0' \\\r\n  -H 'sec-ch-ua-platform: \"Windows\"' \\\r\n  -H 'sec-fetch-dest: empty' \\\r\n  -H 'sec-fetch-mode: cors' \\\r\n  -H 'sec-fetch-site: same-origin' \\\r\n  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36' \\\r\n  -H 'x-b3-spanid: 62d513e7687e1d86' \\\r\n  -H 'x-b3-traceid: 66be715482ce0aefbcf5c28ffcc6c5ae' \\\r\n  -H 'x-trello-client-version: build-207310' \\\r\n  -H 'x-trello-task: edit-card/idList' \\\r\n  -H 'x-trello-traceid: 66be715482ce0aefbcf5c28ffcc6c5ae' \\\r\n  --data-raw '{\"idList\":\"66be66294e37a864030720ba\",\"idBoard\":\"66be140bba366932121a853a\",\"pos\":65536,\"closed\":false,\"dsc\":\"cc5a16c8d137a8bacf8f418cb45849f86f5b94b506659bff5de2786a0c0d3e94\"}'"
+					},
+					"response": []
+				},
+				{
+					"name": "To Do to Testing",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "accept",
+								"value": "*/*"
+							},
+							{
+								"key": "accept-language",
+								"value": "tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7"
+							},
+							{
+								"key": "cache-control",
+								"value": "no-cache"
+							},
+							{
+								"key": "content-type",
+								"value": "application/json"
+							},
+							{
+								"key": "cookie",
+								"value": "atlCohort={\"bucketAll\":{\"bucketedAtUTC\":\"2024-08-15T14:37:49.392Z\",\"version\":\"2\",\"index\":15,\"bucketId\":0}}; ajs_anonymous_id=%22c51ec516-2968-5d60-f521-a198e66fd18f%22; dsc=cc5a16c8d137a8bacf8f418cb45849f86f5b94b506659bff5de2786a0c0d3e94; atl_xid.ts=1723732672210; atl_xid.current=%5B%7B%22type%22%3A%22xc%22%2C%22value%22%3A%22c19711a7-7d3d-49f9-87e3-4d1d06191efb%22%2C%22createdAt%22%3A%222024-04-29T14%3A07%3A47.071Z%22%7D%5D; _otPreferencesSynced=; OptanonConsent=isGpcEnabled=0&datestamp=Thu+Aug+15+2024+17%3A37%3A55+GMT%2B0300+(GMT%2B03%3A00)&version=202407.1.0&browserGpcFlag=0&isIABGlobal=false&identifierType=Cookie+Unique+Id&hosts=&consentId=56d07b6c-e313-47c8-a23a-bd43b88d11a9&interactionCount=1&isAnonUser=1&landingPath=https%3A%2F%2Ftrello.com%2F&groups=1%3A1%2C2%3A1%2C3%3A1%2C4%3A0; atlassian.account.xsrf.token=500c79c1-5a8b-43e0-afb7-f8b9e0431f40; loggedIn=1; lang=tr-TR; idMember=66be12f0a4ce3e80d1df2d1b; aaId=712020%3Ac7978f6c-4d43-471f-a41d-ee73ad45ac2e; hasAccount=atlassian; atl-bsc-consent-token-fallback=002000001000; __cid=DQlNUOvbULa7SoOGkLHXvem7tCuWjdyDICeTnjcj7OwOcsqAcwEfHicenI4OPq2aHSzfaiNpmuN87z_JJlQLnCt5lJ5cQvfTTFzx8k9Ht6sNFri2dE_2-kxR675tcrivEwiopQNx8fAVEqO-WxCstwNn6O5PQ8_7QW3x6gwTq6kNFa6-C23Qym5qtL5PT_P7A2H9_UhJsb5gTurxTkO3rxERtq4NFrauA3X5-EJU8bEWFa-wEBD0lkJA_KcbH62rVCWfFSOykP0REKz_G0D8Andn1tlvY7i2akjs-08KuNdNUv3yC3SxvmtiuNlRR-j2SkXrvhUUqL4LFuCuExaoqxoXrrcDYvHsRkXsrWcXqb5VVcerfBa47lB5rcETCrjaEGKprwqCi64SCKivDRehqRMGqKwZFqikExY3liOTuVuSLlOe8CdFHXXBmHUg0cVbiJMQYSFuWJ5LJpieIyaYniMmmJ4jJpieIyaYnplwIshjJtjeIyaYnmNm2N5jZiuekCYuOI-KXFpNJlQSay-YniMmmJ4iJmc; cloud.session.token=eyJraWQiOiJzZXNzaW9uLXNlcnZpY2UvcHJvZC0xNTkyODU4Mzk0IiwiYWxnIjoiUlMyNTYifQ.eyJhc3NvY2lhdGlvbnMiOltdLCJzdWIiOiI3MTIwMjA6Yzc5NzhmNmMtNGQ0My00NzFmLWE0MWQtZWU3M2FkNDVhYzJlIiwiZW1haWxEb21haW4iOiJnbWFpbC5jb20iLCJpbXBlcnNvbmF0aW9uIjpbXSwiY3JlYXRlZCI6MTcyMzczMjY5NSwicmVmcmVzaFRpbWVvdXQiOjE3MjM3NTcwOTcsInZlcmlmaWVkIjp0cnVlLCJpc3MiOiJzZXNzaW9uLXNlcnZpY2UiLCJzZXNzaW9uSWQiOiI0ZTk3NDRmZi0zOTc2LTQxMzYtYjk4NS1lNzUzOTExOWNlZTkiLCJzdGVwVXBzIjpbXSwiYXVkIjoiYXRsYXNzaWFuIiwibmJmIjoxNzIzNzU2NDk3LCJleHAiOjE3MjYzNDg0OTcsImlhdCI6MTcyMzc1NjQ5NywiZW1haWwiOiI5NHNhZGVjZXV5Z3VsYW1hbGFyMTlAZ21haWwuY29tIiwianRpIjoiNGU5NzQ0ZmYtMzk3Ni00MTM2LWI5ODUtZTc1MzkxMTljZWU5In0.qwSWWMiYB6c8g8gHR42cCIzc-I_QZEx3NF-YdVDYzEQX0_bbapbp4zcpJiBxarK2klo1wwrjvCSk448TiVFY2FGBhAMpO6BUt3976SsF7oABiRV2nz9jnIiv2iUpKhCO4uAzWdR9KrP80qScOdpEvD5FuMMfTh3kdZZrUmzj7Q5X8CNlxKdFnL1Yqo8u2NBwug2yYl5jpdXoBP1uBPAqZHWrM5DBvNrPw9YTGGDl5K_HZDeim51euHbo2p33hpZMQPopEqG4wiKyosIbWGwL23XiAVhN5hTvVB7lZfSyA6_kUkb4T85F85nXMF8fMfudUNwDQ0Hw4onpkYXupn72cQ"
+							},
+							{
+								"key": "origin",
+								"value": "https://trello.com"
+							},
+							{
+								"key": "pragma",
+								"value": "no-cache"
+							},
+							{
+								"key": "priority",
+								"value": "u=1, i"
+							},
+							{
+								"key": "referer",
+								"value": "https://trello.com/b/yp0lDCX8/vaultn"
+							},
+							{
+								"key": "sec-ch-ua",
+								"value": "\"Not)A;Brand\";v=\"99\", \"Google Chrome\";v=\"127\", \"Chromium\";v=\"127\""
+							},
+							{
+								"key": "sec-ch-ua-mobile",
+								"value": "?0"
+							},
+							{
+								"key": "sec-ch-ua-platform",
+								"value": "\"Windows\""
+							},
+							{
+								"key": "sec-fetch-dest",
+								"value": "empty"
+							},
+							{
+								"key": "sec-fetch-mode",
+								"value": "cors"
+							},
+							{
+								"key": "sec-fetch-site",
+								"value": "same-origin"
+							},
+							{
+								"key": "user-agent",
+								"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36"
+							},
+							{
+								"key": "x-b3-spanid",
+								"value": "62d513e7687e1d86"
+							},
+							{
+								"key": "x-b3-traceid",
+								"value": "66be715482ce0aefbcf5c28ffcc6c5ae"
+							},
+							{
+								"key": "x-trello-client-version",
+								"value": "build-207310"
+							},
+							{
+								"key": "x-trello-task",
+								"value": "edit-card/idList"
+							},
+							{
+								"key": "x-trello-traceid",
+								"value": "66be715482ce0aefbcf5c28ffcc6c5ae"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idList\": \"{{TestinglistId}}\",\r\n    \"idBoard\": \"{{VaultN-Board}}\",\r\n    \"pos\": 65536,\r\n    \"closed\": false,\r\n    \"dsc\": \"cc5a16c8d137a8bacf8f418cb45849f86f5b94b506659bff5de2786a0c0d3e94\"\r\n}\r\n// Todo to testing card movement",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/cards/{{KeyTokenCardId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"cards",
+								"{{KeyTokenCardId}}"
+							]
+						},
+						"description": "Generated from cURL: curl 'https://trello.com/1/cards/66be6f1456c8b3107f5a829b' \\\r\n  -X 'PUT' \\\r\n  -H 'accept: */*' \\\r\n  -H 'accept-language: tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7' \\\r\n  -H 'cache-control: no-cache' \\\r\n  -H 'content-type: application/json' \\\r\n  -H 'cookie: atlCohort={\"bucketAll\":{\"bucketedAtUTC\":\"2024-08-15T14:37:49.392Z\",\"version\":\"2\",\"index\":15,\"bucketId\":0}}; ajs_anonymous_id=%22c51ec516-2968-5d60-f521-a198e66fd18f%22; dsc=cc5a16c8d137a8bacf8f418cb45849f86f5b94b506659bff5de2786a0c0d3e94; atl_xid.ts=1723732672210; atl_xid.current=%5B%7B%22type%22%3A%22xc%22%2C%22value%22%3A%22c19711a7-7d3d-49f9-87e3-4d1d06191efb%22%2C%22createdAt%22%3A%222024-04-29T14%3A07%3A47.071Z%22%7D%5D; _otPreferencesSynced=; OptanonConsent=isGpcEnabled=0&datestamp=Thu+Aug+15+2024+17%3A37%3A55+GMT%2B0300+(GMT%2B03%3A00)&version=202407.1.0&browserGpcFlag=0&isIABGlobal=false&identifierType=Cookie+Unique+Id&hosts=&consentId=56d07b6c-e313-47c8-a23a-bd43b88d11a9&interactionCount=1&isAnonUser=1&landingPath=https%3A%2F%2Ftrello.com%2F&groups=1%3A1%2C2%3A1%2C3%3A1%2C4%3A0; atlassian.account.xsrf.token=500c79c1-5a8b-43e0-afb7-f8b9e0431f40; loggedIn=1; lang=tr-TR; idMember=66be12f0a4ce3e80d1df2d1b; aaId=712020%3Ac7978f6c-4d43-471f-a41d-ee73ad45ac2e; hasAccount=atlassian; atl-bsc-consent-token-fallback=002000001000; __cid=DQlNUOvbULa7SoOGkLHXvem7tCuWjdyDICeTnjcj7OwOcsqAcwEfHicenI4OPq2aHSzfaiNpmuN87z_JJlQLnCt5lJ5cQvfTTFzx8k9Ht6sNFri2dE_2-kxR675tcrivEwiopQNx8fAVEqO-WxCstwNn6O5PQ8_7QW3x6gwTq6kNFa6-C23Qym5qtL5PT_P7A2H9_UhJsb5gTurxTkO3rxERtq4NFrauA3X5-EJU8bEWFa-wEBD0lkJA_KcbH62rVCWfFSOykP0REKz_G0D8Andn1tlvY7i2akjs-08KuNdNUv3yC3SxvmtiuNlRR-j2SkXrvhUUqL4LFuCuExaoqxoXrrcDYvHsRkXsrWcXqb5VVcerfBa47lB5rcETCrjaEGKprwqCi64SCKivDRehqRMGqKwZFqikExY3liOTuVuSLlOe8CdFHXXBmHUg0cVbiJMQYSFuWJ5LJpieIyaYniMmmJ4jJpieIyaYnplwIshjJtjeIyaYnmNm2N5jZiuekCYuOI-KXFpNJlQSay-YniMmmJ4iJmc; cloud.session.token=eyJraWQiOiJzZXNzaW9uLXNlcnZpY2UvcHJvZC0xNTkyODU4Mzk0IiwiYWxnIjoiUlMyNTYifQ.eyJhc3NvY2lhdGlvbnMiOltdLCJzdWIiOiI3MTIwMjA6Yzc5NzhmNmMtNGQ0My00NzFmLWE0MWQtZWU3M2FkNDVhYzJlIiwiZW1haWxEb21haW4iOiJnbWFpbC5jb20iLCJpbXBlcnNvbmF0aW9uIjpbXSwiY3JlYXRlZCI6MTcyMzczMjY5NSwicmVmcmVzaFRpbWVvdXQiOjE3MjM3NTcwOTcsInZlcmlmaWVkIjp0cnVlLCJpc3MiOiJzZXNzaW9uLXNlcnZpY2UiLCJzZXNzaW9uSWQiOiI0ZTk3NDRmZi0zOTc2LTQxMzYtYjk4NS1lNzUzOTExOWNlZTkiLCJzdGVwVXBzIjpbXSwiYXVkIjoiYXRsYXNzaWFuIiwibmJmIjoxNzIzNzU2NDk3LCJleHAiOjE3MjYzNDg0OTcsImlhdCI6MTcyMzc1NjQ5NywiZW1haWwiOiI5NHNhZGVjZXV5Z3VsYW1hbGFyMTlAZ21haWwuY29tIiwianRpIjoiNGU5NzQ0ZmYtMzk3Ni00MTM2LWI5ODUtZTc1MzkxMTljZWU5In0.qwSWWMiYB6c8g8gHR42cCIzc-I_QZEx3NF-YdVDYzEQX0_bbapbp4zcpJiBxarK2klo1wwrjvCSk448TiVFY2FGBhAMpO6BUt3976SsF7oABiRV2nz9jnIiv2iUpKhCO4uAzWdR9KrP80qScOdpEvD5FuMMfTh3kdZZrUmzj7Q5X8CNlxKdFnL1Yqo8u2NBwug2yYl5jpdXoBP1uBPAqZHWrM5DBvNrPw9YTGGDl5K_HZDeim51euHbo2p33hpZMQPopEqG4wiKyosIbWGwL23XiAVhN5hTvVB7lZfSyA6_kUkb4T85F85nXMF8fMfudUNwDQ0Hw4onpkYXupn72cQ' \\\r\n  -H 'origin: https://trello.com' \\\r\n  -H 'pragma: no-cache' \\\r\n  -H 'priority: u=1, i' \\\r\n  -H 'referer: https://trello.com/b/yp0lDCX8/vaultn' \\\r\n  -H 'sec-ch-ua: \"Not)A;Brand\";v=\"99\", \"Google Chrome\";v=\"127\", \"Chromium\";v=\"127\"' \\\r\n  -H 'sec-ch-ua-mobile: ?0' \\\r\n  -H 'sec-ch-ua-platform: \"Windows\"' \\\r\n  -H 'sec-fetch-dest: empty' \\\r\n  -H 'sec-fetch-mode: cors' \\\r\n  -H 'sec-fetch-site: same-origin' \\\r\n  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36' \\\r\n  -H 'x-b3-spanid: 62d513e7687e1d86' \\\r\n  -H 'x-b3-traceid: 66be715482ce0aefbcf5c28ffcc6c5ae' \\\r\n  -H 'x-trello-client-version: build-207310' \\\r\n  -H 'x-trello-task: edit-card/idList' \\\r\n  -H 'x-trello-traceid: 66be715482ce0aefbcf5c28ffcc6c5ae' \\\r\n  --data-raw '{\"idList\":\"66be66294e37a864030720ba\",\"idBoard\":\"66be140bba366932121a853a\",\"pos\":65536,\"closed\":false,\"dsc\":\"cc5a16c8d137a8bacf8f418cb45849f86f5b94b506659bff5de2786a0c0d3e94\"}'"
+					},
+					"response": []
+				},
+				{
+					"name": "To Do to Doing",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "accept",
+								"value": "*/*"
+							},
+							{
+								"key": "accept-language",
+								"value": "tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7"
+							},
+							{
+								"key": "cache-control",
+								"value": "no-cache"
+							},
+							{
+								"key": "content-type",
+								"value": "application/json"
+							},
+							{
+								"key": "cookie",
+								"value": "atlCohort={\"bucketAll\":{\"bucketedAtUTC\":\"2024-08-15T14:37:49.392Z\",\"version\":\"2\",\"index\":15,\"bucketId\":0}}; ajs_anonymous_id=%22c51ec516-2968-5d60-f521-a198e66fd18f%22; dsc=cc5a16c8d137a8bacf8f418cb45849f86f5b94b506659bff5de2786a0c0d3e94; atl_xid.ts=1723732672210; atl_xid.current=%5B%7B%22type%22%3A%22xc%22%2C%22value%22%3A%22c19711a7-7d3d-49f9-87e3-4d1d06191efb%22%2C%22createdAt%22%3A%222024-04-29T14%3A07%3A47.071Z%22%7D%5D; _otPreferencesSynced=; OptanonConsent=isGpcEnabled=0&datestamp=Thu+Aug+15+2024+17%3A37%3A55+GMT%2B0300+(GMT%2B03%3A00)&version=202407.1.0&browserGpcFlag=0&isIABGlobal=false&identifierType=Cookie+Unique+Id&hosts=&consentId=56d07b6c-e313-47c8-a23a-bd43b88d11a9&interactionCount=1&isAnonUser=1&landingPath=https%3A%2F%2Ftrello.com%2F&groups=1%3A1%2C2%3A1%2C3%3A1%2C4%3A0; atlassian.account.xsrf.token=500c79c1-5a8b-43e0-afb7-f8b9e0431f40; loggedIn=1; lang=tr-TR; idMember=66be12f0a4ce3e80d1df2d1b; aaId=712020%3Ac7978f6c-4d43-471f-a41d-ee73ad45ac2e; hasAccount=atlassian; atl-bsc-consent-token-fallback=002000001000; __cid=DQlNUOvbULa7SoOGkLHXvem7tCuWjdyDICeTnjcj7OwOcsqAcwEfHicenI4OPq2aHSzfaiNpmuN87z_JJlQLnCt5lJ5cQvfTTFzx8k9Ht6sNFri2dE_2-kxR675tcrivEwiopQNx8fAVEqO-WxCstwNn6O5PQ8_7QW3x6gwTq6kNFa6-C23Qym5qtL5PT_P7A2H9_UhJsb5gTurxTkO3rxERtq4NFrauA3X5-EJU8bEWFa-wEBD0lkJA_KcbH62rVCWfFSOykP0REKz_G0D8Andn1tlvY7i2akjs-08KuNdNUv3yC3SxvmtiuNlRR-j2SkXrvhUUqL4LFuCuExaoqxoXrrcDYvHsRkXsrWcXqb5VVcerfBa47lB5rcETCrjaEGKprwqCi64SCKivDRehqRMGqKwZFqikExY3liOTuVuSLlOe8CdFHXXBmHUg0cVbiJMQYSFuWJ5LJpieIyaYniMmmJ4jJpieIyaYnplwIshjJtjeIyaYnmNm2N5jZiuekCYuOI-KXFpNJlQSay-YniMmmJ4iJmc; cloud.session.token=eyJraWQiOiJzZXNzaW9uLXNlcnZpY2UvcHJvZC0xNTkyODU4Mzk0IiwiYWxnIjoiUlMyNTYifQ.eyJhc3NvY2lhdGlvbnMiOltdLCJzdWIiOiI3MTIwMjA6Yzc5NzhmNmMtNGQ0My00NzFmLWE0MWQtZWU3M2FkNDVhYzJlIiwiZW1haWxEb21haW4iOiJnbWFpbC5jb20iLCJpbXBlcnNvbmF0aW9uIjpbXSwiY3JlYXRlZCI6MTcyMzczMjY5NSwicmVmcmVzaFRpbWVvdXQiOjE3MjM3NTcwOTcsInZlcmlmaWVkIjp0cnVlLCJpc3MiOiJzZXNzaW9uLXNlcnZpY2UiLCJzZXNzaW9uSWQiOiI0ZTk3NDRmZi0zOTc2LTQxMzYtYjk4NS1lNzUzOTExOWNlZTkiLCJzdGVwVXBzIjpbXSwiYXVkIjoiYXRsYXNzaWFuIiwibmJmIjoxNzIzNzU2NDk3LCJleHAiOjE3MjYzNDg0OTcsImlhdCI6MTcyMzc1NjQ5NywiZW1haWwiOiI5NHNhZGVjZXV5Z3VsYW1hbGFyMTlAZ21haWwuY29tIiwianRpIjoiNGU5NzQ0ZmYtMzk3Ni00MTM2LWI5ODUtZTc1MzkxMTljZWU5In0.qwSWWMiYB6c8g8gHR42cCIzc-I_QZEx3NF-YdVDYzEQX0_bbapbp4zcpJiBxarK2klo1wwrjvCSk448TiVFY2FGBhAMpO6BUt3976SsF7oABiRV2nz9jnIiv2iUpKhCO4uAzWdR9KrP80qScOdpEvD5FuMMfTh3kdZZrUmzj7Q5X8CNlxKdFnL1Yqo8u2NBwug2yYl5jpdXoBP1uBPAqZHWrM5DBvNrPw9YTGGDl5K_HZDeim51euHbo2p33hpZMQPopEqG4wiKyosIbWGwL23XiAVhN5hTvVB7lZfSyA6_kUkb4T85F85nXMF8fMfudUNwDQ0Hw4onpkYXupn72cQ"
+							},
+							{
+								"key": "origin",
+								"value": "https://trello.com"
+							},
+							{
+								"key": "pragma",
+								"value": "no-cache"
+							},
+							{
+								"key": "priority",
+								"value": "u=1, i"
+							},
+							{
+								"key": "referer",
+								"value": "https://trello.com/b/yp0lDCX8/vaultn"
+							},
+							{
+								"key": "sec-ch-ua",
+								"value": "\"Not)A;Brand\";v=\"99\", \"Google Chrome\";v=\"127\", \"Chromium\";v=\"127\""
+							},
+							{
+								"key": "sec-ch-ua-mobile",
+								"value": "?0"
+							},
+							{
+								"key": "sec-ch-ua-platform",
+								"value": "\"Windows\""
+							},
+							{
+								"key": "sec-fetch-dest",
+								"value": "empty"
+							},
+							{
+								"key": "sec-fetch-mode",
+								"value": "cors"
+							},
+							{
+								"key": "sec-fetch-site",
+								"value": "same-origin"
+							},
+							{
+								"key": "user-agent",
+								"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36"
+							},
+							{
+								"key": "x-b3-spanid",
+								"value": "62d513e7687e1d86"
+							},
+							{
+								"key": "x-b3-traceid",
+								"value": "66be715482ce0aefbcf5c28ffcc6c5ae"
+							},
+							{
+								"key": "x-trello-client-version",
+								"value": "build-207310"
+							},
+							{
+								"key": "x-trello-task",
+								"value": "edit-card/idList"
+							},
+							{
+								"key": "x-trello-traceid",
+								"value": "66be715482ce0aefbcf5c28ffcc6c5ae"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idList\": \"{{DoinglistId}}\",\r\n    \"idBoard\": \"{{VaultN-Board}}\",\r\n    \"pos\": 65536,\r\n    \"closed\": false,\r\n    \"dsc\": \"cc5a16c8d137a8bacf8f418cb45849f86f5b94b506659bff5de2786a0c0d3e94\"\r\n}\r\n// Todo to doing card movement",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/cards/{{BuildCollectionCardId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"cards",
+								"{{BuildCollectionCardId}}"
+							]
+						},
+						"description": "Generated from cURL: curl 'https://trello.com/1/cards/66be6f1456c8b3107f5a829b' \\\r\n  -X 'PUT' \\\r\n  -H 'accept: */*' \\\r\n  -H 'accept-language: tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7' \\\r\n  -H 'cache-control: no-cache' \\\r\n  -H 'content-type: application/json' \\\r\n  -H 'cookie: atlCohort={\"bucketAll\":{\"bucketedAtUTC\":\"2024-08-15T14:37:49.392Z\",\"version\":\"2\",\"index\":15,\"bucketId\":0}}; ajs_anonymous_id=%22c51ec516-2968-5d60-f521-a198e66fd18f%22; dsc=cc5a16c8d137a8bacf8f418cb45849f86f5b94b506659bff5de2786a0c0d3e94; atl_xid.ts=1723732672210; atl_xid.current=%5B%7B%22type%22%3A%22xc%22%2C%22value%22%3A%22c19711a7-7d3d-49f9-87e3-4d1d06191efb%22%2C%22createdAt%22%3A%222024-04-29T14%3A07%3A47.071Z%22%7D%5D; _otPreferencesSynced=; OptanonConsent=isGpcEnabled=0&datestamp=Thu+Aug+15+2024+17%3A37%3A55+GMT%2B0300+(GMT%2B03%3A00)&version=202407.1.0&browserGpcFlag=0&isIABGlobal=false&identifierType=Cookie+Unique+Id&hosts=&consentId=56d07b6c-e313-47c8-a23a-bd43b88d11a9&interactionCount=1&isAnonUser=1&landingPath=https%3A%2F%2Ftrello.com%2F&groups=1%3A1%2C2%3A1%2C3%3A1%2C4%3A0; atlassian.account.xsrf.token=500c79c1-5a8b-43e0-afb7-f8b9e0431f40; loggedIn=1; lang=tr-TR; idMember=66be12f0a4ce3e80d1df2d1b; aaId=712020%3Ac7978f6c-4d43-471f-a41d-ee73ad45ac2e; hasAccount=atlassian; atl-bsc-consent-token-fallback=002000001000; __cid=DQlNUOvbULa7SoOGkLHXvem7tCuWjdyDICeTnjcj7OwOcsqAcwEfHicenI4OPq2aHSzfaiNpmuN87z_JJlQLnCt5lJ5cQvfTTFzx8k9Ht6sNFri2dE_2-kxR675tcrivEwiopQNx8fAVEqO-WxCstwNn6O5PQ8_7QW3x6gwTq6kNFa6-C23Qym5qtL5PT_P7A2H9_UhJsb5gTurxTkO3rxERtq4NFrauA3X5-EJU8bEWFa-wEBD0lkJA_KcbH62rVCWfFSOykP0REKz_G0D8Andn1tlvY7i2akjs-08KuNdNUv3yC3SxvmtiuNlRR-j2SkXrvhUUqL4LFuCuExaoqxoXrrcDYvHsRkXsrWcXqb5VVcerfBa47lB5rcETCrjaEGKprwqCi64SCKivDRehqRMGqKwZFqikExY3liOTuVuSLlOe8CdFHXXBmHUg0cVbiJMQYSFuWJ5LJpieIyaYniMmmJ4jJpieIyaYnplwIshjJtjeIyaYnmNm2N5jZiuekCYuOI-KXFpNJlQSay-YniMmmJ4iJmc; cloud.session.token=eyJraWQiOiJzZXNzaW9uLXNlcnZpY2UvcHJvZC0xNTkyODU4Mzk0IiwiYWxnIjoiUlMyNTYifQ.eyJhc3NvY2lhdGlvbnMiOltdLCJzdWIiOiI3MTIwMjA6Yzc5NzhmNmMtNGQ0My00NzFmLWE0MWQtZWU3M2FkNDVhYzJlIiwiZW1haWxEb21haW4iOiJnbWFpbC5jb20iLCJpbXBlcnNvbmF0aW9uIjpbXSwiY3JlYXRlZCI6MTcyMzczMjY5NSwicmVmcmVzaFRpbWVvdXQiOjE3MjM3NTcwOTcsInZlcmlmaWVkIjp0cnVlLCJpc3MiOiJzZXNzaW9uLXNlcnZpY2UiLCJzZXNzaW9uSWQiOiI0ZTk3NDRmZi0zOTc2LTQxMzYtYjk4NS1lNzUzOTExOWNlZTkiLCJzdGVwVXBzIjpbXSwiYXVkIjoiYXRsYXNzaWFuIiwibmJmIjoxNzIzNzU2NDk3LCJleHAiOjE3MjYzNDg0OTcsImlhdCI6MTcyMzc1NjQ5NywiZW1haWwiOiI5NHNhZGVjZXV5Z3VsYW1hbGFyMTlAZ21haWwuY29tIiwianRpIjoiNGU5NzQ0ZmYtMzk3Ni00MTM2LWI5ODUtZTc1MzkxMTljZWU5In0.qwSWWMiYB6c8g8gHR42cCIzc-I_QZEx3NF-YdVDYzEQX0_bbapbp4zcpJiBxarK2klo1wwrjvCSk448TiVFY2FGBhAMpO6BUt3976SsF7oABiRV2nz9jnIiv2iUpKhCO4uAzWdR9KrP80qScOdpEvD5FuMMfTh3kdZZrUmzj7Q5X8CNlxKdFnL1Yqo8u2NBwug2yYl5jpdXoBP1uBPAqZHWrM5DBvNrPw9YTGGDl5K_HZDeim51euHbo2p33hpZMQPopEqG4wiKyosIbWGwL23XiAVhN5hTvVB7lZfSyA6_kUkb4T85F85nXMF8fMfudUNwDQ0Hw4onpkYXupn72cQ' \\\r\n  -H 'origin: https://trello.com' \\\r\n  -H 'pragma: no-cache' \\\r\n  -H 'priority: u=1, i' \\\r\n  -H 'referer: https://trello.com/b/yp0lDCX8/vaultn' \\\r\n  -H 'sec-ch-ua: \"Not)A;Brand\";v=\"99\", \"Google Chrome\";v=\"127\", \"Chromium\";v=\"127\"' \\\r\n  -H 'sec-ch-ua-mobile: ?0' \\\r\n  -H 'sec-ch-ua-platform: \"Windows\"' \\\r\n  -H 'sec-fetch-dest: empty' \\\r\n  -H 'sec-fetch-mode: cors' \\\r\n  -H 'sec-fetch-site: same-origin' \\\r\n  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36' \\\r\n  -H 'x-b3-spanid: 62d513e7687e1d86' \\\r\n  -H 'x-b3-traceid: 66be715482ce0aefbcf5c28ffcc6c5ae' \\\r\n  -H 'x-trello-client-version: build-207310' \\\r\n  -H 'x-trello-task: edit-card/idList' \\\r\n  -H 'x-trello-traceid: 66be715482ce0aefbcf5c28ffcc6c5ae' \\\r\n  --data-raw '{\"idList\":\"66be66294e37a864030720ba\",\"idBoard\":\"66be140bba366932121a853a\",\"pos\":65536,\"closed\":false,\"dsc\":\"cc5a16c8d137a8bacf8f418cb45849f86f5b94b506659bff5de2786a0c0d3e94\"}'"
+					},
+					"response": []
+				},
+				{
+					"name": "To Do to Doing Working",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "accept",
+								"value": "*/*"
+							},
+							{
+								"key": "accept-language",
+								"value": "tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7"
+							},
+							{
+								"key": "cache-control",
+								"value": "no-cache"
+							},
+							{
+								"key": "content-type",
+								"value": "application/json"
+							},
+							{
+								"key": "cookie",
+								"value": "atlCohort={\"bucketAll\":{\"bucketedAtUTC\":\"2024-08-15T14:37:49.392Z\",\"version\":\"2\",\"index\":15,\"bucketId\":0}}; ajs_anonymous_id=%22c51ec516-2968-5d60-f521-a198e66fd18f%22; dsc=cc5a16c8d137a8bacf8f418cb45849f86f5b94b506659bff5de2786a0c0d3e94; atl_xid.ts=1723732672210; atl_xid.current=%5B%7B%22type%22%3A%22xc%22%2C%22value%22%3A%22c19711a7-7d3d-49f9-87e3-4d1d06191efb%22%2C%22createdAt%22%3A%222024-04-29T14%3A07%3A47.071Z%22%7D%5D; _otPreferencesSynced=; OptanonConsent=isGpcEnabled=0&datestamp=Thu+Aug+15+2024+17%3A37%3A55+GMT%2B0300+(GMT%2B03%3A00)&version=202407.1.0&browserGpcFlag=0&isIABGlobal=false&identifierType=Cookie+Unique+Id&hosts=&consentId=56d07b6c-e313-47c8-a23a-bd43b88d11a9&interactionCount=1&isAnonUser=1&landingPath=https%3A%2F%2Ftrello.com%2F&groups=1%3A1%2C2%3A1%2C3%3A1%2C4%3A0; atlassian.account.xsrf.token=500c79c1-5a8b-43e0-afb7-f8b9e0431f40; loggedIn=1; lang=tr-TR; idMember=66be12f0a4ce3e80d1df2d1b; aaId=712020%3Ac7978f6c-4d43-471f-a41d-ee73ad45ac2e; hasAccount=atlassian; atl-bsc-consent-token-fallback=002000001000; __cid=DQlNUOvbULa7SoOGkLHXvem7tCuWjdyDICeTnjcj7OwOcsqAcwEfHicenI4OPq2aHSzfaiNpmuN87z_JJlQLnCt5lJ5cQvfTTFzx8k9Ht6sNFri2dE_2-kxR675tcrivEwiopQNx8fAVEqO-WxCstwNn6O5PQ8_7QW3x6gwTq6kNFa6-C23Qym5qtL5PT_P7A2H9_UhJsb5gTurxTkO3rxERtq4NFrauA3X5-EJU8bEWFa-wEBD0lkJA_KcbH62rVCWfFSOykP0REKz_G0D8Andn1tlvY7i2akjs-08KuNdNUv3yC3SxvmtiuNlRR-j2SkXrvhUUqL4LFuCuExaoqxoXrrcDYvHsRkXsrWcXqb5VVcerfBa47lB5rcETCrjaEGKprwqCi64SCKivDRehqRMGqKwZFqikExY3liOTuVuSLlOe8CdFHXXBmHUg0cVbiJMQYSFuWJ5LJpieIyaYniMmmJ4jJpieIyaYnplwIshjJtjeIyaYnmNm2N5jZiuekCYuOI-KXFpNJlQSay-YniMmmJ4iJmc; cloud.session.token=eyJraWQiOiJzZXNzaW9uLXNlcnZpY2UvcHJvZC0xNTkyODU4Mzk0IiwiYWxnIjoiUlMyNTYifQ.eyJhc3NvY2lhdGlvbnMiOltdLCJzdWIiOiI3MTIwMjA6Yzc5NzhmNmMtNGQ0My00NzFmLWE0MWQtZWU3M2FkNDVhYzJlIiwiZW1haWxEb21haW4iOiJnbWFpbC5jb20iLCJpbXBlcnNvbmF0aW9uIjpbXSwiY3JlYXRlZCI6MTcyMzczMjY5NSwicmVmcmVzaFRpbWVvdXQiOjE3MjM3NTcwOTcsInZlcmlmaWVkIjp0cnVlLCJpc3MiOiJzZXNzaW9uLXNlcnZpY2UiLCJzZXNzaW9uSWQiOiI0ZTk3NDRmZi0zOTc2LTQxMzYtYjk4NS1lNzUzOTExOWNlZTkiLCJzdGVwVXBzIjpbXSwiYXVkIjoiYXRsYXNzaWFuIiwibmJmIjoxNzIzNzU2NDk3LCJleHAiOjE3MjYzNDg0OTcsImlhdCI6MTcyMzc1NjQ5NywiZW1haWwiOiI5NHNhZGVjZXV5Z3VsYW1hbGFyMTlAZ21haWwuY29tIiwianRpIjoiNGU5NzQ0ZmYtMzk3Ni00MTM2LWI5ODUtZTc1MzkxMTljZWU5In0.qwSWWMiYB6c8g8gHR42cCIzc-I_QZEx3NF-YdVDYzEQX0_bbapbp4zcpJiBxarK2klo1wwrjvCSk448TiVFY2FGBhAMpO6BUt3976SsF7oABiRV2nz9jnIiv2iUpKhCO4uAzWdR9KrP80qScOdpEvD5FuMMfTh3kdZZrUmzj7Q5X8CNlxKdFnL1Yqo8u2NBwug2yYl5jpdXoBP1uBPAqZHWrM5DBvNrPw9YTGGDl5K_HZDeim51euHbo2p33hpZMQPopEqG4wiKyosIbWGwL23XiAVhN5hTvVB7lZfSyA6_kUkb4T85F85nXMF8fMfudUNwDQ0Hw4onpkYXupn72cQ"
+							},
+							{
+								"key": "origin",
+								"value": "https://trello.com"
+							},
+							{
+								"key": "pragma",
+								"value": "no-cache"
+							},
+							{
+								"key": "priority",
+								"value": "u=1, i"
+							},
+							{
+								"key": "referer",
+								"value": "https://trello.com/b/yp0lDCX8/vaultn"
+							},
+							{
+								"key": "sec-ch-ua",
+								"value": "\"Not)A;Brand\";v=\"99\", \"Google Chrome\";v=\"127\", \"Chromium\";v=\"127\""
+							},
+							{
+								"key": "sec-ch-ua-mobile",
+								"value": "?0"
+							},
+							{
+								"key": "sec-ch-ua-platform",
+								"value": "\"Windows\""
+							},
+							{
+								"key": "sec-fetch-dest",
+								"value": "empty"
+							},
+							{
+								"key": "sec-fetch-mode",
+								"value": "cors"
+							},
+							{
+								"key": "sec-fetch-site",
+								"value": "same-origin"
+							},
+							{
+								"key": "user-agent",
+								"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36"
+							},
+							{
+								"key": "x-b3-spanid",
+								"value": "62d513e7687e1d86"
+							},
+							{
+								"key": "x-b3-traceid",
+								"value": "66be715482ce0aefbcf5c28ffcc6c5ae"
+							},
+							{
+								"key": "x-trello-client-version",
+								"value": "build-207310"
+							},
+							{
+								"key": "x-trello-task",
+								"value": "edit-card/idList"
+							},
+							{
+								"key": "x-trello-traceid",
+								"value": "66be715482ce0aefbcf5c28ffcc6c5ae"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idList\": \"{{DoinglistId}}\",\r\n    \"idBoard\": \"{{VaultN-Board}}\",\r\n    \"pos\": 65536,\r\n    \"closed\": false,\r\n    \"dsc\": \"cc5a16c8d137a8bacf8f418cb45849f86f5b94b506659bff5de2786a0c0d3e94\"\r\n}\r\n// Todo to Doing card movement",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/cards/{{WorkingOnTaskCardId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"cards",
+								"{{WorkingOnTaskCardId}}"
+							]
+						},
+						"description": "Generated from cURL: curl 'https://trello.com/1/cards/66be6f1456c8b3107f5a829b' \\\r\n  -X 'PUT' \\\r\n  -H 'accept: */*' \\\r\n  -H 'accept-language: tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7' \\\r\n  -H 'cache-control: no-cache' \\\r\n  -H 'content-type: application/json' \\\r\n  -H 'cookie: atlCohort={\"bucketAll\":{\"bucketedAtUTC\":\"2024-08-15T14:37:49.392Z\",\"version\":\"2\",\"index\":15,\"bucketId\":0}}; ajs_anonymous_id=%22c51ec516-2968-5d60-f521-a198e66fd18f%22; dsc=cc5a16c8d137a8bacf8f418cb45849f86f5b94b506659bff5de2786a0c0d3e94; atl_xid.ts=1723732672210; atl_xid.current=%5B%7B%22type%22%3A%22xc%22%2C%22value%22%3A%22c19711a7-7d3d-49f9-87e3-4d1d06191efb%22%2C%22createdAt%22%3A%222024-04-29T14%3A07%3A47.071Z%22%7D%5D; _otPreferencesSynced=; OptanonConsent=isGpcEnabled=0&datestamp=Thu+Aug+15+2024+17%3A37%3A55+GMT%2B0300+(GMT%2B03%3A00)&version=202407.1.0&browserGpcFlag=0&isIABGlobal=false&identifierType=Cookie+Unique+Id&hosts=&consentId=56d07b6c-e313-47c8-a23a-bd43b88d11a9&interactionCount=1&isAnonUser=1&landingPath=https%3A%2F%2Ftrello.com%2F&groups=1%3A1%2C2%3A1%2C3%3A1%2C4%3A0; atlassian.account.xsrf.token=500c79c1-5a8b-43e0-afb7-f8b9e0431f40; loggedIn=1; lang=tr-TR; idMember=66be12f0a4ce3e80d1df2d1b; aaId=712020%3Ac7978f6c-4d43-471f-a41d-ee73ad45ac2e; hasAccount=atlassian; atl-bsc-consent-token-fallback=002000001000; __cid=DQlNUOvbULa7SoOGkLHXvem7tCuWjdyDICeTnjcj7OwOcsqAcwEfHicenI4OPq2aHSzfaiNpmuN87z_JJlQLnCt5lJ5cQvfTTFzx8k9Ht6sNFri2dE_2-kxR675tcrivEwiopQNx8fAVEqO-WxCstwNn6O5PQ8_7QW3x6gwTq6kNFa6-C23Qym5qtL5PT_P7A2H9_UhJsb5gTurxTkO3rxERtq4NFrauA3X5-EJU8bEWFa-wEBD0lkJA_KcbH62rVCWfFSOykP0REKz_G0D8Andn1tlvY7i2akjs-08KuNdNUv3yC3SxvmtiuNlRR-j2SkXrvhUUqL4LFuCuExaoqxoXrrcDYvHsRkXsrWcXqb5VVcerfBa47lB5rcETCrjaEGKprwqCi64SCKivDRehqRMGqKwZFqikExY3liOTuVuSLlOe8CdFHXXBmHUg0cVbiJMQYSFuWJ5LJpieIyaYniMmmJ4jJpieIyaYnplwIshjJtjeIyaYnmNm2N5jZiuekCYuOI-KXFpNJlQSay-YniMmmJ4iJmc; cloud.session.token=eyJraWQiOiJzZXNzaW9uLXNlcnZpY2UvcHJvZC0xNTkyODU4Mzk0IiwiYWxnIjoiUlMyNTYifQ.eyJhc3NvY2lhdGlvbnMiOltdLCJzdWIiOiI3MTIwMjA6Yzc5NzhmNmMtNGQ0My00NzFmLWE0MWQtZWU3M2FkNDVhYzJlIiwiZW1haWxEb21haW4iOiJnbWFpbC5jb20iLCJpbXBlcnNvbmF0aW9uIjpbXSwiY3JlYXRlZCI6MTcyMzczMjY5NSwicmVmcmVzaFRpbWVvdXQiOjE3MjM3NTcwOTcsInZlcmlmaWVkIjp0cnVlLCJpc3MiOiJzZXNzaW9uLXNlcnZpY2UiLCJzZXNzaW9uSWQiOiI0ZTk3NDRmZi0zOTc2LTQxMzYtYjk4NS1lNzUzOTExOWNlZTkiLCJzdGVwVXBzIjpbXSwiYXVkIjoiYXRsYXNzaWFuIiwibmJmIjoxNzIzNzU2NDk3LCJleHAiOjE3MjYzNDg0OTcsImlhdCI6MTcyMzc1NjQ5NywiZW1haWwiOiI5NHNhZGVjZXV5Z3VsYW1hbGFyMTlAZ21haWwuY29tIiwianRpIjoiNGU5NzQ0ZmYtMzk3Ni00MTM2LWI5ODUtZTc1MzkxMTljZWU5In0.qwSWWMiYB6c8g8gHR42cCIzc-I_QZEx3NF-YdVDYzEQX0_bbapbp4zcpJiBxarK2klo1wwrjvCSk448TiVFY2FGBhAMpO6BUt3976SsF7oABiRV2nz9jnIiv2iUpKhCO4uAzWdR9KrP80qScOdpEvD5FuMMfTh3kdZZrUmzj7Q5X8CNlxKdFnL1Yqo8u2NBwug2yYl5jpdXoBP1uBPAqZHWrM5DBvNrPw9YTGGDl5K_HZDeim51euHbo2p33hpZMQPopEqG4wiKyosIbWGwL23XiAVhN5hTvVB7lZfSyA6_kUkb4T85F85nXMF8fMfudUNwDQ0Hw4onpkYXupn72cQ' \\\r\n  -H 'origin: https://trello.com' \\\r\n  -H 'pragma: no-cache' \\\r\n  -H 'priority: u=1, i' \\\r\n  -H 'referer: https://trello.com/b/yp0lDCX8/vaultn' \\\r\n  -H 'sec-ch-ua: \"Not)A;Brand\";v=\"99\", \"Google Chrome\";v=\"127\", \"Chromium\";v=\"127\"' \\\r\n  -H 'sec-ch-ua-mobile: ?0' \\\r\n  -H 'sec-ch-ua-platform: \"Windows\"' \\\r\n  -H 'sec-fetch-dest: empty' \\\r\n  -H 'sec-fetch-mode: cors' \\\r\n  -H 'sec-fetch-site: same-origin' \\\r\n  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36' \\\r\n  -H 'x-b3-spanid: 62d513e7687e1d86' \\\r\n  -H 'x-b3-traceid: 66be715482ce0aefbcf5c28ffcc6c5ae' \\\r\n  -H 'x-trello-client-version: build-207310' \\\r\n  -H 'x-trello-task: edit-card/idList' \\\r\n  -H 'x-trello-traceid: 66be715482ce0aefbcf5c28ffcc6c5ae' \\\r\n  --data-raw '{\"idList\":\"66be66294e37a864030720ba\",\"idBoard\":\"66be140bba366932121a853a\",\"pos\":65536,\"closed\":false,\"dsc\":\"cc5a16c8d137a8bacf8f418cb45849f86f5b94b506659bff5de2786a0c0d3e94\"}'"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Board Operations",
+			"item": [
+				{
+					"name": "Close Board",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "accept",
+								"value": "*/*"
+							},
+							{
+								"key": "accept-language",
+								"value": "tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7"
+							},
+							{
+								"key": "cache-control",
+								"value": "no-cache"
+							},
+							{
+								"key": "content-type",
+								"value": "application/json"
+							},
+							{
+								"key": "cookie",
+								"value": "atlCohort={\"bucketAll\":{\"bucketedAtUTC\":\"2024-08-15T14:37:49.392Z\",\"version\":\"2\",\"index\":15,\"bucketId\":0}}; ajs_anonymous_id=%22c51ec516-2968-5d60-f521-a198e66fd18f%22; dsc=cc5a16c8d137a8bacf8f418cb45849f86f5b94b506659bff5de2786a0c0d3e94; atl_xid.ts=1723732672210; atl_xid.current=%5B%7B%22type%22%3A%22xc%22%2C%22value%22%3A%22c19711a7-7d3d-49f9-87e3-4d1d06191efb%22%2C%22createdAt%22%3A%222024-04-29T14%3A07%3A47.071Z%22%7D%5D; _otPreferencesSynced=; OptanonConsent=isGpcEnabled=0&datestamp=Thu+Aug+15+2024+17%3A37%3A55+GMT%2B0300+(GMT%2B03%3A00)&version=202407.1.0&browserGpcFlag=0&isIABGlobal=false&identifierType=Cookie+Unique+Id&hosts=&consentId=56d07b6c-e313-47c8-a23a-bd43b88d11a9&interactionCount=1&isAnonUser=1&landingPath=https%3A%2F%2Ftrello.com%2F&groups=1%3A1%2C2%3A1%2C3%3A1%2C4%3A0; atlassian.account.xsrf.token=500c79c1-5a8b-43e0-afb7-f8b9e0431f40; loggedIn=1; lang=tr-TR; idMember=66be12f0a4ce3e80d1df2d1b; aaId=712020%3Ac7978f6c-4d43-471f-a41d-ee73ad45ac2e; hasAccount=atlassian; atl-bsc-consent-token-fallback=002000001000; __cid=DQlNUOvbULa7SoOGkLHXvem7tCuWjdyDICeTnjcj7OwOcsqAcwEfHicenI4OPq2aHSzfaiNpmuN87z_JJlQLnCt5lJ5cQvfTTFzx8k9Ht6sNFri2dE_2-kxR675tcrivEwiopQNx8fAVEqO-WxCstwNn6O5PQ8_7QW3x6gwTq6kNFa6-C23Qym5qtL5PT_P7A2H9_UhJsb5gTurxTkO3rxERtq4NFrauA3X5-EJU8bEWFa-wEBD0lkJA_KcbH62rVCWfFSOykP0REKz_G0D8Andn1tlvY7i2akjs-08KuNdNUv3yC3SxvmtiuNlRR-j2SkXrvhUUqL4LFuCuExaoqxoXrrcDYvHsRkXsrWcXqb5VVcerfBa47lB5rcETCrjaEGKprwqCi64SCKivDRehqRMGqKwZFqikExY3liOTuVuSLlOe8CdFHXXBmHUg0cVbiJMQYSFuWJ5LJpieIyaYniMmmJ4jJpieIyaYnplwIshjJtjeIyaYnmNm2N5jZiuekCYuOI-KXFpNJlQSay-YniMmmJ4iJmc; cloud.session.token=eyJraWQiOiJzZXNzaW9uLXNlcnZpY2UvcHJvZC0xNTkyODU4Mzk0IiwiYWxnIjoiUlMyNTYifQ.eyJhc3NvY2lhdGlvbnMiOltdLCJzdWIiOiI3MTIwMjA6Yzc5NzhmNmMtNGQ0My00NzFmLWE0MWQtZWU3M2FkNDVhYzJlIiwiZW1haWxEb21haW4iOiJnbWFpbC5jb20iLCJpbXBlcnNvbmF0aW9uIjpbXSwiY3JlYXRlZCI6MTcyMzczMjY5NSwicmVmcmVzaFRpbWVvdXQiOjE3MjM3NTkzNTEsInZlcmlmaWVkIjp0cnVlLCJpc3MiOiJzZXNzaW9uLXNlcnZpY2UiLCJzZXNzaW9uSWQiOiI0ZTk3NDRmZi0zOTc2LTQxMzYtYjk4NS1lNzUzOTExOWNlZTkiLCJzdGVwVXBzIjpbXSwiYXVkIjoiYXRsYXNzaWFuIiwibmJmIjoxNzIzNzU4NzUxLCJleHAiOjE3MjYzNTA3NTEsImlhdCI6MTcyMzc1ODc1MSwiZW1haWwiOiI5NHNhZGVjZXV5Z3VsYW1hbGFyMTlAZ21haWwuY29tIiwianRpIjoiNGU5NzQ0ZmYtMzk3Ni00MTM2LWI5ODUtZTc1MzkxMTljZWU5In0.b2_luZLN9h6T8x5ypzuEsyjXHAoIpBJaQc9XWlvgD2YmXgUcuSB97RDREwD6mOMJ1SCuLVF5TQ5ck5pBlIKWDfRvXs7IylIk2dN1sSg3nfSoRd8rvHy1fQ5JR9tvO5gehSIqfuOjHGFhetQA4DwDvbbqe2HQEuamS7HVAy839GbwYDvKtGc18m9dWoGjs50LafiyGSOrhdYnmBcoXezwvHzBWkjXtt1wynvX-jdI7Q3QVmm_GuR257ndzfa8JYjEQ9micOfBEioPOSZAYunLwzGRRjP97wQdktMgH-TspStY69O6EayuTD4suyHkYf_pC2jLlldI2EEfM_KlaxJzuQ"
+							},
+							{
+								"key": "origin",
+								"value": "https://trello.com"
+							},
+							{
+								"key": "pragma",
+								"value": "no-cache"
+							},
+							{
+								"key": "priority",
+								"value": "u=1, i"
+							},
+							{
+								"key": "referer",
+								"value": "https://trello.com/b/qJXFHUTy/vaultn"
+							},
+							{
+								"key": "sec-ch-ua",
+								"value": "\"Not)A;Brand\";v=\"99\", \"Google Chrome\";v=\"127\", \"Chromium\";v=\"127\""
+							},
+							{
+								"key": "sec-ch-ua-mobile",
+								"value": "?0"
+							},
+							{
+								"key": "sec-ch-ua-platform",
+								"value": "\"Windows\""
+							},
+							{
+								"key": "sec-fetch-dest",
+								"value": "empty"
+							},
+							{
+								"key": "sec-fetch-mode",
+								"value": "cors"
+							},
+							{
+								"key": "sec-fetch-site",
+								"value": "same-origin"
+							},
+							{
+								"key": "user-agent",
+								"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36"
+							},
+							{
+								"key": "x-trello-client-version",
+								"value": "build-207310"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"closed\": true,\r\n    \"dsc\": \"cc5a16c8d137a8bacf8f418cb45849f86f5b94b506659bff5de2786a0c0d3e94\"\r\n}\r\n//headers board id",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/boards/{{VaultN-Board}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"boards",
+								"{{VaultN-Board}}"
+							]
+						},
+						"description": "Generated from cURL: curl 'https://trello.com/1/boards/66be5d1e15373be79a29710c' \\\r\n  -X 'PUT' \\\r\n  -H 'accept: */*' \\\r\n  -H 'accept-language: tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7' \\\r\n  -H 'cache-control: no-cache' \\\r\n  -H 'content-type: application/json' \\\r\n  -H 'cookie: atlCohort={\"bucketAll\":{\"bucketedAtUTC\":\"2024-08-15T14:37:49.392Z\",\"version\":\"2\",\"index\":15,\"bucketId\":0}}; ajs_anonymous_id=%22c51ec516-2968-5d60-f521-a198e66fd18f%22; dsc=cc5a16c8d137a8bacf8f418cb45849f86f5b94b506659bff5de2786a0c0d3e94; atl_xid.ts=1723732672210; atl_xid.current=%5B%7B%22type%22%3A%22xc%22%2C%22value%22%3A%22c19711a7-7d3d-49f9-87e3-4d1d06191efb%22%2C%22createdAt%22%3A%222024-04-29T14%3A07%3A47.071Z%22%7D%5D; _otPreferencesSynced=; OptanonConsent=isGpcEnabled=0&datestamp=Thu+Aug+15+2024+17%3A37%3A55+GMT%2B0300+(GMT%2B03%3A00)&version=202407.1.0&browserGpcFlag=0&isIABGlobal=false&identifierType=Cookie+Unique+Id&hosts=&consentId=56d07b6c-e313-47c8-a23a-bd43b88d11a9&interactionCount=1&isAnonUser=1&landingPath=https%3A%2F%2Ftrello.com%2F&groups=1%3A1%2C2%3A1%2C3%3A1%2C4%3A0; atlassian.account.xsrf.token=500c79c1-5a8b-43e0-afb7-f8b9e0431f40; loggedIn=1; lang=tr-TR; idMember=66be12f0a4ce3e80d1df2d1b; aaId=712020%3Ac7978f6c-4d43-471f-a41d-ee73ad45ac2e; hasAccount=atlassian; atl-bsc-consent-token-fallback=002000001000; __cid=DQlNUOvbULa7SoOGkLHXvem7tCuWjdyDICeTnjcj7OwOcsqAcwEfHicenI4OPq2aHSzfaiNpmuN87z_JJlQLnCt5lJ5cQvfTTFzx8k9Ht6sNFri2dE_2-kxR675tcrivEwiopQNx8fAVEqO-WxCstwNn6O5PQ8_7QW3x6gwTq6kNFa6-C23Qym5qtL5PT_P7A2H9_UhJsb5gTurxTkO3rxERtq4NFrauA3X5-EJU8bEWFa-wEBD0lkJA_KcbH62rVCWfFSOykP0REKz_G0D8Andn1tlvY7i2akjs-08KuNdNUv3yC3SxvmtiuNlRR-j2SkXrvhUUqL4LFuCuExaoqxoXrrcDYvHsRkXsrWcXqb5VVcerfBa47lB5rcETCrjaEGKprwqCi64SCKivDRehqRMGqKwZFqikExY3liOTuVuSLlOe8CdFHXXBmHUg0cVbiJMQYSFuWJ5LJpieIyaYniMmmJ4jJpieIyaYnplwIshjJtjeIyaYnmNm2N5jZiuekCYuOI-KXFpNJlQSay-YniMmmJ4iJmc; cloud.session.token=eyJraWQiOiJzZXNzaW9uLXNlcnZpY2UvcHJvZC0xNTkyODU4Mzk0IiwiYWxnIjoiUlMyNTYifQ.eyJhc3NvY2lhdGlvbnMiOltdLCJzdWIiOiI3MTIwMjA6Yzc5NzhmNmMtNGQ0My00NzFmLWE0MWQtZWU3M2FkNDVhYzJlIiwiZW1haWxEb21haW4iOiJnbWFpbC5jb20iLCJpbXBlcnNvbmF0aW9uIjpbXSwiY3JlYXRlZCI6MTcyMzczMjY5NSwicmVmcmVzaFRpbWVvdXQiOjE3MjM3NTkzNTEsInZlcmlmaWVkIjp0cnVlLCJpc3MiOiJzZXNzaW9uLXNlcnZpY2UiLCJzZXNzaW9uSWQiOiI0ZTk3NDRmZi0zOTc2LTQxMzYtYjk4NS1lNzUzOTExOWNlZTkiLCJzdGVwVXBzIjpbXSwiYXVkIjoiYXRsYXNzaWFuIiwibmJmIjoxNzIzNzU4NzUxLCJleHAiOjE3MjYzNTA3NTEsImlhdCI6MTcyMzc1ODc1MSwiZW1haWwiOiI5NHNhZGVjZXV5Z3VsYW1hbGFyMTlAZ21haWwuY29tIiwianRpIjoiNGU5NzQ0ZmYtMzk3Ni00MTM2LWI5ODUtZTc1MzkxMTljZWU5In0.b2_luZLN9h6T8x5ypzuEsyjXHAoIpBJaQc9XWlvgD2YmXgUcuSB97RDREwD6mOMJ1SCuLVF5TQ5ck5pBlIKWDfRvXs7IylIk2dN1sSg3nfSoRd8rvHy1fQ5JR9tvO5gehSIqfuOjHGFhetQA4DwDvbbqe2HQEuamS7HVAy839GbwYDvKtGc18m9dWoGjs50LafiyGSOrhdYnmBcoXezwvHzBWkjXtt1wynvX-jdI7Q3QVmm_GuR257ndzfa8JYjEQ9micOfBEioPOSZAYunLwzGRRjP97wQdktMgH-TspStY69O6EayuTD4suyHkYf_pC2jLlldI2EEfM_KlaxJzuQ' \\\r\n  -H 'origin: https://trello.com' \\\r\n  -H 'pragma: no-cache' \\\r\n  -H 'priority: u=1, i' \\\r\n  -H 'referer: https://trello.com/b/qJXFHUTy/vaultn' \\\r\n  -H 'sec-ch-ua: \"Not)A;Brand\";v=\"99\", \"Google Chrome\";v=\"127\", \"Chromium\";v=\"127\"' \\\r\n  -H 'sec-ch-ua-mobile: ?0' \\\r\n  -H 'sec-ch-ua-platform: \"Windows\"' \\\r\n  -H 'sec-fetch-dest: empty' \\\r\n  -H 'sec-fetch-mode: cors' \\\r\n  -H 'sec-fetch-site: same-origin' \\\r\n  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36' \\\r\n  -H 'x-trello-client-version: build-207310' \\\r\n  --data-raw '{\"closed\":true,\"dsc\":\"cc5a16c8d137a8bacf8f418cb45849f86f5b94b506659bff5de2786a0c0d3e94\"}'"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Board",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"VaultN-Board\", function () {\r",
+									"\r",
+									"// Parse the response body as JSON\r",
+									"var responseBody = pm.response.json();\r",
+									"\r",
+									"// Extract the \"id\" from the response body\r",
+									"var listId = responseBody.id;\r",
+									"\r",
+									"// Set the \"listId\" as a variable for later use\r",
+									"pm.environment.set(\"VaultN-Board\", listId);});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "*/*"
+							},
+							{
+								"key": "accept-language",
+								"value": "tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7"
+							},
+							{
+								"key": "cache-control",
+								"value": "no-cache"
+							},
+							{
+								"key": "content-type",
+								"value": "application/json"
+							},
+							{
+								"key": "cookie",
+								"value": "atlCohort={\"bucketAll\":{\"bucketedAtUTC\":\"2024-08-15T14:37:49.392Z\",\"version\":\"2\",\"index\":15,\"bucketId\":0}}; ajs_anonymous_id=%22c51ec516-2968-5d60-f521-a198e66fd18f%22; dsc=cc5a16c8d137a8bacf8f418cb45849f86f5b94b506659bff5de2786a0c0d3e94; atl_xid.ts=1723732672210; atl_xid.current=%5B%7B%22type%22%3A%22xc%22%2C%22value%22%3A%22c19711a7-7d3d-49f9-87e3-4d1d06191efb%22%2C%22createdAt%22%3A%222024-04-29T14%3A07%3A47.071Z%22%7D%5D; _otPreferencesSynced=; OptanonConsent=isGpcEnabled=0&datestamp=Thu+Aug+15+2024+17%3A37%3A55+GMT%2B0300+(GMT%2B03%3A00)&version=202407.1.0&browserGpcFlag=0&isIABGlobal=false&identifierType=Cookie+Unique+Id&hosts=&consentId=56d07b6c-e313-47c8-a23a-bd43b88d11a9&interactionCount=1&isAnonUser=1&landingPath=https%3A%2F%2Ftrello.com%2F&groups=1%3A1%2C2%3A1%2C3%3A1%2C4%3A0; loggedIn=1; lang=tr-TR; idMember=66be12f0a4ce3e80d1df2d1b; aaId=712020%3Ac7978f6c-4d43-471f-a41d-ee73ad45ac2e; hasAccount=atlassian; atl-bsc-consent-token-fallback=002000001000; __cid=DQlNUOvbULa7SoOGkLHXvem7tCuWjdyDICeTnjcj7OwOcsqAcwEfHicenI4OPq2aHSzfaiNpmuN87z_JJlQLnCt5lJ5cQvfTTFzx8k9Ht6sNFri2dE_2-kxR675tcrivEwiopQNx8fAVEqO-WxCstwNn6O5PQ8_7QW3x6gwTq6kNFa6-C23Qym5qtL5PT_P7A2H9_UhJsb5gTurxTkO3rxERtq4NFrauA3X5-EJU8bEWFa-wEBD0lkJA_KcbH62rVCWfFSOykP0REKz_G0D8Andn1tlvY7i2akjs-08KuNdNUv3yC3SxvmtiuNlRR-j2SkXrvhUUqL4LFuCuExaoqxoXrrcDYvHsRkXsrWcXqb5VVcerfBa47lB5rcETCrjaEGKprwqCi64SCKivDRehqRMGqKwZFqikExY3liOTuVuSLlOe8CdFHXXBmHUg0cVbiJMQYSFuWJ5LJpieIyaYniMmmJ4jJpieIyaYnplwIshjJtjeIyaYnmNm2N5jZiuekCYuOI-KXFpNJlQSay-YniMmmJ4iJmc; cloud.session.token=eyJraWQiOiJzZXNzaW9uLXNlcnZpY2UvcHJvZC0xNTkyODU4Mzk0IiwiYWxnIjoiUlMyNTYifQ.eyJhc3NvY2lhdGlvbnMiOltdLCJzdWIiOiI3MTIwMjA6Yzc5NzhmNmMtNGQ0My00NzFmLWE0MWQtZWU3M2FkNDVhYzJlIiwiZW1haWxEb21haW4iOiJnbWFpbC5jb20iLCJpbXBlcnNvbmF0aW9uIjpbXSwiY3JlYXRlZCI6MTcyMzczMjY5NSwicmVmcmVzaFRpbWVvdXQiOjE3MjM4Mzc3ODYsInZlcmlmaWVkIjp0cnVlLCJpc3MiOiJzZXNzaW9uLXNlcnZpY2UiLCJzZXNzaW9uSWQiOiI0ZTk3NDRmZi0zOTc2LTQxMzYtYjk4NS1lNzUzOTExOWNlZTkiLCJzdGVwVXBzIjpbXSwiYXVkIjoiYXRsYXNzaWFuIiwibmJmIjoxNzIzODM3MTg2LCJleHAiOjE3MjY0MjkxODYsImlhdCI6MTcyMzgzNzE4NiwiZW1haWwiOiI5NHNhZGVjZXV5Z3VsYW1hbGFyMTlAZ21haWwuY29tIiwianRpIjoiNGU5NzQ0ZmYtMzk3Ni00MTM2LWI5ODUtZTc1MzkxMTljZWU5In0.KOJityl9Nl7EbEzlfoK3ndvhbAvMHlI3o_9nerGD_Vt_mrOFMKTdXvsCYDps4k4Z-7enxMasehrzsomefVvw_QHP8oDE_cqFVxrw7fcf8_VL2SkWgffP8UEpuBcPgy-lQKRRJRhnLjnL1VM0badYpZjTI9NHpuIWDt2YQjEIM686-bgEV7yg2mu9c5aGzQuAb1nZbRH-6KsKrT7i6ml0SWWBUZUUo9PSU5fifiiAxJqj7pxgvspU28uqtwilShagrX6M5onI9m2A7fyLclPSAgHIY5A2z68TpZMwNCGxBeVtNBhWprGpRRv_p5Lw0TZS_SEOX1jr1ebFWX2ifFfXtQ"
+							},
+							{
+								"key": "origin",
+								"value": "https://trello.com"
+							},
+							{
+								"key": "pragma",
+								"value": "no-cache"
+							},
+							{
+								"key": "priority",
+								"value": "u=1, i"
+							},
+							{
+								"key": "referer",
+								"value": "https://trello.com/b/qJXFHUTy/vaultn"
+							},
+							{
+								"key": "sec-ch-ua",
+								"value": "\"Not)A;Brand\";v=\"99\", \"Google Chrome\";v=\"127\", \"Chromium\";v=\"127\""
+							},
+							{
+								"key": "sec-ch-ua-mobile",
+								"value": "?0"
+							},
+							{
+								"key": "sec-ch-ua-platform",
+								"value": "\"Windows\""
+							},
+							{
+								"key": "sec-fetch-dest",
+								"value": "empty"
+							},
+							{
+								"key": "sec-fetch-mode",
+								"value": "cors"
+							},
+							{
+								"key": "sec-fetch-site",
+								"value": "same-origin"
+							},
+							{
+								"key": "user-agent",
+								"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36"
+							},
+							{
+								"key": "x-b3-spanid",
+								"value": "6cdbdc7c008230a1"
+							},
+							{
+								"key": "x-b3-traceid",
+								"value": "66bfae1569831b90ca3128b41e5905a4"
+							},
+							{
+								"key": "x-trello-client-version",
+								"value": "build-207401"
+							},
+							{
+								"key": "x-trello-task",
+								"value": "create-board"
+							},
+							{
+								"key": "x-trello-traceid",
+								"value": "66bfae1569831b90ca3128b41e5905a4"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{apiKey}}",
+								"type": "text"
+							},
+							{
+								"key": "token",
+								"value": "{{apiToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"defaultLists\": false,\r\n    \"idOrganization\": \"66be140adc6678bfb5ee9304\",\r\n    \"name\": \"VaultN\",\r\n    \"prefs_background_url\": \"https://images.unsplash.com/photo-1713706017787-ce45708bd498?ixid=M3w3MDY2fDB8MXxjb2xsZWN0aW9ufDF8MzE3MDk5fHx8fHwyfHwxNzIzODM0NDc4fA&ixlib=rb-4.0.3&w=2560&h=2048&q=90\",\r\n    \"prefs_permissionLevel\": \"org\",\r\n    \"prefs_selfJoin\": true,\r\n    \"dsc\": \"cc5a16c8d137a8bacf8f418cb45849f86f5b94b506659bff5de2786a0c0d3e94\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/boards",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"boards"
+							]
+						},
+						"description": "Generated from cURL: curl 'https://trello.com/1/boards' \\\r\n  -H 'accept: */*' \\\r\n  -H 'accept-language: tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7' \\\r\n  -H 'cache-control: no-cache' \\\r\n  -H 'content-type: application/json' \\\r\n  -H 'cookie: atlCohort={\"bucketAll\":{\"bucketedAtUTC\":\"2024-08-15T14:37:49.392Z\",\"version\":\"2\",\"index\":15,\"bucketId\":0}}; ajs_anonymous_id=%22c51ec516-2968-5d60-f521-a198e66fd18f%22; dsc=cc5a16c8d137a8bacf8f418cb45849f86f5b94b506659bff5de2786a0c0d3e94; atl_xid.ts=1723732672210; atl_xid.current=%5B%7B%22type%22%3A%22xc%22%2C%22value%22%3A%22c19711a7-7d3d-49f9-87e3-4d1d06191efb%22%2C%22createdAt%22%3A%222024-04-29T14%3A07%3A47.071Z%22%7D%5D; _otPreferencesSynced=; OptanonConsent=isGpcEnabled=0&datestamp=Thu+Aug+15+2024+17%3A37%3A55+GMT%2B0300+(GMT%2B03%3A00)&version=202407.1.0&browserGpcFlag=0&isIABGlobal=false&identifierType=Cookie+Unique+Id&hosts=&consentId=56d07b6c-e313-47c8-a23a-bd43b88d11a9&interactionCount=1&isAnonUser=1&landingPath=https%3A%2F%2Ftrello.com%2F&groups=1%3A1%2C2%3A1%2C3%3A1%2C4%3A0; loggedIn=1; lang=tr-TR; idMember=66be12f0a4ce3e80d1df2d1b; aaId=712020%3Ac7978f6c-4d43-471f-a41d-ee73ad45ac2e; hasAccount=atlassian; atl-bsc-consent-token-fallback=002000001000; __cid=DQlNUOvbULa7SoOGkLHXvem7tCuWjdyDICeTnjcj7OwOcsqAcwEfHicenI4OPq2aHSzfaiNpmuN87z_JJlQLnCt5lJ5cQvfTTFzx8k9Ht6sNFri2dE_2-kxR675tcrivEwiopQNx8fAVEqO-WxCstwNn6O5PQ8_7QW3x6gwTq6kNFa6-C23Qym5qtL5PT_P7A2H9_UhJsb5gTurxTkO3rxERtq4NFrauA3X5-EJU8bEWFa-wEBD0lkJA_KcbH62rVCWfFSOykP0REKz_G0D8Andn1tlvY7i2akjs-08KuNdNUv3yC3SxvmtiuNlRR-j2SkXrvhUUqL4LFuCuExaoqxoXrrcDYvHsRkXsrWcXqb5VVcerfBa47lB5rcETCrjaEGKprwqCi64SCKivDRehqRMGqKwZFqikExY3liOTuVuSLlOe8CdFHXXBmHUg0cVbiJMQYSFuWJ5LJpieIyaYniMmmJ4jJpieIyaYnplwIshjJtjeIyaYnmNm2N5jZiuekCYuOI-KXFpNJlQSay-YniMmmJ4iJmc; cloud.session.token=eyJraWQiOiJzZXNzaW9uLXNlcnZpY2UvcHJvZC0xNTkyODU4Mzk0IiwiYWxnIjoiUlMyNTYifQ.eyJhc3NvY2lhdGlvbnMiOltdLCJzdWIiOiI3MTIwMjA6Yzc5NzhmNmMtNGQ0My00NzFmLWE0MWQtZWU3M2FkNDVhYzJlIiwiZW1haWxEb21haW4iOiJnbWFpbC5jb20iLCJpbXBlcnNvbmF0aW9uIjpbXSwiY3JlYXRlZCI6MTcyMzczMjY5NSwicmVmcmVzaFRpbWVvdXQiOjE3MjM4Mzc3ODYsInZlcmlmaWVkIjp0cnVlLCJpc3MiOiJzZXNzaW9uLXNlcnZpY2UiLCJzZXNzaW9uSWQiOiI0ZTk3NDRmZi0zOTc2LTQxMzYtYjk4NS1lNzUzOTExOWNlZTkiLCJzdGVwVXBzIjpbXSwiYXVkIjoiYXRsYXNzaWFuIiwibmJmIjoxNzIzODM3MTg2LCJleHAiOjE3MjY0MjkxODYsImlhdCI6MTcyMzgzNzE4NiwiZW1haWwiOiI5NHNhZGVjZXV5Z3VsYW1hbGFyMTlAZ21haWwuY29tIiwianRpIjoiNGU5NzQ0ZmYtMzk3Ni00MTM2LWI5ODUtZTc1MzkxMTljZWU5In0.KOJityl9Nl7EbEzlfoK3ndvhbAvMHlI3o_9nerGD_Vt_mrOFMKTdXvsCYDps4k4Z-7enxMasehrzsomefVvw_QHP8oDE_cqFVxrw7fcf8_VL2SkWgffP8UEpuBcPgy-lQKRRJRhnLjnL1VM0badYpZjTI9NHpuIWDt2YQjEIM686-bgEV7yg2mu9c5aGzQuAb1nZbRH-6KsKrT7i6ml0SWWBUZUUo9PSU5fifiiAxJqj7pxgvspU28uqtwilShagrX6M5onI9m2A7fyLclPSAgHIY5A2z68TpZMwNCGxBeVtNBhWprGpRRv_p5Lw0TZS_SEOX1jr1ebFWX2ifFfXtQ' \\\r\n  -H 'origin: https://trello.com' \\\r\n  -H 'pragma: no-cache' \\\r\n  -H 'priority: u=1, i' \\\r\n  -H 'referer: https://trello.com/b/qJXFHUTy/vaultn' \\\r\n  -H 'sec-ch-ua: \"Not)A;Brand\";v=\"99\", \"Google Chrome\";v=\"127\", \"Chromium\";v=\"127\"' \\\r\n  -H 'sec-ch-ua-mobile: ?0' \\\r\n  -H 'sec-ch-ua-platform: \"Windows\"' \\\r\n  -H 'sec-fetch-dest: empty' \\\r\n  -H 'sec-fetch-mode: cors' \\\r\n  -H 'sec-fetch-site: same-origin' \\\r\n  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36' \\\r\n  -H 'x-b3-spanid: 6cdbdc7c008230a1' \\\r\n  -H 'x-b3-traceid: 66bfae1569831b90ca3128b41e5905a4' \\\r\n  -H 'x-trello-client-version: build-207401' \\\r\n  -H 'x-trello-task: create-board' \\\r\n  -H 'x-trello-traceid: 66bfae1569831b90ca3128b41e5905a4' \\\r\n  --data-raw '{\"defaultLists\":false,\"idOrganization\":\"66be140adc6678bfb5ee9304\",\"name\":\"VaultNN\",\"prefs_background_url\":\"https://images.unsplash.com/photo-1713706017787-ce45708bd498?ixid=M3w3MDY2fDB8MXxjb2xsZWN0aW9ufDF8MzE3MDk5fHx8fHwyfHwxNzIzODM0NDc4fA&ixlib=rb-4.0.3&w=2560&h=2048&q=90\",\"prefs_permissionLevel\":\"org\",\"prefs_selfJoin\":true,\"dsc\":\"cc5a16c8d137a8bacf8f418cb45849f86f5b94b506659bff5de2786a0c0d3e94\"}'"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Board",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "accept",
+								"value": "*/*"
+							},
+							{
+								"key": "accept-language",
+								"value": "tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7"
+							},
+							{
+								"key": "cache-control",
+								"value": "no-cache"
+							},
+							{
+								"key": "content-type",
+								"value": "application/json"
+							},
+							{
+								"key": "cookie",
+								"value": "atlCohort={\"bucketAll\":{\"bucketedAtUTC\":\"2024-08-15T14:37:49.392Z\",\"version\":\"2\",\"index\":15,\"bucketId\":0}}; ajs_anonymous_id=%22c51ec516-2968-5d60-f521-a198e66fd18f%22; dsc=cc5a16c8d137a8bacf8f418cb45849f86f5b94b506659bff5de2786a0c0d3e94; atl_xid.ts=1723732672210; atl_xid.current=%5B%7B%22type%22%3A%22xc%22%2C%22value%22%3A%22c19711a7-7d3d-49f9-87e3-4d1d06191efb%22%2C%22createdAt%22%3A%222024-04-29T14%3A07%3A47.071Z%22%7D%5D; _otPreferencesSynced=; OptanonConsent=isGpcEnabled=0&datestamp=Thu+Aug+15+2024+17%3A37%3A55+GMT%2B0300+(GMT%2B03%3A00)&version=202407.1.0&browserGpcFlag=0&isIABGlobal=false&identifierType=Cookie+Unique+Id&hosts=&consentId=56d07b6c-e313-47c8-a23a-bd43b88d11a9&interactionCount=1&isAnonUser=1&landingPath=https%3A%2F%2Ftrello.com%2F&groups=1%3A1%2C2%3A1%2C3%3A1%2C4%3A0; loggedIn=1; lang=tr-TR; idMember=66be12f0a4ce3e80d1df2d1b; aaId=712020%3Ac7978f6c-4d43-471f-a41d-ee73ad45ac2e; hasAccount=atlassian; atl-bsc-consent-token-fallback=002000001000; __cid=DQlNUOvbULa7SoOGkLHXvem7tCuWjdyDICeTnjcj7OwOcsqAcwEfHicenI4OPq2aHSzfaiNpmuN87z_JJlQLnCt5lJ5cQvfTTFzx8k9Ht6sNFri2dE_2-kxR675tcrivEwiopQNx8fAVEqO-WxCstwNn6O5PQ8_7QW3x6gwTq6kNFa6-C23Qym5qtL5PT_P7A2H9_UhJsb5gTurxTkO3rxERtq4NFrauA3X5-EJU8bEWFa-wEBD0lkJA_KcbH62rVCWfFSOykP0REKz_G0D8Andn1tlvY7i2akjs-08KuNdNUv3yC3SxvmtiuNlRR-j2SkXrvhUUqL4LFuCuExaoqxoXrrcDYvHsRkXsrWcXqb5VVcerfBa47lB5rcETCrjaEGKprwqCi64SCKivDRehqRMGqKwZFqikExY3liOTuVuSLlOe8CdFHXXBmHUg0cVbiJMQYSFuWJ5LJpieIyaYniMmmJ4jJpieIyaYnplwIshjJtjeIyaYnmNm2N5jZiuekCYuOI-KXFpNJlQSay-YniMmmJ4iJmc; atl-bsc-current-locale=TR-16; atl-bsc-consent-token=002111001000; atl-bsc-show-banner=0; cloud.session.token=eyJraWQiOiJzZXNzaW9uLXNlcnZpY2UvcHJvZC0xNTkyODU4Mzk0IiwiYWxnIjoiUlMyNTYifQ.eyJhc3NvY2lhdGlvbnMiOltdLCJzdWIiOiI3MTIwMjA6Yzc5NzhmNmMtNGQ0My00NzFmLWE0MWQtZWU3M2FkNDVhYzJlIiwiZW1haWxEb21haW4iOiJnbWFpbC5jb20iLCJpbXBlcnNvbmF0aW9uIjpbXSwiY3JlYXRlZCI6MTcyMzczMjY5NSwicmVmcmVzaFRpbWVvdXQiOjE3MjM4NDA1NTYsInZlcmlmaWVkIjp0cnVlLCJpc3MiOiJzZXNzaW9uLXNlcnZpY2UiLCJzZXNzaW9uSWQiOiI0ZTk3NDRmZi0zOTc2LTQxMzYtYjk4NS1lNzUzOTExOWNlZTkiLCJzdGVwVXBzIjpbXSwiYXVkIjoiYXRsYXNzaWFuIiwibmJmIjoxNzIzODM5OTU2LCJleHAiOjE3MjY0MzE5NTYsImlhdCI6MTcyMzgzOTk1NiwiZW1haWwiOiI5NHNhZGVjZXV5Z3VsYW1hbGFyMTlAZ21haWwuY29tIiwianRpIjoiNGU5NzQ0ZmYtMzk3Ni00MTM2LWI5ODUtZTc1MzkxMTljZWU5In0.IZ-EilyKGhuHaXbARMZOcxhJuPu38xI4InQ2CTobXamlz04klkyhtppvzhOBVmtRqeJZZRP9taqZJehDMOWXLDjEYhxK4HZb67H0F8PGhYKY5p8KUiqiLuiZpSKdFoi77mjMN-ewge4areJ5KZpYFBVwb-SLMzg927Pl9MdTfk8Yp95xua86VV3eeR1uVJQZXdqTMD_zHSkPktCb3ZLdghm41EVsr2ODN9jxK7pG7OP9ZfNw1yRzbO_MR5NvqzJzkYzBOUdMChga4MHXqSwlizHxkuqeJyEwXyvZC1oouwCIVxaAUD6x2Zshdx3j-MMrjC6tOn1mgYzL-RSDVORt8Q"
+							},
+							{
+								"key": "origin",
+								"value": "https://trello.com"
+							},
+							{
+								"key": "pragma",
+								"value": "no-cache"
+							},
+							{
+								"key": "priority",
+								"value": "u=1, i"
+							},
+							{
+								"key": "referer",
+								"value": "https://trello.com/w/usercalismaalani53839148"
+							},
+							{
+								"key": "sec-ch-ua",
+								"value": "\"Not)A;Brand\";v=\"99\", \"Google Chrome\";v=\"127\", \"Chromium\";v=\"127\""
+							},
+							{
+								"key": "sec-ch-ua-mobile",
+								"value": "?0"
+							},
+							{
+								"key": "sec-ch-ua-platform",
+								"value": "\"Windows\""
+							},
+							{
+								"key": "sec-fetch-dest",
+								"value": "empty"
+							},
+							{
+								"key": "sec-fetch-mode",
+								"value": "cors"
+							},
+							{
+								"key": "sec-fetch-site",
+								"value": "same-origin"
+							},
+							{
+								"key": "user-agent",
+								"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36"
+							},
+							{
+								"key": "x-b3-spanid",
+								"value": "d5ce9039e82ac61b"
+							},
+							{
+								"key": "x-b3-traceid",
+								"value": "66bfb6a2556a8162649eeddf08d3593c"
+							},
+							{
+								"key": "x-trello-client-version",
+								"value": "build-207401"
+							},
+							{
+								"key": "x-trello-task",
+								"value": "delete-board"
+							},
+							{
+								"key": "x-trello-traceid",
+								"value": "66bfb6a2556a8162649eeddf08d3593c"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"dsc\":\"cc5a16c8d137a8bacf8f418cb45849f86f5b94b506659bff5de2786a0c0d3e94\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/boards/{{VaultN-Board}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"boards",
+								"{{VaultN-Board}}"
+							]
+						},
+						"description": "Generated from cURL: curl 'https://trello.com/1/boards/66bfae83b2cbb7b1db1c0e38' \\\r\n  -X 'DELETE' \\\r\n  -H 'accept: */*' \\\r\n  -H 'accept-language: tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7' \\\r\n  -H 'cache-control: no-cache' \\\r\n  -H 'content-type: application/json' \\\r\n  -H 'cookie: atlCohort={\"bucketAll\":{\"bucketedAtUTC\":\"2024-08-15T14:37:49.392Z\",\"version\":\"2\",\"index\":15,\"bucketId\":0}}; ajs_anonymous_id=%22c51ec516-2968-5d60-f521-a198e66fd18f%22; dsc=cc5a16c8d137a8bacf8f418cb45849f86f5b94b506659bff5de2786a0c0d3e94; atl_xid.ts=1723732672210; atl_xid.current=%5B%7B%22type%22%3A%22xc%22%2C%22value%22%3A%22c19711a7-7d3d-49f9-87e3-4d1d06191efb%22%2C%22createdAt%22%3A%222024-04-29T14%3A07%3A47.071Z%22%7D%5D; _otPreferencesSynced=; OptanonConsent=isGpcEnabled=0&datestamp=Thu+Aug+15+2024+17%3A37%3A55+GMT%2B0300+(GMT%2B03%3A00)&version=202407.1.0&browserGpcFlag=0&isIABGlobal=false&identifierType=Cookie+Unique+Id&hosts=&consentId=56d07b6c-e313-47c8-a23a-bd43b88d11a9&interactionCount=1&isAnonUser=1&landingPath=https%3A%2F%2Ftrello.com%2F&groups=1%3A1%2C2%3A1%2C3%3A1%2C4%3A0; loggedIn=1; lang=tr-TR; idMember=66be12f0a4ce3e80d1df2d1b; aaId=712020%3Ac7978f6c-4d43-471f-a41d-ee73ad45ac2e; hasAccount=atlassian; atl-bsc-consent-token-fallback=002000001000; __cid=DQlNUOvbULa7SoOGkLHXvem7tCuWjdyDICeTnjcj7OwOcsqAcwEfHicenI4OPq2aHSzfaiNpmuN87z_JJlQLnCt5lJ5cQvfTTFzx8k9Ht6sNFri2dE_2-kxR675tcrivEwiopQNx8fAVEqO-WxCstwNn6O5PQ8_7QW3x6gwTq6kNFa6-C23Qym5qtL5PT_P7A2H9_UhJsb5gTurxTkO3rxERtq4NFrauA3X5-EJU8bEWFa-wEBD0lkJA_KcbH62rVCWfFSOykP0REKz_G0D8Andn1tlvY7i2akjs-08KuNdNUv3yC3SxvmtiuNlRR-j2SkXrvhUUqL4LFuCuExaoqxoXrrcDYvHsRkXsrWcXqb5VVcerfBa47lB5rcETCrjaEGKprwqCi64SCKivDRehqRMGqKwZFqikExY3liOTuVuSLlOe8CdFHXXBmHUg0cVbiJMQYSFuWJ5LJpieIyaYniMmmJ4jJpieIyaYnplwIshjJtjeIyaYnmNm2N5jZiuekCYuOI-KXFpNJlQSay-YniMmmJ4iJmc; atl-bsc-current-locale=TR-16; atl-bsc-consent-token=002111001000; atl-bsc-show-banner=0; cloud.session.token=eyJraWQiOiJzZXNzaW9uLXNlcnZpY2UvcHJvZC0xNTkyODU4Mzk0IiwiYWxnIjoiUlMyNTYifQ.eyJhc3NvY2lhdGlvbnMiOltdLCJzdWIiOiI3MTIwMjA6Yzc5NzhmNmMtNGQ0My00NzFmLWE0MWQtZWU3M2FkNDVhYzJlIiwiZW1haWxEb21haW4iOiJnbWFpbC5jb20iLCJpbXBlcnNvbmF0aW9uIjpbXSwiY3JlYXRlZCI6MTcyMzczMjY5NSwicmVmcmVzaFRpbWVvdXQiOjE3MjM4NDA1NTYsInZlcmlmaWVkIjp0cnVlLCJpc3MiOiJzZXNzaW9uLXNlcnZpY2UiLCJzZXNzaW9uSWQiOiI0ZTk3NDRmZi0zOTc2LTQxMzYtYjk4NS1lNzUzOTExOWNlZTkiLCJzdGVwVXBzIjpbXSwiYXVkIjoiYXRsYXNzaWFuIiwibmJmIjoxNzIzODM5OTU2LCJleHAiOjE3MjY0MzE5NTYsImlhdCI6MTcyMzgzOTk1NiwiZW1haWwiOiI5NHNhZGVjZXV5Z3VsYW1hbGFyMTlAZ21haWwuY29tIiwianRpIjoiNGU5NzQ0ZmYtMzk3Ni00MTM2LWI5ODUtZTc1MzkxMTljZWU5In0.IZ-EilyKGhuHaXbARMZOcxhJuPu38xI4InQ2CTobXamlz04klkyhtppvzhOBVmtRqeJZZRP9taqZJehDMOWXLDjEYhxK4HZb67H0F8PGhYKY5p8KUiqiLuiZpSKdFoi77mjMN-ewge4areJ5KZpYFBVwb-SLMzg927Pl9MdTfk8Yp95xua86VV3eeR1uVJQZXdqTMD_zHSkPktCb3ZLdghm41EVsr2ODN9jxK7pG7OP9ZfNw1yRzbO_MR5NvqzJzkYzBOUdMChga4MHXqSwlizHxkuqeJyEwXyvZC1oouwCIVxaAUD6x2Zshdx3j-MMrjC6tOn1mgYzL-RSDVORt8Q' \\\r\n  -H 'origin: https://trello.com' \\\r\n  -H 'pragma: no-cache' \\\r\n  -H 'priority: u=1, i' \\\r\n  -H 'referer: https://trello.com/w/usercalismaalani53839148' \\\r\n  -H 'sec-ch-ua: \"Not)A;Brand\";v=\"99\", \"Google Chrome\";v=\"127\", \"Chromium\";v=\"127\"' \\\r\n  -H 'sec-ch-ua-mobile: ?0' \\\r\n  -H 'sec-ch-ua-platform: \"Windows\"' \\\r\n  -H 'sec-fetch-dest: empty' \\\r\n  -H 'sec-fetch-mode: cors' \\\r\n  -H 'sec-fetch-site: same-origin' \\\r\n  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36' \\\r\n  -H 'x-b3-spanid: d5ce9039e82ac61b' \\\r\n  -H 'x-b3-traceid: 66bfb6a2556a8162649eeddf08d3593c' \\\r\n  -H 'x-trello-client-version: build-207401' \\\r\n  -H 'x-trello-task: delete-board' \\\r\n  -H 'x-trello-traceid: 66bfb6a2556a8162649eeddf08d3593c' \\\r\n  --data-raw '{\"dsc\":\"cc5a16c8d137a8bacf8f418cb45849f86f5b94b506659bff5de2786a0c0d3e94\"}'"
+					},
+					"response": []
+				}
+			],
+			"description": "Create -Close-Delete operations"
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "https://trello.com/1"
+		}
+	]
+}
