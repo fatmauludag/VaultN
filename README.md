@@ -1,3 +1,5 @@
+For postman collection api key and token is not avaible for security issu thats why its looking empty for your informations.
+
 In this video we can see crud operations.
 Firstly I created board and I used board id as a varible because for create lists we have to use and for more repeat issue its so helpfull for us.
 I run directly floders because I already create my enviroment variables and has all connected.
